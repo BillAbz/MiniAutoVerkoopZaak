@@ -15,7 +15,7 @@ public class ToiletMan extends Staff {
         this.toiletPaperStock = toiletPaperStock;
     }
 
-    private void fillToiletStallsWithToiletPaper(int amountOfStalls) throws ToiletPaperException {
+    public void fillToiletStallsWithToiletPaper(int amountOfStalls) throws ToiletPaperException {
 
         if (amountOfStalls > 0) {
             for (int i = toiletPaperStock; i >= amountOfStalls; i--) {
@@ -29,7 +29,7 @@ public class ToiletMan extends Staff {
     //this method will throw a selfmade Exception if you're
     //out of toilet paper
 
-    private void promoteSafeFun(Customer customer) {
+    public void promoteSafeFun(Customer customer) {
         if (customer.isDTF() && !customer.isHasCondom() && customer.getBeersThatTheyDrunk() < 3) {
             customer.setHasCondom(true);
             System.out.println("You now have a RubberDuck for your FreeWillie");

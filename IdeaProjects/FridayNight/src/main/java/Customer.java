@@ -79,6 +79,7 @@ public class Customer {
 
 
     public double tipTheCuteStaff(Staff staff){
+
         System.out.println("Beers you had :" +getBeersThatTheyDrunk());
         double sumOrBill =getBeersThatTheyDrunk()*tippingAmount;
         System.out.println("You have " + getEuros() + " left");
