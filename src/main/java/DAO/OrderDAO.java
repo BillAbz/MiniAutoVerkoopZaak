@@ -1,9 +1,13 @@
 package DAO;
 
+import Entities.Costumer;
 import Entities.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.sql.SQLException;
+import java.util.List;
 
 public class OrderDAO {
     private EntityManagerFactory emf;
@@ -11,6 +15,19 @@ public class OrderDAO {
     public OrderDAO(){
         emf = EMFactory.getEMF ();
     }
+
+    public Order getOrderByOrderNumber(int orderNumber) throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        return entityManager.find(Order.class , orderNumber);
+    }
+
+    public List<Order> getAllOrders() throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        Query query = entityManager.createQuery("Select * from Order");
+        List<Order> orderList = query.getResultList();
+        return orderList;
+    }
+
 
 
     public void addOrder(Order order){

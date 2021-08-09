@@ -23,7 +23,7 @@ public class CustomerDAO {
 
     public List<Costumer> getAllCostumers() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from Country");
+        Query query = entityManager.createQuery("Select * from Costumer");
         List<Costumer> countList = query.getResultList();
         return countList;
     }

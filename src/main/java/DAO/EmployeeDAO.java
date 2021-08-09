@@ -1,15 +1,31 @@
 package DAO;
 
 import Entities.Employee;
+import Entities.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.sql.SQLException;
+import java.util.List;
 
 public class EmployeeDAO {
         private EntityManagerFactory emf;
 
         public EmployeeDAO(){
                 emf = EMFactory.getEMF ();
+        }
+
+        public Employee getEmployeeByEmployeeNumber(int employeeNumber) throws SQLException {
+                EntityManager entityManager = emf.createEntityManager();
+                return entityManager.find(Employee.class , employeeNumber);
+        }
+
+        public List<Employee> getAllEmployee() throws SQLException {
+                EntityManager entityManager = emf.createEntityManager();
+                Query query = entityManager.createQuery("Select * from Employee");
+                List<Employee> employeeList = query.getResultList();
+                return employeeList;
         }
 
 
