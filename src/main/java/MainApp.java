@@ -1,9 +1,12 @@
 import Entities.Costumer;
-import service.CostumerService;
+import Entities.Employee;
+import Entities.Product;
+import service.CustomerService;
 import service.EmployeeService;
 import service.ProductService;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class MainApp {
 
@@ -11,7 +14,7 @@ public class MainApp {
     public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n0: End";
     public static final String SUBMENU = "What do you want to look at? %n1: See all %n2: See id %n3: Add %n4: Update%n5: Delete %s %n0: End%n";
 
-    private CostumerService costumerService;
+    private CustomerService costumerService;
     private EmployeeService employeeService;
     private ProductService productService;
 
@@ -23,7 +26,7 @@ public class MainApp {
 
     public MainApp() {
         this.scanner = new Scanner(System.in);
-        this.costumerService = new CostumerService();
+        this.costumerService = new CustomerService();
         this.productService = new ProductService();
         this.employeeService = new EmployeeService();
     }
@@ -68,66 +71,22 @@ public class MainApp {
             case 1:
                 seeAllCustomers();
                 break;
-            case 2:
-                printCustomerId();
-                break;
-            case 3:
-                createCustomer();
-                break;
-            case 4:
-                updateCustomer();
-                break;
-            case 5:
-                deleteCustomer();
-                break;
+//            case 2:
+//                printCustomerId();
+//                break;
+//            case 3:
+//                createCustomer();
+//                break;
+//            case 4:
+//                updateCustomer();
+//                break;
+//            case 5:
+//                deleteCustomer();
+//                break;
             default:
                 break;
         }
     }
-
-    private Costumer createCustomer() {
-        Costumer customer = new Costumer();
-        setCustomerInfo(customer);
-
-        return customer;
-    }
-
-    private void printCustomerId() {
-        Costumer customer = getCustomerById();
-        System.out.println(customer);
-    }
-
-    private void updateCustomer() {
-        Costumer customer = getCustomerById();
-
-        if (customer == null) {
-            System.err.println("Customer doesn't exist.");
-        } else {
-            setCustomerInfo(customer);
-            costumerService.updateCustomer(customer); //todo updateCustomer is een methode die uit service komt
-        }
-    }
-
-    private Costumer getCustomerById() {
-        int id = scanner.nextInt();
-        return costumerService.getCustomerById(id); //todo getCustomerById is de methode die uit service wordt gehaald
-    }
-
-    private void deleteCustomer() {
-        Costumer customer = getCustomerById();
-        costumerService.deleteCustomer(customer); //todo deleteCustomer is een methode die voorkomt uit de service
-    }
-
-    private void setCustomerInfo(Costumer customer) {
-        System.out.println("Enter your first name:");
-        String firstName = scanner.next();
-        System.out.println("Enter your last name:");
-        String lastName = scanner.next();
-
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-    }
-
 
     private void productsMenu() {
         System.out.printf(SUBMENU, "");
