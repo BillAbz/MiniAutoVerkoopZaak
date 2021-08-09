@@ -1,12 +1,9 @@
 import Entities.Costumer;
-import Entities.Employee;
-import Entities.Product;
 import service.CostumerService;
 import service.EmployeeService;
 import service.ProductService;
 
 import java.util.Scanner;
-import java.util.Set;
 
 public class MainApp {
 
@@ -71,22 +68,66 @@ public class MainApp {
             case 1:
                 seeAllCustomers();
                 break;
-//            case 2:
-//                printCustomerId();
-//                break;
-//            case 3:
-//                createCustomer();
-//                break;
-//            case 4:
-//                updateCustomer();
-//                break;
-//            case 5:
-//                deleteCustomer();
-//                break;
+            case 2:
+                printCustomerId();
+                break;
+            case 3:
+                createCustomer();
+                break;
+            case 4:
+                updateCustomer();
+                break;
+            case 5:
+                deleteCustomer();
+                break;
             default:
                 break;
         }
     }
+
+    private Costumer createCustomer() {
+        Costumer customer = new Costumer();
+        setCustomerInfo(customer);
+
+        return customer;
+    }
+
+    private void printCustomerId() {
+        Costumer customer = getCustomerById();
+        System.out.println(customer);
+    }
+
+    private void updateCustomer() {
+        Costumer customer = getCustomerById();
+
+        if (customer == null) {
+            System.err.println("Customer doesn't exist.");
+        } else {
+            setCustomerInfo(customer);
+            costumerService.updateCustomer(customer); //todo updateCustomer is een methode die uit service komt
+        }
+    }
+
+    private Costumer getCustomerById() {
+        int id = scanner.nextInt();
+        return costumerService.getCustomerById(id); //todo getCustomerById is de methode die uit service wordt gehaald
+    }
+
+    private void deleteCustomer() {
+        Costumer customer = getCustomerById();
+        costumerService.deleteCustomer(customer); //todo deleteCustomer is een methode die voorkomt uit de service
+    }
+
+    private void setCustomerInfo(Costumer customer) {
+        System.out.println("Enter your first name:");
+        String firstName = scanner.next();
+        System.out.println("Enter your last name:");
+        String lastName = scanner.next();
+
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+    }
+
 
     private void productsMenu() {
         System.out.printf(SUBMENU, "");
