@@ -1,2 +1,4 @@
-package service;public class OfficeService {
+package service;
+
+public class OfficeService {
 }
