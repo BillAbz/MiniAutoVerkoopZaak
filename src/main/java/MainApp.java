@@ -1,8 +1,12 @@
-import service.CustomerService;
+import Entities.Costumer;
+import Entities.Employee;
+import Entities.Product;
+import service.CostumerService;
 import service.EmployeeService;
 import service.ProductService;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class MainApp {
 
@@ -10,7 +14,7 @@ public class MainApp {
     public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n0: End";
     public static final String SUBMENU = "What do you want to look at? %n1: See all %n2: See id %n3: Add %n4: Update%n5: Delete %s %n0: End%n";
 
-    private CustomerService customerService;
+    private CostumerService costumerService;
     private EmployeeService employeeService;
     private ProductService productService;
 
@@ -22,7 +26,7 @@ public class MainApp {
 
     public MainApp() {
         this.scanner = new Scanner(System.in);
-        this.customerService = new CustomerService();
+        this.costumerService = new CostumerService();
         this.productService = new ProductService();
         this.employeeService = new EmployeeService();
     }
@@ -114,7 +118,7 @@ public class MainApp {
     }
 
     private void seeAllCustomers() {
-//        Set<Costumer> customerSet = customerService.getAllCustomers(); //todo: aanpassen van getAllCustomers naar het juiste
+//        Set<Costumer> customerSet = costumerService.getAllCustomers(); //todo: aanpassen van getAllCustomers naar het juiste
 //        customerSet.stream().forEach(System.out::println);
     }
 
