@@ -5,10 +5,10 @@ import Entities.Employee;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class EmployeesDAO {
+public class EmployeeDAO {
         private EntityManagerFactory emf;
 
-        public EmployeesDAO(){
+        public EmployeeDAO(){
                 emf = EMFactory.getEMF ();
         }
 

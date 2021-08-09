@@ -5,10 +5,10 @@ import Entities.OrderDetail;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class OrderDetailsDAO {
+public class OrderDetailDAO {
     private EntityManagerFactory emf;
 
-    public OrderDetailsDAO(){
+    public OrderDetailDAO(){
         emf = EMFactory.getEMF ();
     }
 

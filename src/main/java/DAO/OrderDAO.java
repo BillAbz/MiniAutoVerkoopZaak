@@ -1,36 +1,36 @@
 package DAO;
 
-import Entities.Office;
+import Entities.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class OfficesDAO {
+public class OrderDAO {
     private EntityManagerFactory emf;
 
-    public OfficesDAO(){
+    public OrderDAO(){
         emf = EMFactory.getEMF ();
     }
 
 
-    public void addOffices(Office office){
+    public void addOrder(Order order){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (office);
+        em.persist (order);
         em.getTransaction ().commit ();
     }
 
-    public void updateOffices(Office office){
+    public void updateOrder(Order order){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (office);
+        em.merge (order);
         em.getTransaction ().commit ();
     }
 
-    public void deleteOffices(Office office){
+    public void deleteOrder(Order order){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Office.class, office.getId ()));
+//        em.remove (em.find (Order.class, order.getId ()));
         em.getTransaction ().commit ();
     }
 }

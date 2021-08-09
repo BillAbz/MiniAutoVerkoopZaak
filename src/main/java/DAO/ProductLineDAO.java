@@ -1,36 +1,40 @@
 package DAO;
 
-import Entities.Payment;
+import Entities.ProductLine;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class PaymentsDAO {
+public class ProductLineDAO {
     private EntityManagerFactory emf;
 
-    public PaymentsDAO(){
+    public ProductLineDAO(){
         emf = EMFactory.getEMF ();
     }
 
+    public ProductLine getProductLinesByLine(String line){
+        EntityManager em = emf.createEntityManager ();
+        return em.find (ProductLine.class, line);
+    }
 
-    public void addPayment(Payment payment){
+    public void addProductLines(ProductLine productLine){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (payment);
+        em.persist (productLine);
         em.getTransaction ().commit ();
     }
 
-    public void updatePayment(Payment payment){
+    public void updateProductLines(ProductLine productLine){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (payment);
+        em.merge (productLine);
         em.getTransaction ().commit ();
     }
 
-    public void deletePayment(Payment payment){
+    public void deleteProductLines(ProductLine productLine){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Payment.class, payment.getId ()));
+//        em.remove (em.find (ProductLine.class, productLine.getId ()));
         em.getTransaction ().commit ();
     }
 }

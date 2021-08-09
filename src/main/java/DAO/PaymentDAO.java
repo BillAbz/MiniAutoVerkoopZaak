@@ -1,38 +1,36 @@
 package DAO;
 
-import Entities.Costumer;
+import Entities.Payment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class CostumersDAO {
+public class PaymentDAO {
     private EntityManagerFactory emf;
 
-    public CostumersDAO(){
+    public PaymentDAO(){
         emf = EMFactory.getEMF ();
     }
 
 
-    public void addCostumers(Costumer costumer){
+    public void addPayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (costumer);
+        em.persist (payment);
         em.getTransaction ().commit ();
     }
 
-    public void updateCostumers(Costumer costumer){
+    public void updatePayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (costumer);
+        em.merge (payment);
         em.getTransaction ().commit ();
     }
 
-    public void deleteCostumers(Costumer costumer){
+    public void deletePayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Costumer.class, costumer.getId ()));
+//        em.remove (em.find (Payment.class, payment.getId ()));
         em.getTransaction ().commit ();
     }
-
-
 }

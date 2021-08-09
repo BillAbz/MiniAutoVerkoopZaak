@@ -1,36 +1,38 @@
 package DAO;
 
-import Entities.Order;
+import Entities.Costumer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class OrdersDAO {
+public class CostumerDAO {
     private EntityManagerFactory emf;
 
-    public OrdersDAO(){
+    public CostumerDAO(){
         emf = EMFactory.getEMF ();
     }
 
 
-    public void addOrder(Order order){
+    public void addCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (order);
+        em.persist (costumer);
         em.getTransaction ().commit ();
     }
 
-    public void updateOrder(Order order){
+    public void updateCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (order);
+        em.merge (costumer);
         em.getTransaction ().commit ();
     }
 
-    public void deleteOrder(Order order){
+    public void deleteCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Order.class, order.getId ()));
+//        em.remove (em.find (Costumer.class, costumer.getId ()));
         em.getTransaction ().commit ();
     }
+
+
 }

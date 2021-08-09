@@ -1,40 +1,36 @@
 package DAO;
 
-import Entities.ProductLine;
+import Entities.Office;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class ProductLinesDAO {
+public class OfficeDAO {
     private EntityManagerFactory emf;
 
-    public ProductLinesDAO(){
+    public OfficeDAO(){
         emf = EMFactory.getEMF ();
     }
 
-    public ProductLine getProductLinesByLine(String line){
-        EntityManager em = emf.createEntityManager ();
-        return em.find (ProductLine.class, line);
-    }
 
-    public void addProductLines(ProductLine productLine){
+    public void addOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (productLine);
+        em.persist (office);
         em.getTransaction ().commit ();
     }
 
-    public void updateProductLines(ProductLine productLine){
+    public void updateOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (productLine);
+        em.merge (office);
         em.getTransaction ().commit ();
     }
 
-    public void deleteProductLines(ProductLine productLine){
+    public void deleteOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (ProductLine.class, productLine.getId ()));
+//        em.remove (em.find (Office.class, office.getId ()));
         em.getTransaction ().commit ();
     }
 }
