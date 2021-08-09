@@ -30,7 +30,7 @@ public class ProductDAO {
     public void deleteProduct(Product product){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Product.class, product.getId ()));
+        em.remove (em.find (Product.class, product.getProductCode ()));
         em.getTransaction ().commit ();
     }
 }

@@ -30,7 +30,7 @@ public class PaymentDAO {
     public void deletePayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Payment.class, payment.getId ()));
+        em.remove (em.find (Payment.class, payment.getOderNumber ()));
         em.getTransaction ().commit ();
     }
 }

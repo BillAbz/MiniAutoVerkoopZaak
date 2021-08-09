@@ -30,7 +30,7 @@ public class EmployeeDAO {
         public void deleteEmployees(Employee employee){
                 EntityManager em = emf.createEntityManager ();
                 em.getTransaction ().begin ();
-//        em.remove (em.find (Employee.class, employee.getId ()));
+        em.remove (em.find (Employee.class, employee.getEmployeeNumber ()));
                 em.getTransaction ().commit ();
         }
         }

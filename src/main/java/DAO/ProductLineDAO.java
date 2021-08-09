@@ -34,7 +34,7 @@ public class ProductLineDAO {
     public void deleteProductLines(ProductLine productLine){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (ProductLine.class, productLine.getId ()));
+        em.remove (em.find (ProductLine.class, productLine.getProductLine ()));
         em.getTransaction ().commit ();
     }
 }

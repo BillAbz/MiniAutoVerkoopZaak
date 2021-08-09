@@ -30,7 +30,7 @@ public class OfficeDAO {
     public void deleteOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Office.class, office.getId ()));
+        em.remove (em.find (Office.class, office.getOfficeCode ()));
         em.getTransaction ().commit ();
     }
 }

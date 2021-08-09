@@ -30,7 +30,7 @@ public class CostumerDAO {
     public void deleteCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Costumer.class, costumer.getId ()));
+        em.remove (em.find (Costumer.class, costumer.getCustomerNumber ()));
         em.getTransaction ().commit ();
     }
 
