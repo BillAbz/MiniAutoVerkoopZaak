@@ -4,6 +4,9 @@ import Entities.Costumer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerDAO {
     private EntityManagerFactory emf;
@@ -11,6 +14,20 @@ public class CustomerDAO {
     public CustomerDAO(){
         emf = EMFactory.getEMF ();
     }
+
+
+    public Costumer getCostumerByCostumerNumber(int costumerNumber) throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        return entityManager.find(Costumer.class , costumerNumber);
+    }
+
+    public List<Costumer> getAllCostumers() throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        Query query = entityManager.createQuery("Select * from Country");
+        List<Costumer> countList = query.getResultList();
+        return countList;
+    }
+
 
 
     public void addCostumers(Costumer costumer){
