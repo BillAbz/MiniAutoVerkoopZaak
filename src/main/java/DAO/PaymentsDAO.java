@@ -1,7 +1,6 @@
 package DAO;
 
-import model.Payments;
-import model.Products;
+import Entities.Payment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class PaymentsDAO {
     }
 
 
-    public void addPayment(Payments payments){
+    public void addPayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (payments);
+        em.persist (payment);
         em.getTransaction ().commit ();
     }
 
-    public void updatePayment(Payments payments){
+    public void updatePayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (payments);
+        em.merge (payment);
         em.getTransaction ().commit ();
     }
 
-    public void deletePayment(Payments payments){
+    public void deletePayment(Payment payment){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Payments.class, payments.getId ()));
+//        em.remove (em.find (Payment.class, payment.getId ()));
         em.getTransaction ().commit ();
     }
 }

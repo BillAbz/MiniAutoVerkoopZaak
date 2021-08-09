@@ -1,7 +1,6 @@
 package DAO;
 
-import model.Costumers;
-import model.Payments;
+import Entities.Costumer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class CostumersDAO {
     }
 
 
-    public void addCostumers(Costumers costumers){
+    public void addCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (costumers);
+        em.persist (costumer);
         em.getTransaction ().commit ();
     }
 
-    public void updateCostumers(Costumers costumers){
+    public void updateCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (costumers);
+        em.merge (costumer);
         em.getTransaction ().commit ();
     }
 
-    public void deleteCostumers(Costumers costumers){
+    public void deleteCostumers(Costumer costumer){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Costumers.class, costumers.getId ()));
+//        em.remove (em.find (Costumer.class, costumer.getId ()));
         em.getTransaction ().commit ();
     }
 

@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class Payments {
+public class Payment {
     private int oderNumber;
     private String productCode;
     private int quantityOrdered;

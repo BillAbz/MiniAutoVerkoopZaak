@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class Offices {
+public class Office {
     private String officeCode;
     private String city;
     private String phone;

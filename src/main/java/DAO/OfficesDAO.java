@@ -1,7 +1,6 @@
 package DAO;
 
-import model.Offices;
-import model.Payments;
+import Entities.Office;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class OfficesDAO {
     }
 
 
-    public void addOffices(Offices offices){
+    public void addOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (offices);
+        em.persist (office);
         em.getTransaction ().commit ();
     }
 
-    public void updateOffices(Offices offices){
+    public void updateOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (offices);
+        em.merge (office);
         em.getTransaction ().commit ();
     }
 
-    public void deleteOffices(Offices offices){
+    public void deleteOffices(Office office){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Offices.class, offices.getId ()));
+//        em.remove (em.find (Office.class, office.getId ()));
         em.getTransaction ().commit ();
     }
 }

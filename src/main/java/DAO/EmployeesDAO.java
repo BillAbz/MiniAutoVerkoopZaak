@@ -1,7 +1,6 @@
 package DAO;
 
-import model.Employees;
-import model.Payments;
+import Entities.Employee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class EmployeesDAO {
         }
 
 
-        public void addEmployees(Employees employees){
+        public void addEmployees(Employee employee){
                 EntityManager em = emf.createEntityManager ();
                 em.getTransaction ().begin ();
-                em.persist (employees);
+                em.persist (employee);
                 em.getTransaction ().commit ();
         }
 
-        public void updateEmployees(Employees employees){
+        public void updateEmployees(Employee employee){
                 EntityManager em = emf.createEntityManager ();
                 em.getTransaction ().begin ();
-                em.merge (employees);
+                em.merge (employee);
                 em.getTransaction ().commit ();
         }
 
-        public void deleteEmployees(Employees employees){
+        public void deleteEmployees(Employee employee){
                 EntityManager em = emf.createEntityManager ();
                 em.getTransaction ().begin ();
-//        em.remove (em.find (Employees.class, employees.getId ()));
+//        em.remove (em.find (Employee.class, employee.getId ()));
                 em.getTransaction ().commit ();
         }
         }

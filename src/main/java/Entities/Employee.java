@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class Employees {
+public class Employee {
     private int employeeNumber;
     private String lastName;
     private String firstName;

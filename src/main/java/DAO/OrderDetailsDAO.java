@@ -1,7 +1,6 @@
 package DAO;
 
-import model.OrderDetails;
-import model.Payments;
+import Entities.OrderDetail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class OrderDetailsDAO {
     }
 
 
-    public void addOrderDetail(OrderDetails orderDetails){
+    public void addOrderDetail(OrderDetail orderDetail){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (orderDetails);
+        em.persist (orderDetail);
         em.getTransaction ().commit ();
     }
 
-    public void updateOrderDetail(OrderDetails orderDetails){
+    public void updateOrderDetail(OrderDetail orderDetail){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (orderDetails);
+        em.merge (orderDetail);
         em.getTransaction ().commit ();
     }
 
-    public void deleteOrderDetail(OrderDetails orderDetails){
+    public void deleteOrderDetail(OrderDetail orderDetail){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (OrderDetails.class, orderDetails.getId ()));
+//        em.remove (em.find (OrderDetail.class, orderDetail.getId ()));
         em.getTransaction ().commit ();
     }
 }

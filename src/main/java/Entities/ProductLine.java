@@ -1,8 +1,8 @@
-package model;
+package Entities;
 
 import java.awt.image.BufferedImage;
 
-public class ProductLines {
+public class ProductLine {
     private String productLine;
     private String textDescription;
     private String htmlDescription;

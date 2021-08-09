@@ -1,7 +1,6 @@
 package DAO;
 
-import model.ProductLines;
-import model.Products;
+import Entities.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,24 +13,24 @@ public class ProductsDAO {
     }
 
 
-    public void addProduct(Products products){
+    public void addProduct(Product product){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.persist (products);
+        em.persist (product);
         em.getTransaction ().commit ();
     }
 
-    public void updateProduct(Products products){
+    public void updateProduct(Product product){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-        em.merge (products);
+        em.merge (product);
         em.getTransaction ().commit ();
     }
 
-    public void deleteProduct(Products products){
+    public void deleteProduct(Product product){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (Products.class, products.getId ()));
+//        em.remove (em.find (Product.class, product.getId ()));
         em.getTransaction ().commit ();
     }
 }

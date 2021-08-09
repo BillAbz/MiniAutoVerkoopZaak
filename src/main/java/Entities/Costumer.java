@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class Costumers {
+public class Costumer {
     private int customerNumber;
     private String customerName;
     private String firstName;

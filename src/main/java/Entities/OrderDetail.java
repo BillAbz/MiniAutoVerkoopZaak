@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class OrderDetails {
+public class OrderDetail {
     private int oderNumber;
     private String productCode;
     private int quantityOrdered;

@@ -1,8 +1,8 @@
-package model;
+package Entities;
 
 import java.util.Date;
 
-public class Orders {
+public class Order {
     private int orderNumber;
     private Date orderDate;
     private Date requiredDate;

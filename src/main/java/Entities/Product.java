@@ -1,6 +1,6 @@
-package model;
+package Entities;
 
-public class Products {
+public class Product {
     private String productCode;
     private String productName;
     private String productLine;
@@ -81,7 +81,7 @@ public class Products {
     }
 
     public static void setMSRP(double MSRP) {
-        Products.MSRP = MSRP;
+        Product.MSRP = MSRP;
     }
 
 
