@@ -1,20 +1,19 @@
 package service;
 
-import DAO.CustomerDAO;
-import DAO.PaymentDAO;
+import Entities.Order;
+import Entities.Payment;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class PaymentService {
+public interface PaymentService {
 
-    PaymentDAO paymentDAO;
-    CustomerDAO customerDAO;
-    Scanner scanner;
+    void addPayment(Payment payment);
 
-    public PaymentService() {
-        this.paymentDAO = new PaymentDAO();
-        this.customerDAO = new CustomerDAO();
-        this.scanner = new Scanner(System.in);
+    Payment getPaymentById(long id);
 
-    }
+    Set<Payment> getAllPayments();
+
+    void updatePayment(Payment payment);
+
+    void deletePayment(Payment payment);
 }

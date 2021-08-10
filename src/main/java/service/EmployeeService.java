@@ -1,22 +1,17 @@
 package service;
 
-import DAO.CustomerDAO;
-import DAO.EmployeeDAO;
-import DAO.OfficeDAO;
+import Entities.Employee;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class EmployeeService {
+public interface EmployeeService {
+    void addEmployee(Employee employee);
 
-    EmployeeDAO employeeDAO;
-    CustomerDAO customerDAO;
-    OfficeDAO officeDAO;
-    Scanner scanner;
+    Employee getEmployeeById(long id);
 
-    public EmployeeService() {
-        this.employeeDAO = new EmployeeDAO();
-        this.customerDAO = new CustomerDAO();
-        this.officeDAO = new OfficeDAO();
-        this.scanner = new Scanner(System.in);
-    }
+    Set<Employee> getAllEmployees();
+
+    void updateEmployee(Employee employee);
+
+    void deleteEmployee(Employee employee);
 }

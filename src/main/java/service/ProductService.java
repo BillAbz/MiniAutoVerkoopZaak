@@ -1,22 +1,19 @@
 package service;
 
-import DAO.OrderDetailDAO;
-import DAO.ProductDAO;
-import DAO.ProductLineDAO;
+import Entities.Product;
+import Entities.ProductLine;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class ProductService {
+public interface ProductService {
 
-    ProductDAO productDAO;
-    ProductLineDAO productLineDAO;
-    OrderDetailDAO orderDetailDAO;
-    Scanner scanner;
+    void addProduct(Product product);
 
-    public ProductService() {
-        this.productDAO = new ProductDAO();
-        this.productLineDAO = new ProductLineDAO();
-        this.orderDetailDAO = new OrderDetailDAO();
-        this.scanner = new Scanner(System.in);
-    }
+    Product getProductById(long id);
+
+    Set<Product> getAllProduct();
+
+    void updateProduct(Product product);
+
+    void deleteProduct(Product product);
 }

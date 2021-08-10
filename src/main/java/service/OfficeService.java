@@ -1,18 +1,19 @@
 package service;
 
-import DAO.EmployeeDAO;
-import DAO.OfficeDAO;
+import Entities.Employee;
+import Entities.Office;
+import Entities.OrderDetail;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class OfficeService {
-    OfficeDAO officeDAO;
-    EmployeeDAO employeeDAO;
-    Scanner scanner;
+public interface OfficeService {
+    void addOrderDetail(Office office);
 
-    public OfficeService() {
-        this.officeDAO = new OfficeDAO();
-        this.employeeDAO = new EmployeeDAO();
-        this.scanner = new Scanner(System.in);
-    }
+    Office getOrderDetailById(long id);
+
+    Set<Office> getAllOrderDetail();
+
+    void updateOrderDetail(Office office);
+
+    void deleteOrderDetail(Office office);
 }

@@ -1,28 +1,18 @@
 package service;
 
+import Entities.Costumer;
 
-import DAO.CustomerDAO;
-import DAO.EmployeeDAO;
-import DAO.OrderDAO;
-import DAO.PaymentDAO;
+import java.util.Set;
 
-import java.util.Scanner;
+public interface CustomerService {
 
-public class CustomerService {
+    void addCustomer(Costumer customer);
 
-    CustomerDAO customerDAO;
-    EmployeeDAO employeeDAO;
-    OrderDAO orderDAO;
-    PaymentDAO paymentDAO;
-    Scanner scanner;
+    Costumer getCustomerById(long id);
 
-    public CustomerService() {
-        this.customerDAO = new CustomerDAO();
-        this.employeeDAO = new EmployeeDAO();
-        this.orderDAO = new OrderDAO();
-        this.paymentDAO = new PaymentDAO();
-        this.scanner = new Scanner(System.in);
-    }
+    Set<Costumer> getAllCustomers();
 
+    void updateCustomer(Costumer customer);
 
+    void deleteCustomer(Costumer customer);
 }

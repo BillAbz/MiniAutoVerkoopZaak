@@ -1,22 +1,19 @@
 package service;
 
-import DAO.CustomerDAO;
-import DAO.OrderDAO;
-import DAO.OrderDetailDAO;
+import Entities.Office;
+import Entities.Order;
 
-import java.util.Scanner;
+import java.util.Set;
 
-public class OrderService {
+public interface OrderService {
 
-    OrderDAO orderDAO;
-    OrderDetailDAO orderDetailDAO;
-    CustomerDAO customerDAO;
-    Scanner scanner;
+    void addOrder(Order order);
 
-    public OrderService() {
-        this.orderDAO = new OrderDAO();
-        this.orderDetailDAO =new OrderDetailDAO();
-        this.customerDAO = new CustomerDAO();
-        this.scanner =  new Scanner(System.in);
-    }
+    Order getOrderById(long id);
+
+    Set<Order> getAllOrders();
+
+    void updateOrder(Order order);
+
+    void deleteOrder(Order order);
 }
