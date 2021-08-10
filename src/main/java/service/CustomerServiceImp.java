@@ -7,6 +7,8 @@ import DAO.OrderDAO;
 import DAO.PaymentDAO;
 import Entities.Costumer;
 
+import javax.persistence.EntityManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -33,8 +35,8 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public Costumer getCustomerById(long id) {
-        return customerDAO.getCustomerById(id);
+    public Costumer getCustomerById(int id)  {
+        return customerDAO.getCostumerByCostumerNumber(id);
     }
 
     @Override
@@ -44,12 +46,12 @@ public class CustomerServiceImp implements CustomerService {
 
     @Override
     public void updateCustomer(Costumer customer) {
-
+        customerDAO.updateCostumers(customer);
     }
 
     @Override
     public void deleteCustomer(Costumer customer) {
-
+        customerDAO.deleteCostumers(customer);
     }
 
 

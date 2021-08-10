@@ -25,26 +25,27 @@ public class EmployeeServiceImp implements EmployeeService {
 
     @Override
     public void addEmployee(Employee employee) {
-
+        employeeDAO.addEmployees(employee);
     }
 
     @Override
-    public Employee getEmployeeById(long id) {
-        return null;
+    public Employee getEmployeeById(int id) {
+        return employeeDAO.getEmployeeByEmployeeNumber(id);
     }
 
     @Override
     public Set<Employee> getAllEmployees() {
-        return null;
+        return employeeDAO.getAllEmployee();
     }
 
     @Override
     public void updateEmployee(Employee employee) {
+        employeeDAO.updateEmployees(employee);
 
     }
 
     @Override
     public void deleteEmployee(Employee employee) {
-
+        employeeDAO.deleteEmployees(employee);
     }
 }

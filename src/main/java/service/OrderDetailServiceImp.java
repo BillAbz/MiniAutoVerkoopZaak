@@ -4,11 +4,12 @@ import DAO.OrderDAO;
 import DAO.OrderDetailDAO;
 import DAO.ProductDAO;
 import Entities.Order;
+import Entities.OrderDetail;
 
 import java.util.Scanner;
 import java.util.Set;
 
-public class OrderDetailServiceImp implements OrderService {
+public class OrderDetailServiceImp implements OrderDetailService {
 
     OrderDetailDAO orderDetailDAO;
     OrderDAO orderDAO;
@@ -23,27 +24,27 @@ public class OrderDetailServiceImp implements OrderService {
     }
 
     @Override
-    public void addOrder(Order order) {
-
+    public void addOrderDetail(OrderDetail orderDetail) {
+        orderDetailDAO.addOrderDetail(orderDetail);
     }
 
     @Override
-    public Order getOrderById(long id) {
-        return null;
+    public OrderDetail getOrderDetailById(int id) {
+        return null; //todo DAO has to be finished
     }
 
     @Override
-    public Set<Order> getAllOrders() {
-        return null;
+    public Set<OrderDetail> getAllOrderDetail() {
+        return null; //todo DAO has to be finished
     }
 
     @Override
-    public void updateOrder(Order order) {
-
+    public void updateOrderDetail(OrderDetail orderDetail) {
+        orderDetailDAO.updateOrderDetail(orderDetail);
     }
 
     @Override
-    public void deleteOrder(Order order) {
-
+    public void deleteOrderDetail(OrderDetail orderDetail) {
+        orderDetailDAO.deleteOrderDetail(orderDetail);
     }
 }

@@ -16,12 +16,12 @@ public class OrderDAO {
         emf = EMFactory.getEMF ();
     }
 
-    public Order getOrderByOrderNumber(int orderNumber) throws SQLException {
+    public Order getOrderByOrderNumber(int orderNumber)  {
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Order.class , orderNumber);
     }
 
-    public List<Order> getAllOrders() throws SQLException {
+    public List<Order> getAllOrders()  {
         EntityManager entityManager = emf.createEntityManager();
         Query query = entityManager.createQuery("Select * from Order");
         List<Order> orderList = query.getResultList();

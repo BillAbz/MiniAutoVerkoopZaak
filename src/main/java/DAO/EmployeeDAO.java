@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EmployeeDAO {
         private EntityManagerFactory emf;
@@ -16,16 +18,15 @@ public class EmployeeDAO {
                 emf = EMFactory.getEMF ();
         }
 
-        public Employee getEmployeeByEmployeeNumber(int employeeNumber) throws SQLException {
+        public Employee getEmployeeByEmployeeNumber(int employeeNumber) {
                 EntityManager entityManager = emf.createEntityManager();
                 return entityManager.find(Employee.class , employeeNumber);
         }
 
-        public List<Employee> getAllEmployee() throws SQLException {
-                EntityManager entityManager = emf.createEntityManager();
-                Query query = entityManager.createQuery("Select * from Employee");
-                List<Employee> employeeList = query.getResultList();
-                return employeeList;
+        public Set<Employee> getAllEmployee() {
+                EntityManager em = emf.createEntityManager();
+                Query query = em.createQuery("FROM Employee e");
+                return new HashSet<>(query.getResultList());
         }
 
 

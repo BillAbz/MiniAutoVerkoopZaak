@@ -7,13 +7,13 @@ import Entities.OrderDetail;
 import java.util.Set;
 
 public interface OfficeService {
-    void addOrderDetail(Office office);
+    void addOffice(Office office);
 
-    Office getOrderDetailById(long id);
+    Office getOfficeById(int id);
 
-    Set<Office> getAllOrderDetail();
+    Set<Office> getAllOffices();
 
-    void updateOrderDetail(Office office);
+    void updateOffice(Office office);
 
-    void deleteOrderDetail(Office office);
+    void deleteOffice(Office office);
 }

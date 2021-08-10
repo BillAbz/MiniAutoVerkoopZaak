@@ -19,28 +19,29 @@ public class OfficeServiceImp implements OfficeService {
         this.scanner = new Scanner(System.in);
     }
 
-    @Override
-    public void addOrderDetail(Office office) {
 
+    @Override
+    public void addOffice(Office office) {
+        officeDAO.addOffices(office);
     }
 
     @Override
-    public Office getOrderDetailById(long id) {
-        return null;
+    public Office getOfficeById(int id) {
+        return officeDAO.getOfficeByOfficeCode(id);
     }
 
     @Override
-    public Set<Office> getAllOrderDetail() {
-        return null;
+    public Set<Office> getAllOffices() {
+        return officeDAO.getAllOffice();
     }
 
     @Override
-    public void updateOrderDetail(Office office) {
-
+    public void updateOffice(Office office) {
+        officeDAO.updateOffices(office);
     }
 
     @Override
-    public void deleteOrderDetail(Office office) {
-
+    public void deleteOffice(Office office) {
+        officeDAO.deleteOffices(office);
     }
 }

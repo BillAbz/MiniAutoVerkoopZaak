@@ -22,26 +22,26 @@ public class PaymentServiceImp implements PaymentService {
 
     @Override
     public void addPayment(Payment payment) {
-
+        paymentDAO.addPayment(payment);
     }
 
     @Override
     public Payment getPaymentById(long id) {
-        return null;
+        return null; //todo DAO has to be finished
     }
 
     @Override
     public Set<Payment> getAllPayments() {
-        return null;
+        return null; //todo DAO has to be finished
     }
 
     @Override
     public void updatePayment(Payment payment) {
-
+        paymentDAO.updatePayment(payment);
     }
 
     @Override
     public void deletePayment(Payment payment) {
-
+        paymentDAO.deletePayment(payment);
     }
 }

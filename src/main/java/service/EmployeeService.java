@@ -7,7 +7,7 @@ import java.util.Set;
 public interface EmployeeService {
     void addEmployee(Employee employee);
 
-    Employee getEmployeeById(long id);
+    Employee getEmployeeById(int id);
 
     Set<Employee> getAllEmployees();
 

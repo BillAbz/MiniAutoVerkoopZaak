@@ -24,26 +24,26 @@ public class OrderServiceImp implements OrderService {
 
     @Override
     public void addOrder(Order order) {
-
+        orderDAO.addOrder(order);
     }
 
     @Override
     public Order getOrderById(long id) {
-        return null;
+        return null; //todo DAO has to be finished
     }
 
     @Override
     public Set<Order> getAllOrders() {
-        return null;
+        return null; //todo DAO has to be finished
     }
 
     @Override
     public void updateOrder(Order order) {
-
+        orderDAO.updateOrder(order);
     }
 
     @Override
     public void deleteOrder(Order order) {
-
+        orderDAO.deleteOrder(order);
     }
 }

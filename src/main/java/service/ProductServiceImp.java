@@ -24,26 +24,27 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-
+        productDAO.addProduct(product);
     }
 
     @Override
     public Product getProductById(long id) {
-        return null;
+        return null; //todo DAO has to be finished
+
     }
 
     @Override
     public Set<Product> getAllProduct() {
-        return null;
+        return null; //todo DAO has to be finished
     }
 
     @Override
     public void updateProduct(Product product) {
-
+        productDAO.updateProduct(product);
     }
 
     @Override
     public void deleteProduct(Product product) {
-
+        productDAO.deleteProduct(product);
     }
 }

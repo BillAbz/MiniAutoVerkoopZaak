@@ -27,12 +27,12 @@ public class CustomerDAO {
         em.getTransaction().commit();
     }
 
-    public Costumer getCostumerByCostumerNumber(int costumerNumber) throws SQLException {
+    public Costumer getCostumerByCostumerNumber(int costumerNumber)  {
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Costumer.class , costumerNumber);
     }
 
-    public List<Costumer> getAllCostumers() throws SQLException {
+    public List<Costumer> getAllCostumers()  {
         EntityManager entityManager = emf.createEntityManager();
         Query query = entityManager.createQuery("Select * from Costumer");
         List<Costumer> countList = query.getResultList();

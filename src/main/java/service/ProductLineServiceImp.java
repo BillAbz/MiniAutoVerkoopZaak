@@ -20,27 +20,29 @@ public class ProductLineServiceImp implements ProductLineService {
     }
 
     @Override
-    public void addProductLine(ProductLine payment) {
-
+    public void addProductLine(ProductLine productLine) {
+        productLineDAO.addProductLines(productLine);
     }
 
     @Override
     public ProductLine getProductLineById(long id) {
-        return null;
+        return null; //todo DAO has to be finished
+
     }
 
     @Override
     public Set<ProductLine> getAllProductLines() {
-        return null;
-    }
-
-    @Override
-    public void updateProductLine(ProductLine payment) {
+        return null; //todo DAO has to be finished
 
     }
 
     @Override
-    public void deleteProductLine(ProductLine payment) {
+    public void updateProductLine(ProductLine productLine) {
+        productLineDAO.updateProductLines(productLine);
+    }
 
+    @Override
+    public void deleteProductLine(ProductLine productLine) {
+        productLineDAO.deleteProductLines(productLine);
     }
 }

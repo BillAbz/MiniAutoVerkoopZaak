@@ -8,7 +8,7 @@ import java.util.Set;
 public interface OrderDetailService {
     void addOrderDetail(OrderDetail orderDetail);
 
-    OrderDetail getOrderDetailById(long id);
+    OrderDetail getOrderDetailById(int id);
 
     Set<OrderDetail> getAllOrderDetail();
 
