@@ -30,7 +30,7 @@ public class OrderDetailDAO {
     public void deleteOrderDetail(OrderDetail orderDetail){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
-//        em.remove (em.find (OrderDetail.class, orderDetail.getId ()));
+        em.remove (em.find (OrderDetail.class, orderDetail.getOderNumber ()));
         em.getTransaction ().commit ();
     }
 }
