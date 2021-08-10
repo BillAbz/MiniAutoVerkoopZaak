@@ -11,6 +11,8 @@ public class ProductLine {
     private String htmlDescription;
     private BufferedImage image;
 
+    public ProductLine() {
+    }
 
     public String getProductLine() {
         return productLine;

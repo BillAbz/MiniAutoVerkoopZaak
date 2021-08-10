@@ -11,6 +11,8 @@ public class Payment {
     private double priceEach = 10.2;
     private int orderLineNumber;
 
+    public Payment() {
+    }
 
     public int getOderNumber() {
         return oderNumber;

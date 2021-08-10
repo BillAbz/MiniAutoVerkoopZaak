@@ -15,6 +15,8 @@ public class Product {
     private double buyPrice = 10.2;
     private static double MSRP = 10.2;
 
+    public Product() {
+    }
 
     public String getProductCode() {
         return productCode;

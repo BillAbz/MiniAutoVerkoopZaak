@@ -5,12 +5,15 @@ import javax.persistence.Entity;
 @Entity
 
 public class OrderDetail {
+
     private int oderNumber;
     private String productCode;
     private int quantityOrdered;
     private double priceEach = 10.2;
     private int orderLineNumber;
 
+    public OrderDetail() {
+    }
 
     public int getOderNumber() {
         return oderNumber;

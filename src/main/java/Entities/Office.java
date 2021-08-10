@@ -15,6 +15,8 @@ public class Office {
     private String postalCode;
     private String territory;
 
+    public Office() {
+    }
 
     public String getOfficeCode() {
         return officeCode;

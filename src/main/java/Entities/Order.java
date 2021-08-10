@@ -1,11 +1,16 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
     private Date orderDate;
     private Date requiredDate;
@@ -14,6 +19,8 @@ public class Order {
     private String comments;
     private int customerNumber;
 
+    public Order() {
+    }
 
     public int getOrderNumber() {
         return orderNumber;

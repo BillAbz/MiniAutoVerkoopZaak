@@ -1,10 +1,16 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 
 public class Costumer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerNumber;
     private String customerName;
     private String firstName;
@@ -19,6 +25,8 @@ public class Costumer {
     private int salesRepEmployeeNumber;
     private double creditLimit = 10.2;
 
+    public Costumer() {
+    }
 
     public int getCustomerNumber() {
         return customerNumber;

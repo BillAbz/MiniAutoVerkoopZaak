@@ -2,10 +2,15 @@ package Entities;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int employeeNumber;
     private String lastName;
     private String firstName;
@@ -15,6 +20,8 @@ public class Employee {
     private int reportsTo;
     private String jobTitle;
 
+    public Employee() {
+    }
 
     public int getEmployeeNumber() {
         return employeeNumber;
