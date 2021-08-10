@@ -1,5 +1,10 @@
 package Entities;
 
+
+import javax.persistence.Entity;
+
+@Entity
+
 public class Employee {
     private int employeeNumber;
     private String lastName;

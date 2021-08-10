@@ -1,6 +1,9 @@
 package Entities;
 
+import javax.persistence.Entity;
 import java.awt.image.BufferedImage;
+
+@Entity
 
 public class ProductLine {
     private String productLine;

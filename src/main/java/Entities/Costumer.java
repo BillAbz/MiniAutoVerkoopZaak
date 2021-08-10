@@ -1,5 +1,9 @@
 package Entities;
 
+import javax.persistence.Entity;
+
+@Entity
+
 public class Costumer {
     private int customerNumber;
     private String customerName;

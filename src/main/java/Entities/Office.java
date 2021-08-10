@@ -1,5 +1,9 @@
 package Entities;
 
+import javax.persistence.Entity;
+
+@Entity
+
 public class Office {
     private String officeCode;
     private String city;

@@ -1,5 +1,9 @@
 package Entities;
 
+import javax.persistence.Entity;
+
+@Entity
+
 public class Product {
     private String productCode;
     private String productName;

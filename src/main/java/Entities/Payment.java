@@ -1,5 +1,9 @@
 package Entities;
 
+import javax.persistence.Entity;
+
+@Entity
+
 public class Payment {
     private int oderNumber;
     private String productCode;
