@@ -1,11 +1,13 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.awt.image.BufferedImage;
 
 @Entity
 
 public class ProductLine {
+    @OneToMany
     private String productLine;
     private String textDescription;
     private String htmlDescription;

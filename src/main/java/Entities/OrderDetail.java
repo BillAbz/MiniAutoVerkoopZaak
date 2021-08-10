@@ -1,12 +1,15 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 
 public class OrderDetail {
 
+    @ManyToOne
     private int oderNumber;
+    @ManyToOne
     private String productCode;
     private int quantityOrdered;
     private double priceEach = 10.2;

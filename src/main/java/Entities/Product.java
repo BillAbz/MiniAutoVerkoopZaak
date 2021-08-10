@@ -1,12 +1,16 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 
 public class Product {
+    @OneToMany
     private String productCode;
     private String productName;
+    @ManyToOne
     private String productLine;
     private String productScale;
     private String productVendor;
