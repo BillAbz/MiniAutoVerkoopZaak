@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
+import java.util.List;
 
 @Entity
 
@@ -24,6 +25,10 @@ public class Customer {
     private Employee salesRepEmployeeNumber;
     private String pattern="#,###,###,###.00";
     private DecimalFormat creditLimit = new DecimalFormat(pattern);
+    @OneToMany
+    private List<Payment> payments;
+
+
 
     public Customer() {
     }
@@ -122,6 +127,14 @@ public class Customer {
 
     public void setSalesRepEmployeeNumber(Employee salesRepEmployeeNumber) {
         this.salesRepEmployeeNumber = salesRepEmployeeNumber;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     public String getPattern() {

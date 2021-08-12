@@ -1,8 +1,6 @@
 package Entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.text.DecimalFormat;
 import java.util.Date;
 
@@ -15,6 +13,8 @@ public class Payment {
             CascadeType.PERSIST,
             CascadeType.REFRESH})
     private Customer customerNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int checkNumber;
     private Date paymentDate;
     private String pattern="#,###,###,###.00";
