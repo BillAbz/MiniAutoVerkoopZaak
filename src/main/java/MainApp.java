@@ -1,8 +1,10 @@
+import Entities.*;
 import service.CustomerServiceImp;
 import service.EmployeeServiceImp;
 import service.ProductServiceImp;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class MainApp {
 
@@ -109,18 +111,18 @@ public class MainApp {
     }
 
     private void seeAllEmployees() {
-//        Set<Employee> employeeSet = employeeService.getAllEmployees(); //todo: aanpassen van getAllEmployees naar het juiste
-//        employeeSet.stream().forEach(System.out::println);
+        Set<Employee> employeeSet = employeeService.getAllEmployees();
+        employeeSet.stream().forEach(System.out::println);
     }
 
     private void seeAllCustomers() {
-//        Set<Customer> customerSet = costumerService.getAllCustomers(); //todo: aanpassen van getAllCustomers naar het juiste
-//        customerSet.stream().forEach(System.out::println);
+        Set<Customer> customerSet = costumerService.getAllCustomers();
+        customerSet.stream().forEach(System.out::println);
     }
 
     private void seeAllProducts() {
-//        Set<Product> productSet = productService.getAllProducts(); //todo: aanpassen van getAllProducts naar het juiste
-//        productSet.stream().forEach(System.out::println);
+        Set<Product> productSet = productService.getAllProduct();
+        productSet.stream().forEach(System.out::println);
     }
 
 
