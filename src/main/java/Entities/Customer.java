@@ -1,9 +1,7 @@
 package Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.text.DecimalFormat;
 
 @Entity
 
@@ -22,8 +20,10 @@ public class Customer {
     private String state;
     private String postalCode;
     private String country;
-    private int salesRepEmployeeNumber;
-    private double creditLimit = 10.2;
+    @ManyToOne
+    private Employee salesRepEmployeeNumber;
+    private String pattern="#,###,###,###.00";
+    private DecimalFormat creditLimit = new DecimalFormat(pattern);
 
     public Customer() {
     }
@@ -116,19 +116,27 @@ public class Customer {
         this.country = country;
     }
 
-    public int getSalesRepEmployeeNumber() {
+    public Employee getSalesRepEmployeeNumber() {
         return salesRepEmployeeNumber;
     }
 
-    public void setSalesRepEmployeeNumber(int salesRepEmployeeNumber) {
+    public void setSalesRepEmployeeNumber(Employee salesRepEmployeeNumber) {
         this.salesRepEmployeeNumber = salesRepEmployeeNumber;
     }
 
-    public double getCreditLimit() {
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public DecimalFormat getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(double creditLimit) {
+    public void setCreditLimit(DecimalFormat creditLimit) {
         this.creditLimit = creditLimit;
     }
 
