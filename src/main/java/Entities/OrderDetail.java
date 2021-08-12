@@ -1,5 +1,6 @@
 package Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.text.DecimalFormat;
@@ -8,9 +9,17 @@ import java.text.DecimalFormat;
 
 public class OrderDetail {
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private int oderNumber;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private String productCode;
     private int quantityOrdered;
     private String pattern="#,###,###,###.00";

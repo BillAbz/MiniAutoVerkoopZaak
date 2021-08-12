@@ -1,5 +1,6 @@
 package Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.text.DecimalFormat;
@@ -8,7 +9,11 @@ import java.util.Date;
 @Entity
 
 public class Payment {
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private Customer customerNumber;
     private int checkNumber;
     private Date paymentDate;

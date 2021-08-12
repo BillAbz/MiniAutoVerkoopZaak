@@ -1,5 +1,6 @@
 package Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.awt.image.BufferedImage;
@@ -7,7 +8,7 @@ import java.awt.image.BufferedImage;
 @Entity
 
 public class ProductLine {
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private String productLine;
     private String textDescription;
     private String htmlDescription;

@@ -8,7 +8,7 @@ import java.util.Date;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private int orderNumber;
     private Date orderDate;
     private Date requiredDate;
@@ -16,6 +16,11 @@ public class Order {
     private String status;
     private String comments;
     @ManyToOne
+            (cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH})
     private Customer customerNumber;
 
     public Order() {

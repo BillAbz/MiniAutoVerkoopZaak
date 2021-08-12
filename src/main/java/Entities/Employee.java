@@ -13,12 +13,19 @@ public class Employee {
     private String firstName;
     private String extension;
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private Office officeCode;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private Employee reportsTo;
     private String jobTitle;
-
 
 
     public Employee() {

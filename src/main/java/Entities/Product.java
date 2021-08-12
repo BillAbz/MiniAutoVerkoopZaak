@@ -1,5 +1,6 @@
 package Entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -7,10 +8,14 @@ import javax.persistence.OneToMany;
 @Entity
 
 public class Product {
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private String productCode;
     private String productName;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     private ProductLine productLine;
     private String productScale;
     private String productVendor;
