@@ -1,10 +1,7 @@
 package Entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -16,9 +13,13 @@ public class Employee {
     private String firstName;
     private String extension;
     private String email;
-    private String officeCode;
-    private int reportsTo;
+    @ManyToOne
+    private Office officeCode;
+    @ManyToOne
+    private Employee reportsTo;
     private String jobTitle;
+
+
 
     public Employee() {
     }
@@ -63,19 +64,19 @@ public class Employee {
         this.email = email;
     }
 
-    public String getOfficeCode() {
+    public Office getOfficeCode() {
         return officeCode;
     }
 
-    public void setOfficeCode(String officeCode) {
+    public void setOfficeCode(Office officeCode) {
         this.officeCode = officeCode;
     }
 
-    public int getReportsTo() {
+    public Employee getReportsTo() {
         return reportsTo;
     }
 
-    public void setReportsTo(int reportsTo) {
+    public void setReportsTo(Employee reportsTo) {
         this.reportsTo = reportsTo;
     }
 

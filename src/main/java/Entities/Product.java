@@ -11,7 +11,7 @@ public class Product {
     private String productCode;
     private String productName;
     @ManyToOne
-    private String productLine;
+    private ProductLine productLine;
     private String productScale;
     private String productVendor;
     private String productDescription;
@@ -38,11 +38,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getProductLine() {
+    public ProductLine getProductLine() {
         return productLine;
     }
 
-    public void setProductLine(String productLine) {
+    public void setProductLine(ProductLine productLine) {
         this.productLine = productLine;
     }
 

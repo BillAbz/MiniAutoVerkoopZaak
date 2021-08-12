@@ -1,6 +1,5 @@
 package DAO;
 
-import Entities.Costumer;
 import Entities.Product;
 
 import javax.persistence.EntityManager;

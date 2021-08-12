@@ -1,67 +1,61 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import java.text.DecimalFormat;
+import java.util.Date;
 
 @Entity
 
 public class Payment {
-    private int oderNumber;
-    private String productCode;
-    private int quantityOrdered;
-    private double priceEach = 10.2;
-    private int orderLineNumber;
+    @ManyToOne
+    private Customer customerNumber;
+    private int checkNumber;
+    private Date paymentDate;
+    private String pattern="#,###,###,###.00";
+    private DecimalFormat amount = new DecimalFormat(pattern);
 
     public Payment() {
     }
 
-    public int getOderNumber() {
-        return oderNumber;
+    public Customer getCustomerNumber() {
+        return customerNumber;
     }
 
-    public void setOderNumber(int oderNumber) {
-        this.oderNumber = oderNumber;
+    public void setCustomerNumber(Customer customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public int getCheckNumber() {
+        return checkNumber;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setCheckNumber(int checkNumber) {
+        this.checkNumber = checkNumber;
     }
 
-    public int getQuantityOrdered() {
-        return quantityOrdered;
+    public Date getPaymentDate() {
+        return paymentDate;
     }
 
-    public void setQuantityOrdered(int quantityOrdered) {
-        this.quantityOrdered = quantityOrdered;
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
-    public double getPriceEach() {
-        return priceEach;
+    public String getPattern() {
+        return pattern;
     }
 
-    public void setPriceEach(double priceEach) {
-        this.priceEach = priceEach;
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
     }
 
-    public int getOrderLineNumber() {
-        return orderLineNumber;
+    public DecimalFormat getAmount() {
+        return amount;
     }
 
-    public void setOrderLineNumber(int orderLineNumber) {
-        this.orderLineNumber = orderLineNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "oderNumber=" + oderNumber +
-                ", productCode='" + productCode + '\'' +
-                ", quantityOrdered=" + quantityOrdered +
-                ", priceEach=" + priceEach +
-                ", orderLineNumber=" + orderLineNumber +
-                '}';
+    public void setAmount(DecimalFormat amount) {
+        this.amount = amount;
     }
 }
+

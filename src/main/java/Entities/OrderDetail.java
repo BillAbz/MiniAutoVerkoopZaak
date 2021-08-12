@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.text.DecimalFormat;
 
 @Entity
 
@@ -12,7 +13,8 @@ public class OrderDetail {
     @ManyToOne
     private String productCode;
     private int quantityOrdered;
-    private double priceEach = 10.2;
+    private String pattern="#,###,###,###.00";
+    private DecimalFormat priceEach = new DecimalFormat(pattern);
     private int orderLineNumber;
 
     public OrderDetail() {
@@ -42,11 +44,19 @@ public class OrderDetail {
         this.quantityOrdered = quantityOrdered;
     }
 
-    public double getPriceEach() {
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public DecimalFormat getPriceEach() {
         return priceEach;
     }
 
-    public void setPriceEach(double priceEach) {
+    public void setPriceEach(DecimalFormat priceEach) {
         this.priceEach = priceEach;
     }
 

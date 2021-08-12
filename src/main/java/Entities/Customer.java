@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 
-public class Costumer {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class Costumer {
     private int salesRepEmployeeNumber;
     private double creditLimit = 10.2;
 
-    public Costumer() {
+    public Customer() {
     }
 
     public int getCustomerNumber() {

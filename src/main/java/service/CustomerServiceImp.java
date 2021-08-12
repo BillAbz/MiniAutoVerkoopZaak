@@ -5,10 +5,8 @@ import DAO.CustomerDAO;
 import DAO.EmployeeDAO;
 import DAO.OrderDAO;
 import DAO.PaymentDAO;
-import Entities.Costumer;
+import Entities.Customer;
 
-import javax.persistence.EntityManager;
-import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -30,27 +28,27 @@ public class CustomerServiceImp implements CustomerService {
 
 
     @Override
-    public void addCustomer(Costumer customer) {
+    public void addCustomer(Customer customer) {
         customerDAO.addCostumers(customer);
     }
 
     @Override
-    public Costumer getCustomerById(int id)  {
+    public Customer getCustomerById(int id)  {
         return customerDAO.getCostumerByCostumerNumber(id);
     }
 
     @Override
-    public Set<Costumer> getAllCustomers() {
+    public Set<Customer> getAllCustomers() {
         return customerDAO.getAllCustomers();
     }
 
     @Override
-    public void updateCustomer(Costumer customer) {
+    public void updateCustomer(Customer customer) {
         customerDAO.updateCostumers(customer);
     }
 
     @Override
-    public void deleteCustomer(Costumer customer) {
+    public void deleteCustomer(Customer customer) {
         customerDAO.deleteCostumers(customer);
     }
 

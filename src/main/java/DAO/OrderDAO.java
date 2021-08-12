@@ -1,12 +1,10 @@
 package DAO;
 
-import Entities.Costumer;
 import Entities.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-import java.sql.SQLException;
 import java.util.List;
 
 public class OrderDAO {

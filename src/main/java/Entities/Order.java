@@ -15,7 +15,8 @@ public class Order {
     private Date shippedDate;
     private String status;
     private String comments;
-    private int customerNumber;
+    @ManyToOne
+    private Customer customerNumber;
 
     public Order() {
     }
@@ -68,11 +69,11 @@ public class Order {
         this.comments = comments;
     }
 
-    public int getCustomerNumber() {
+    public Customer getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(int customerNumber) {
+    public void setCustomerNumber(Customer customerNumber) {
         this.customerNumber = customerNumber;
     }
 

@@ -114,7 +114,7 @@ public class MainApp {
     }
 
     private void seeAllCustomers() {
-//        Set<Costumer> customerSet = costumerService.getAllCustomers(); //todo: aanpassen van getAllCustomers naar het juiste
+//        Set<Customer> customerSet = costumerService.getAllCustomers(); //todo: aanpassen van getAllCustomers naar het juiste
 //        customerSet.stream().forEach(System.out::println);
     }
 

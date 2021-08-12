@@ -1,19 +1,19 @@
 package service;
 
-import Entities.Costumer;
+import Entities.Customer;
 
 import java.sql.SQLException;
 import java.util.Set;
 
 public interface CustomerService {
 
-    void addCustomer(Costumer customer);
+    void addCustomer(Customer customer);
 
-    Costumer getCustomerById(int id) throws SQLException;
+    Customer getCustomerById(int id) throws SQLException;
 
-    Set<Costumer> getAllCustomers();
+    Set<Customer> getAllCustomers();
 
-    void updateCustomer(Costumer customer);
+    void updateCustomer(Customer customer);
 
-    void deleteCustomer(Costumer customer);
+    void deleteCustomer(Customer customer);
 }
