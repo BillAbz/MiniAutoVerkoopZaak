@@ -1,9 +1,14 @@
 package DAO;
 
+import Entities.Customer;
+import Entities.OrderDetail;
 import Entities.Payment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.sql.SQLException;
+import java.util.List;
 
 public class PaymentDAO {
     private EntityManagerFactory emf;
@@ -12,6 +17,17 @@ public class PaymentDAO {
         emf = EMFactory.getEMF ();
     }
 
+    public Payment getProductByCustomerNumber(Customer customerNumber) throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        return entityManager.find(Payment.class , customerNumber);
+    }
+
+    public List<Payment> getAllOrderDetails() throws SQLException {
+        EntityManager entityManager = emf.createEntityManager();
+        Query query = entityManager.createQuery("Select * from Payment");
+        List<Payment> paymentList = query.getResultList();
+        return paymentList;
+    }
 
     public void addPayment(Payment payment){
         EntityManager em = emf.createEntityManager ();

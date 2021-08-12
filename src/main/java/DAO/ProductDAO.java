@@ -15,7 +15,7 @@ public class ProductDAO {
         emf = EMFactory.getEMF ();
     }
 
-    public Product getProductByProductCode(int productCode) throws SQLException {
+    public Product getProductByProductCode(String productCode) throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Product.class , productCode);
     }

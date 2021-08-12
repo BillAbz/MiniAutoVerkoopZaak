@@ -53,10 +53,6 @@ public class CustomerDAO {
         em.getTransaction().commit();
     }
 
-    public Customer getCustomerById(long id) {
-        EntityManager em = emf.createEntityManager();
-        return em.find(Customer.class, id);
-    }
 
     public Set<Customer> getAllCustomers() {
         EntityManager em = emf.createEntityManager();

@@ -27,7 +27,6 @@ public class OrderDAO {
     }
 
 
-
     public void addOrder(Order order){
         EntityManager em = emf.createEntityManager ();
         em.getTransaction ().begin ();
