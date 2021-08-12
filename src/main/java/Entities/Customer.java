@@ -49,7 +49,16 @@ public class Customer {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        boolean wrong = true;
+        while(wrong){
+            if (firstName.length()<=0){
+                System.out.println("please enter your first name");
+            }else{
+                this.firstName = firstName;
+                wrong = false;
+            }
+        }
+
     }
 
     public String getLastName() {
@@ -57,7 +66,15 @@ public class Customer {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        boolean wrong = true;
+        while (wrong) {
+            if (lastName.length() <= 0) {
+                System.out.println("please enter your first name");
+            } else {
+                this.lastName = lastName;
+                wrong = false;
+            }
+        }
     }
 
     public String getPhone() {
