@@ -23,7 +23,7 @@ public class Customer {
     private String country;
     @ManyToOne
     private Employee salesRepEmployeeNumber;
-    private String pattern="#,###,###,###.00";
+    private String pattern = "#,###,###,###.00";
     private DecimalFormat creditLimit = new DecimalFormat(pattern);
     @OneToMany (mappedBy = "customerNumber")
     private List<Payment> payments;

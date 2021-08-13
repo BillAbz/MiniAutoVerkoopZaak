@@ -22,7 +22,7 @@ public class OrderDetail {
             CascadeType.REFRESH})
     private String productCode;
     private int quantityOrdered;
-    private String pattern="#,###,###,###.00";
+    private String pattern = "#,###,###,###.00";
     private DecimalFormat priceEach = new DecimalFormat(pattern);
     private int orderLineNumber;
 

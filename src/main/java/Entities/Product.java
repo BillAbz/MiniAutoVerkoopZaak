@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.text.DecimalFormat;
 
 @Entity
 
@@ -21,8 +22,9 @@ public class Product {
     private String productVendor;
     private String productDescription;
     private int quantityInStock;
-    private double buyPrice = 10.2;
-    private static double MSRP = 10.2;
+    private String pattern = "#,###,###,###.00";
+    private DecimalFormat buyPrice = new DecimalFormat(pattern);
+    private DecimalFormat MSRP = new DecimalFormat(pattern);
 
     public Product() {
     }
@@ -83,22 +85,29 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public double getBuyPrice() {
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public DecimalFormat getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(double buyPrice) {
+    public void setBuyPrice(DecimalFormat buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public static double getMSRP() {
+    public DecimalFormat getMSRP() {
         return MSRP;
     }
 
-    public static void setMSRP(double MSRP) {
-        Product.MSRP = MSRP;
+    public void setMSRP(DecimalFormat MSRP) {
+        this.MSRP = MSRP;
     }
-
 
     @Override
     public String toString() {

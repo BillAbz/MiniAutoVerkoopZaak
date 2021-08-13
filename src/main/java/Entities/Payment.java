@@ -17,7 +17,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int checkNumber;
     private Date paymentDate;
-    private String pattern="#,###,###,###.00";
+    private String pattern = "#,###,###,###.00";
     private DecimalFormat amount = new DecimalFormat(pattern);
 
     public Payment() {
