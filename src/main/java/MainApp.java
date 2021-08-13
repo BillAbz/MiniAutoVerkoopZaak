@@ -211,6 +211,7 @@ public class MainApp {
     }
 
     private void printProductById() {
+
     }
 
     private void createProduct() {
@@ -251,23 +252,23 @@ public class MainApp {
         }
     }
 
+    private void seeAllEmployees() {
+        Set<Employee> employeeSet = employeeService.getAllEmployees();
+        employeeSet.stream().forEach(System.out::println);
+    }
+
     private void printEmployeeById() {
 
     }
-
     private void createEmployee() {
 
     }
     private void updateEmployee() {
 
     }
+
     private void deleteEmployee() {
 
-    }
-
-    private void seeAllEmployees() {
-        Set<Employee> employeeSet = employeeService.getAllEmployees();
-        employeeSet.stream().forEach(System.out::println);
     }
 
     private void seeAllCustomers() {
