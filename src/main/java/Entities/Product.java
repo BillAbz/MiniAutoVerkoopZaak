@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 @Entity
-
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +17,8 @@ public class Product {
             CascadeType.PERSIST,
             CascadeType.REFRESH})
     private ProductLine productLine;
+    @OneToMany(mappedBy = "productCode")
+    private List<OrderDetail> orderDetails;
     private String productScale;
     private String productVendor;
     private String productDescription;

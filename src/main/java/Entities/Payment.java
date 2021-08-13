@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.util.Date;
 
 @Entity
-
+@Table(name = "payments")
 public class Payment {
     @ManyToOne(cascade = {
             CascadeType.DETACH,

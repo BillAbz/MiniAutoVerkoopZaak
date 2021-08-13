@@ -1,21 +1,21 @@
 package Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 @Entity
+@Table(name = "orderdetails")
+public class OrderDetail implements Serializable {
 
-public class OrderDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int detailId;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    private Order oderNumber;
+    private Order order;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -31,7 +31,7 @@ public class OrderDetail {
     }
 
     public Order getOderNumber() {
-        return oderNumber;
+        return order;
     }
 
     public Product getProductCode() {
@@ -77,7 +77,7 @@ public class OrderDetail {
     @Override
     public String toString() {
         return "OrderDetail{" +
-                "oderNumber=" + oderNumber +
+                "oderNumber=" + order +
                 ", productCode='" + productCode + '\'' +
                 ", quantityOrdered=" + quantityOrdered +
                 ", priceEach=" + priceEach +

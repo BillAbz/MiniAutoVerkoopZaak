@@ -5,12 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
     private Date orderDate;
     private Date requiredDate;
