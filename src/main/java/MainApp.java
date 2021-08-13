@@ -269,6 +269,12 @@ public class MainApp {
 
     }
     private void createEmployee() {
+        Employee employee = new Employee();
+
+        System.out.println("Enter Employee Details:");
+
+
+
 
     }
     private void updateEmployee() {
