@@ -26,7 +26,7 @@ public class OfficeServiceImp implements OfficeService {
     }
 
     @Override
-    public Office getOfficeById(String id) {
+    public Office getOfficeById(int id) {
         return officeDAO.getOfficeByOfficeCode(id);
     }
 

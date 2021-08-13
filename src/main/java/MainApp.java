@@ -1,10 +1,11 @@
 import Entities.Customer;
 import Entities.Employee;
+import Entities.Office;
 import Entities.Product;
-import service.CustomerServiceImp;
-import service.EmployeeServiceImp;
-import service.ProductServiceImp;
+import service.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -311,6 +312,88 @@ public class MainApp {
         Employee employee = new Employee();
 
         System.out.println("Enter Employee Details:");
+
+        System.out.println("Employee first name:");
+        String firstName = scanner.nextLine();
+        System.out.println("Employee last Name:");
+        String lastName = scanner.nextLine();
+        System.out.println("Extension:");
+        String extension = scanner.nextLine();
+        System.out.println("Email:");
+        String email = scanner.nextLine();
+        System.out.println("Office code:");
+        int officeCode = scanner.nextInt();
+        OfficeService service = new OfficeService() {
+            @Override
+            public void addOffice(Office office) {
+
+            }
+
+            @Override
+            public Office getOfficeById(int id) {
+                return null;
+            }
+
+            @Override
+            public Set<Office> getAllOffices() {
+                return null;
+            }
+
+            @Override
+            public void updateOffice(Office office) {
+
+            }
+
+            @Override
+            public void deleteOffice(Office office) {
+
+            }
+        };
+        Office office = service.getOfficeById(officeCode);
+        System.out.println("Reports to:");
+        int reportsTo = scanner.nextInt();
+        EmployeeService bossMan = new EmployeeService() {
+            @Override
+            public void addEmployee(Employee employee) {
+
+            }
+
+            @Override
+            public Employee getEmployeeById(int id) {
+                return null;
+            }
+
+            @Override
+            public Set<Employee> getAllEmployees() {
+                return null;
+            }
+
+            @Override
+            public void updateEmployee(Employee employee) {
+
+            }
+
+            @Override
+            public void deleteEmployee(Employee employee) {
+
+            }
+        };
+        Employee boss = bossMan.getEmployeeById(reportsTo);
+        System.out.println("Job title:");
+        String jobTitle = scanner.nextLine();
+
+        employee.setFirstName(firstName);
+        employee.setLastName(lastName);
+        employee.setExtension(extension);
+        employee.setEmail(email);
+        employee.setOfficeCode(office);
+        employee.setReportsTo(boss);
+        employee.setJobTitle(jobTitle);
+
+        employeeService.addEmployee(employee);
+
+
+
 
 
 
