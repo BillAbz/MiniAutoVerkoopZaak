@@ -1,16 +1,14 @@
 package Entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.text.DecimalFormat;
 
 @Entity
 
 public class Product {
-    @OneToMany(cascade = CascadeType.ALL)
-    private String productCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int productCode;
     private String productName;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
@@ -29,11 +27,11 @@ public class Product {
     public Product() {
     }
 
-    public String getProductCode() {
+    public int getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(String productCode) {
+    public void setProductCode(int productCode) {
         this.productCode = productCode;
     }
 
