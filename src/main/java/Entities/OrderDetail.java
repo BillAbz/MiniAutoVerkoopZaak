@@ -1,8 +1,6 @@
 package Entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.text.DecimalFormat;
 
 @Entity
@@ -14,6 +12,7 @@ public class OrderDetail {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Order oderNumber;
     @ManyToOne(cascade = {
             CascadeType.DETACH,

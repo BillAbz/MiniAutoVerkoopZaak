@@ -116,7 +116,7 @@ public class MainApp {
     }
 
     private void seeAllCustomers() {
-        Set<Customer> customerSet = costumerService.getAllCustomers();
+        Set<Customer    > customerSet = costumerService.getAllCustomers();
         customerSet.stream().forEach(System.out::println);
     }
 
