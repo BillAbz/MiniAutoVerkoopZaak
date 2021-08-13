@@ -7,12 +7,14 @@ import java.text.DecimalFormat;
 
 public class OrderDetail {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int detailId;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Order oderNumber;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
@@ -30,10 +32,6 @@ public class OrderDetail {
 
     public Order getOderNumber() {
         return oderNumber;
-    }
-
-    public void setOderNumber(Order oderNumber) {
-        this.oderNumber = oderNumber;
     }
 
     public Product getProductCode() {
