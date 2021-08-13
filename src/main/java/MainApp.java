@@ -18,6 +18,7 @@ public class MainApp {
     private CustomerServiceImp costumerService;
     private EmployeeServiceImp employeeService;
     private ProductServiceImp productService;
+    private OfficeService officeService;
 
     public static void main(String[] args) {
 
@@ -30,7 +31,8 @@ public class MainApp {
         this.costumerService = new CustomerServiceImp();
         this.productService = new ProductServiceImp();
         this.employeeService = new EmployeeServiceImp();
-    }
+        this.officeService = new OfficeServiceImp();
+        }
 
     private void mainMenu() {
         while (true) {
@@ -323,62 +325,16 @@ public class MainApp {
         String email = scanner.nextLine();
         System.out.println("Office code:");
         int officeCode = scanner.nextInt();
-        OfficeService service = new OfficeService() {
-            @Override
-            public void addOffice(Office office) {
 
-            }
 
-            @Override
-            public Office getOfficeById(int id) {
-                return null;
-            }
+        officeService.getOfficeById(officeCode);
+        System.out.println("Reports to this Employee number:");
 
-            @Override
-            public Set<Office> getAllOffices() {
-                return null;
-            }
-
-            @Override
-            public void updateOffice(Office office) {
-
-            }
-
-            @Override
-            public void deleteOffice(Office office) {
-
-            }
-        };
-        Office office = service.getOfficeById(officeCode);
-        System.out.println("Reports to:");
         int reportsTo = scanner.nextInt();
-        EmployeeService bossMan = new EmployeeService() {
-            @Override
-            public void addEmployee(Employee employee) {
 
-            }
 
-            @Override
-            public Employee getEmployeeById(int id) {
-                return null;
-            }
+        Employee bossMan = new Employee();//todo ik denk dat we best al een vaste bossMan maken zodat we geen nieuwe moeten maken
 
-            @Override
-            public Set<Employee> getAllEmployees() {
-                return null;
-            }
-
-            @Override
-            public void updateEmployee(Employee employee) {
-
-            }
-
-            @Override
-            public void deleteEmployee(Employee employee) {
-
-            }
-        };
-        Employee boss = bossMan.getEmployeeById(reportsTo);
         System.out.println("Job title:");
         String jobTitle = scanner.nextLine();
 
@@ -386,19 +342,11 @@ public class MainApp {
         employee.setLastName(lastName);
         employee.setExtension(extension);
         employee.setEmail(email);
-        employee.setOfficeCode(office);
-        employee.setReportsTo(boss);
+//        employee.setReportsTo(bossMan.getEmployeeNumber());
         employee.setJobTitle(jobTitle);
-
         employeeService.addEmployee(employee);
-
-
-
-
-
-
-
     }
+
     private void updateEmployee() {
 
     }
