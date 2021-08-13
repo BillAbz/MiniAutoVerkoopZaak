@@ -2,14 +2,16 @@ package Entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany(cascade = CascadeType.ALL)
     private int orderNumber;
+    @OneToMany
+    private List<OrderDetail> orderDetails;
     private Date orderDate;
     private Date requiredDate;
     private Date shippedDate;
@@ -32,6 +34,14 @@ public class Order {
 
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     public Date getOrderDate() {

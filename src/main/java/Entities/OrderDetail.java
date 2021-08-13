@@ -14,13 +14,13 @@ public class OrderDetail {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    private int oderNumber;
+    private Order oderNumber;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    private String productCode;
+    private Product productCode;
     private int quantityOrdered;
     private String pattern = "#,###,###,###.00";
     private DecimalFormat priceEach = new DecimalFormat(pattern);
@@ -29,19 +29,19 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public int getOderNumber() {
+    public Order getOderNumber() {
         return oderNumber;
     }
 
-    public void setOderNumber(int oderNumber) {
+    public void setOderNumber(Order oderNumber) {
         this.oderNumber = oderNumber;
     }
 
-    public String getProductCode() {
+    public Product getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(String productCode) {
+    public void setProductCode(Product productCode) {
         this.productCode = productCode;
     }
 

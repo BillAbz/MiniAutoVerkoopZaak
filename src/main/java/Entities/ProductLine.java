@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 @Entity
 
 public class ProductLine {
-    @OneToMany(cascade = CascadeType.ALL)
     private String productLine;
     private String textDescription;
     private String htmlDescription;
