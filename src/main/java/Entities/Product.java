@@ -24,7 +24,9 @@ public class Product {
     private String productDescription;
     private int quantityInStock;
     private String pattern = "#,###,###,###.00";
+    @Transient
     private DecimalFormat buyPrice = new DecimalFormat(pattern);
+    @Transient
     private DecimalFormat MSRP = new DecimalFormat(pattern);
 
     public Product() {
