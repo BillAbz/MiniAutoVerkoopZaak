@@ -9,7 +9,7 @@ import java.util.Set;
 public interface OfficeService {
     void addOffice(Office office);
 
-    Office getOfficeById(String id);
+    Office getOfficeById(int id);
 
     Set<Office> getAllOffices();
 
