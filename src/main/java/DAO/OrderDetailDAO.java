@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Order;
 import Entities.OrderDetail;
 import Entities.Product;
 
@@ -16,7 +17,7 @@ public class OrderDetailDAO {
         emf = EMFactory.getEMF ();
     }
 
-    public OrderDetail getProductByOrderNumber(int orderNumber) throws SQLException {
+    public OrderDetail getProductByOrderNumber(Order orderNumber) throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(OrderDetail.class , orderNumber);
     }

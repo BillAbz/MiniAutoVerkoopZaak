@@ -31,11 +31,10 @@ public class CustomerDAO {
         return entityManager.find(Customer.class , costumerNumber);
     }
 
-    public List<Customer> getAllCostumers()  {
-        EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from Customer");
-        List<Customer> countList = query.getResultList();
-        return countList;
+    public Set<Customer> getAllCustomers() {
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("FROM Customer c");
+        return new HashSet<>(query.getResultList());
     }
 
     public void updateCostumers(Customer customer) {
@@ -54,10 +53,6 @@ public class CustomerDAO {
     }
 
 
-    public Set<Customer> getAllCustomers() {
-        EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("FROM Customer c");
-        return new HashSet<>(query.getResultList());
-    }
+
 
 }
