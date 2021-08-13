@@ -212,6 +212,10 @@ public class MainApp {
 
     private void printProductById() {
 
+        int id = scanner.nextInt();
+        Product product = productService.getProductById(id);
+        System.out.println(product);
+
     }
 
     private void createProduct() {
@@ -258,6 +262,10 @@ public class MainApp {
     }
 
     private void printEmployeeById() {
+
+        int id = scanner.nextInt();
+        Employee employee = employeeService.getEmployeeById(id);
+        System.out.println(employee);
 
     }
     private void createEmployee() {
