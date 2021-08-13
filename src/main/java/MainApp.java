@@ -232,9 +232,37 @@ public class MainApp {
             case 1:
                 seeAllEmployees();
                 break;
+            case 2:
+                printEmployeeById();
+                break;
+            case 3:
+                createEmployee();
+                break;
+            case 4:
+                updateEmployee();
+                break;
+            case 5:
+                deleteEmployee();
+                break;
+//            case 6:
+//                addEmployeeToOffice(); //todo extra van op de lijst / Trello voor de "Client" maar kan misschien bij CreateEmployee of Update gebeuren.
             default:
                 break;
         }
+    }
+
+    private void printEmployeeById() {
+
+    }
+
+    private void createEmployee() {
+
+    }
+    private void updateEmployee() {
+
+    }
+    private void deleteEmployee() {
+
     }
 
     private void seeAllEmployees() {
