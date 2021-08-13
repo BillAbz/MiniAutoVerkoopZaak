@@ -1,11 +1,16 @@
 package Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 
 public class Office {
-    private String officeCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private  int officeCode;
     private String city;
     private String phone;
     private String addressLine1;
@@ -18,11 +23,11 @@ public class Office {
     public Office() {
     }
 
-    public String getOfficeCode() {
+    public int getOfficeCode() {
         return officeCode;
     }
 
-    public void setOfficeCode(String officeCode) {
+    public void setOfficeCode(int officeCode) {
         this.officeCode = officeCode;
     }
 
