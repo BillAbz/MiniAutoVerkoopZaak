@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
+import java.util.List;
 
 @Entity
 
@@ -43,13 +44,10 @@ public class Product {
         this.productName = productName;
     }
 
-    public ProductLine getProductLine() {
+    public ProductLine  getProductLine() {
         return productLine;
     }
 
-    public void setProductLine(ProductLine productLine) {
-        this.productLine = productLine;
-    }
 
     public String getProductScale() {
         return productScale;
@@ -112,7 +110,7 @@ public class Product {
         return "Product{" +
                 "productCode='" + productCode + '\'' +
                 ", productName='" + productName + '\'' +
-                ", productLine='" + productLine + '\'' +
+                ", productLines='" + productLine + '\'' +
                 ", productScale='" + productScale + '\'' +
                 ", productVendor='" + productVendor + '\'' +
                 ", productDescription='" + productDescription + '\'' +

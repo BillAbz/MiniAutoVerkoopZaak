@@ -1,17 +1,20 @@
 package Entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.awt.image.BufferedImage;
+import java.sql.Blob;
 
 @Entity
 
 public class ProductLine {
+    @Id
     private String productLine;
     private String textDescription;
     private String htmlDescription;
-    private BufferedImage image;
+    @Lob
+    private Blob image;
 
     public ProductLine() {
     }
@@ -40,11 +43,11 @@ public class ProductLine {
         this.htmlDescription = htmlDescription;
     }
 
-    public BufferedImage getImage() {
+    public Blob getImage() {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
+    public void setImage(Blob image) {
         this.image = image;
     }
 
