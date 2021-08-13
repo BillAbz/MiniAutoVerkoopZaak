@@ -18,7 +18,7 @@ public class OfficeDAO {
         emf = EMFactory.getEMF ();
     }
 
-    public Office getOfficeByOfficeCode(int officeCode){
+    public Office getOfficeByOfficeCode(String officeCode){
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Office.class , officeCode);
     }
