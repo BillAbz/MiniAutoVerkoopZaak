@@ -1,4 +1,6 @@
-import Entities.*;
+import Entities.Customer;
+import Entities.Employee;
+import Entities.Product;
 import service.CustomerServiceImp;
 import service.EmployeeServiceImp;
 import service.ProductServiceImp;
@@ -69,21 +71,119 @@ public class MainApp {
             case 1:
                 seeAllCustomers();
                 break;
-//            case 2:
-//                printCustomerId();
-//                break;
-//            case 3:
-//                createCustomer();
-//                break;
-//            case 4:
-//                updateCustomer();
-//                break;
-//            case 5:
-//                deleteCustomer();
-//                break;
+            case 2:
+                printCustomerId();
+                break;
+            case 3:
+                createCustomer();
+                break;
+            case 4:
+                updateCustomer();
+                break;
+            case 5:
+                deleteCustomer();
+                break;
             default:
                 break;
         }
+    }
+
+    private void printCustomerId() {
+        int id = scanner.nextInt();
+        Customer customer = costumerService.getCustomerById(id);
+        System.out.println(customer);
+    }
+
+    private void createCustomer() {
+        Customer customer = new Customer();
+
+        System.out.println("Enter Customer Details:");
+
+        System.out.println("Customer Name:");
+        String customerName = scanner.nextLine();
+        System.out.println("First Name:");
+        String firstName = scanner.nextLine();
+        System.out.println("Last Name:");
+        String lastName = scanner.nextLine();
+        System.out.println("PhoneNumber (Only numbers):");
+        String phone = scanner.nextLine();
+        System.out.println("AddressLine1:");
+        String addressLine1 = scanner.nextLine();
+        System.out.println("AddressLine2:");
+        String addressLine2 = scanner.nextLine();
+        System.out.println("City:");
+        String city = scanner.nextLine();
+        System.out.println("State:");
+        String state = scanner.nextLine();
+        System.out.println("PostalCode:");
+        String postalCode = scanner.nextLine();
+        System.out.println("Country:");
+        String country = scanner.nextLine();
+
+        customer.setCustomerName(customerName);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setPhone(phone);
+        customer.setAddressLine1(addressLine1);
+        customer.setAddressLine2(addressLine2);
+        customer.setCity(city);
+        customer.setState(state);
+        customer.setPostalCode(postalCode);
+        customer.setCountry(country);
+
+        costumerService.addCustomer(customer);
+    }
+
+    private void updateCustomer() {
+        int id = scanner.nextInt();
+        Customer customer = costumerService.getCustomerById(id);
+
+        if (customer == null) {
+            System.err.println("Customer doesn't exist.");
+        } else {
+            System.out.println("Enter Customer Details:");
+
+            System.out.println("Customer Name:");
+            String customerName = scanner.nextLine();
+            System.out.println("First Name:");
+            String firstName = scanner.nextLine();
+            System.out.println("Last Name:");
+            String lastName = scanner.nextLine();
+            System.out.println("PhoneNumber (Only numbers):");
+            String phone = scanner.nextLine();
+            System.out.println("AddressLine1:");
+            String addressLine1 = scanner.nextLine();
+            System.out.println("AddressLine2:");
+            String addressLine2 = scanner.nextLine();
+            System.out.println("City:");
+            String city = scanner.nextLine();
+            System.out.println("State:");
+            String state = scanner.nextLine();
+            System.out.println("PostalCode:");
+            String postalCode = scanner.nextLine();
+            System.out.println("Country:");
+            String country = scanner.nextLine();
+
+            customer.setCustomerName(customerName);
+            customer.setFirstName(firstName);
+            customer.setLastName(lastName);
+            customer.setPhone(phone);
+            customer.setAddressLine1(addressLine1);
+            customer.setAddressLine2(addressLine2);
+            customer.setCity(city);
+            customer.setState(state);
+            customer.setPostalCode(postalCode);
+            customer.setCountry(country);
+
+            costumerService.updateCustomer(customer);
+        }
+    }
+
+    private void deleteCustomer() {
+        int id = scanner.nextInt();
+        Customer customer = costumerService.getCustomerById(id);
+
+        costumerService.deleteCustomer(customer);
     }
 
     private void productsMenu() {
@@ -93,9 +193,36 @@ public class MainApp {
             case 1:
                 seeAllProducts();
                 break;
+            case 2:
+                printProductById();
+                break;
+            case 3:
+                createProduct();
+                break;
+            case 4:
+                updateProduct();
+                break;
+            case 5:
+                deleteProduct();
+                break;
             default:
                 break;
         }
+    }
+
+    private void printProductById() {
+    }
+
+    private void createProduct() {
+
+    }
+
+    private void updateProduct() {
+
+    }
+
+    private void deleteProduct() {
+
     }
 
     private void employeeMenu() {
@@ -105,9 +232,37 @@ public class MainApp {
             case 1:
                 seeAllEmployees();
                 break;
+            case 2:
+                printEmployeeById();
+                break;
+            case 3:
+                createEmployee();
+                break;
+            case 4:
+                updateEmployee();
+                break;
+            case 5:
+                deleteEmployee();
+                break;
+//            case 6:
+//                addEmployeeToOffice(); //todo extra van op de lijst / Trello voor de "Client" maar kan misschien bij CreateEmployee of Update gebeuren.
             default:
                 break;
         }
+    }
+
+    private void printEmployeeById() {
+
+    }
+
+    private void createEmployee() {
+
+    }
+    private void updateEmployee() {
+
+    }
+    private void deleteEmployee() {
+
     }
 
     private void seeAllEmployees() {
@@ -116,7 +271,7 @@ public class MainApp {
     }
 
     private void seeAllCustomers() {
-        Set<Customer    > customerSet = costumerService.getAllCustomers();
+        Set<Customer> customerSet = costumerService.getAllCustomers();
         customerSet.stream().forEach(System.out::println);
     }
 
