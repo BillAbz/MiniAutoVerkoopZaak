@@ -11,7 +11,7 @@ import java.util.Set;
 public class MainApp {
 
     private Scanner scanner;
-    public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n0: End";
+    public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n4: Offices\n0: End";
     public static final String SUBMENU = "What do you want to look at? %n1: See all %n2: See id %n3: Add %n4: Update%n5: Delete %s %n0: End%n";
 
     private CustomerServiceImp costumerService;
@@ -46,6 +46,8 @@ public class MainApp {
                 case 3:
                     employeeMenu();
                     break;
+                case 4:
+                    officeMenu();
                 case 0:
                     System.exit(0);
                     return;
@@ -55,6 +57,44 @@ public class MainApp {
         }
     }
 
+    private void officeMenu() {
+        System.out.printf(SUBMENU, "");
+        int subMenuChoice = scanner.nextInt();
+        switch (subMenuChoice) {
+            case 1:
+                seeAllOffices();
+                break;
+            case 2:
+                printOfficeById();
+                break;
+            case 3:
+                createOffice();
+                break;
+            case 4:
+                updateOffice();
+                break;
+            case 5:
+                deleteOffice();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void seeAllOffices() {
+    }
+
+    private void printOfficeById() {
+    }
+
+    private void createOffice() {
+    }
+
+    private void updateOffice() {
+    }
+
+    private void deleteOffice() {
+    }
 
     private void run() {
         try {
@@ -262,7 +302,6 @@ public class MainApp {
     }
 
     private void printEmployeeById() {
-
         int id = scanner.nextInt();
         Employee employee = employeeService.getEmployeeById(id);
         System.out.println(employee);
