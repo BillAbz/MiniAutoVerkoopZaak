@@ -15,7 +15,6 @@ public class Payment {
     private Date paymentDate;
     @Transient
     private String pattern = "#,###,###,###.00";
-    @Transient
     private DecimalFormat amount = new DecimalFormat(pattern);
 
     public Payment() {
