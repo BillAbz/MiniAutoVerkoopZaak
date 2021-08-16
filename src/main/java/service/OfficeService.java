@@ -1,19 +1,50 @@
 package service;
 
+import DAO.OfficeDAO;
 import Entities.Employee;
 import Entities.Office;
-import Entities.OrderDetail;
 
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.Scanner;
 
-public interface OfficeService {
-    void addOffice(Office office);
+public class OfficeService {
 
-    Office getOfficeById(int id);
+    private OfficeDAO officeDAO;
+    private Scanner scanner;
 
-    Set<Office> getAllOffices();
+    public OfficeService() {
+        officeDAO = new OfficeDAO();
+        scanner = new Scanner(System.in);
+    }
 
-    void updateOffice(Office office);
+    public void showAllOffices() throws SQLException {
+        if (officeDAO.getAllOffices() != null)
+            officeDAO.getAllOffices().forEach(System.out::println);
+        else
+            System.out.println("No Offices to show.");
+    }
 
-    void deleteOffice(Office office);
+    public void showOfficeByOfficeCode() throws SQLException {
+        System.out.println("What is the id of the Office you want to lookup?");
+        int input = scanner.nextInt();
+        Office office =  officeDAO.getOfficeByOfficeCode(input);
+        if (office != null)
+            System.out.println(office);
+        else
+            System.out.println("Id does not match any of the Offices.");
+    }
+
+
+    public Office createAnOffice() {
+        return new Office();
+    }
+
+    public void updateAnOffice() {
+
+    }
+
+    public void deleteAnOffice() {
+
+    }
+
 }

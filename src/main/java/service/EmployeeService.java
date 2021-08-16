@@ -1,17 +1,50 @@
 package service;
 
+import DAO.EmployeeDAO;
+import Entities.Customer;
 import Entities.Employee;
 
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.Scanner;
 
-public interface EmployeeService {
-    void addEmployee(Employee employee);
+public class EmployeeService {
 
-    Employee getEmployeeById(int id);
+    private EmployeeDAO employeeDAO;
+    private Scanner scanner;
 
-    Set<Employee> getAllEmployees();
+    public EmployeeService() {
+        employeeDAO = new EmployeeDAO();
+        scanner = new Scanner(System.in);
+    }
 
-    void updateEmployee(Employee employee);
+    public void showAllEmployees() throws SQLException {
+        if (employeeDAO.getAllEmployees() != null)
+            employeeDAO.getAllEmployees().forEach(System.out::println);
+        else
+            System.out.println("No employees to show.");
+    }
 
-    void deleteEmployee(Employee employee);
+    public void showEmployeeByEmployeeNumber() throws SQLException {
+        System.out.println("What is the id of the employee you want to lookup?");
+        int input = scanner.nextInt();
+        Employee employee =  employeeDAO.getEmployeeByEmployeeNumber(input);
+        if (employee != null)
+            System.out.println(employee);
+        else
+            System.out.println("Id does not match any of the employees.");
+    }
+
+
+    public Employee createAnEmployee() {
+        return new Employee();
+    }
+
+    public void updateAnEmployee() {
+
+    }
+
+    public void deleteAnEmployee() {
+
+    }
+
 }

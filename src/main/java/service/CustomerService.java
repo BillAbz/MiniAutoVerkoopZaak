@@ -1,19 +1,49 @@
 package service;
 
+import DAO.CustomerDAO;
 import Entities.Customer;
 
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.Scanner;
 
-public interface CustomerService {
+public class CustomerService {
 
-    void addCustomer(Customer customer);
+    private CustomerDAO customerDAO;
+    private Scanner scanner;
 
-    Customer getCustomerById(int id) throws SQLException;
+    public CustomerService() {
+        customerDAO = new CustomerDAO();
+        scanner = new Scanner(System.in);
+    }
 
-    Set<Customer> getAllCustomers();
+    public void showAllCustomers() throws SQLException {
+        if (customerDAO.getAllCustomers() != null)
+            customerDAO.getAllCustomers().forEach(System.out::println);
+        else
+            System.out.println("No customers to show.");
+    }
 
-    void updateCustomer(Customer customer);
+    public void showCustomerByCustomerNumber() throws SQLException {
+        System.out.println("What is the id of the customer you want to lookup?");
+        int input = scanner.nextInt();
+        Customer customer =  customerDAO.getCostumerByCustomerNumber(input);
+        if (customer != null)
+            System.out.println(customer);
+        else
+            System.out.println("Id does not match any of the customer.");
+    }
 
-    void deleteCustomer(Customer customer);
+
+    public Customer createACustomer() {
+        return new Customer();
+    }
+
+    public void updateACustomer() {
+
+    }
+
+    public void deleteACustomer() {
+
+    }
+
 }

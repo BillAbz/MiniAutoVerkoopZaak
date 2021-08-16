@@ -26,7 +26,7 @@ public class CustomerDAO {
         em.getTransaction().commit();
     }
 
-    public Customer getCostumerByCostumerNumber(int costumerNumber)  {
+    public Customer getCostumerByCustomerNumber(int costumerNumber)  {
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Customer.class , costumerNumber);
     }

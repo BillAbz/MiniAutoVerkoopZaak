@@ -23,7 +23,7 @@ public class EmployeeDAO {
                 return entityManager.find(Employee.class , employeeNumber);
         }
 
-        public Set<Employee> getAllEmployee() {
+        public Set<Employee> getAllEmployees() {
                 EntityManager em = emf.createEntityManager();
                 Query query = em.createQuery("FROM Employee e");
                 return new HashSet<>(query.getResultList());

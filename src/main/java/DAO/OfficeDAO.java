@@ -23,7 +23,7 @@ public class OfficeDAO {
         return entityManager.find(Office.class , officeCode);
     }
 
-    public Set<Office> getAllOffice()  {
+    public Set<Office> getAllOffices()  {
         EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("FROM Office o");
         return new HashSet<>(query.getResultList());

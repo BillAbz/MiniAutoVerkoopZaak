@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class MainApp {
-
+/*
     private Scanner scanner;
     public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n4: Offices\n0: End";
     public static final String SUBMENU = "What do you want to look at? %n1: See all %n2: See id %n3: Add %n4: Update%n5: Delete %s %n0: End%n";
@@ -364,7 +364,7 @@ public class MainApp {
         Set<Product> productSet = productService.getAllProduct();
         productSet.stream().forEach(System.out::println);
     }
-
+*/
 
 }
 

@@ -1,18 +1,50 @@
 package service;
 
+import DAO.ProductLineDAO;
 import Entities.ProductLine;
 
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.Scanner;
 
-public interface ProductLineService {
+public class ProductLineService {
 
-    void addProductLine(ProductLine payment);
+    private ProductLineDAO productLineDAO;
+    private Scanner scanner;
 
-    ProductLine getProductLineById(long id);
+    public ProductLineService() {
+        productLineDAO = new ProductLineDAO();
+        scanner = new Scanner(System.in);
+    }
 
-    Set<ProductLine> getAllProductLines();
+    public void showAllProducts() throws SQLException {
+        if (productLineDAO.getAllProducts() != null)
+            productLineDAO.getAllProducts().forEach(System.out::println);
+        else
+            System.out.println("No products to show.");
+    }
 
-    void updateProductLine(ProductLine payment);
+    public void showProductByProductCode() throws SQLException {
+        System.out.println("What is the id of the product you want to lookup?");
+        String input = scanner.nextLine();
+        ProductLine productLine =  productLineDAO.getProductByProductCode(input);
+        if (productLine != null)
+            System.out.println(productLine);
+        else
+            System.out.println("Id does not match any of the Products.");
+    }
 
-    void deleteProductLine(ProductLine payment);
+
+    public ProductLine createAProductLine() {
+        return new ProductLine();
+    }
+
+    public void updateAProductLine() {
+
+    }
+
+    public void deleteAProductLine() {
+
+    }
+
+
 }
