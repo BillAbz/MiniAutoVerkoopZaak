@@ -26,10 +26,17 @@ public class CustomerDAO {
         em.getTransaction().commit();
     }
 
-    public Customer getCostumerByCustomerNumber(int costumerNumber)  {
+    public Customer getCustomerByCustomerNumber(int customerNumber)  {
         EntityManager entityManager = emf.createEntityManager();
-        return entityManager.find(Customer.class , costumerNumber);
+        return entityManager.find(Customer.class , customerNumber);
     }
+
+    //?
+    public Customer getCustomerByCountry(String country){
+        EntityManager entityManager = emf.createEntityManager();
+        return entityManager.find(Customer.class, country);
+    }
+    //
 
     public Set<Customer> getAllCustomers() {
         EntityManager em = emf.createEntityManager();
