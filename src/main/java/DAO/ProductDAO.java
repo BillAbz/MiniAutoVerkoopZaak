@@ -22,7 +22,7 @@ public class ProductDAO {
 
     public List<Product> getAllProducts() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from Product");
+        Query query = entityManager.createQuery("Select * from products");
         List<Product> countList = query.getResultList();
         return countList;
     }

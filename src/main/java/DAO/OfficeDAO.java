@@ -25,7 +25,7 @@ public class OfficeDAO {
 
     public Set<Office> getAllOffices()  {
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("FROM Office o");
+        Query query = em.createQuery("FROM offices o");
         return new HashSet<>(query.getResultList());
     }
 

@@ -24,7 +24,7 @@ public class PaymentDAO {
 
     public List<Payment> getAllPayments() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from Payment");
+        Query query = entityManager.createQuery("Select * from payments");
         List<Payment> paymentList = query.getResultList();
         return paymentList;
     }

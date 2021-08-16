@@ -33,7 +33,7 @@ public class CustomerDAO {
 
     public Set<Customer> getAllCustomers() {
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("FROM Customer c");
+        Query query = em.createQuery("FROM customers c");
         return new HashSet<>(query.getResultList());
     }
 

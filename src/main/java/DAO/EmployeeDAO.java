@@ -25,7 +25,7 @@ public class EmployeeDAO {
 
         public Set<Employee> getAllEmployees() {
                 EntityManager em = emf.createEntityManager();
-                Query query = em.createQuery("FROM Employee e");
+                Query query = em.createQuery("FROM employees e");
                 return new HashSet<>(query.getResultList());
         }
 

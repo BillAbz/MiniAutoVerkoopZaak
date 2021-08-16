@@ -24,7 +24,7 @@ public class OrderDetailDAO {
 
     public List<OrderDetail> getAllOrderDetails() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from OrderDetail");
+        Query query = entityManager.createQuery("Select * from orderdetails");
         List<OrderDetail> orderDetailList = query.getResultList();
         return orderDetailList;
     }

@@ -21,7 +21,7 @@ public class OrderDAO {
 
     public List<Order> getAllOrders()  {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from Order");
+        Query query = entityManager.createQuery("Select * from orders");
         List<Order> orderList = query.getResultList();
         return orderList;
     }

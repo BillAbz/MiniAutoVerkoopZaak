@@ -28,7 +28,7 @@ public class ProductLineDAO {
 
     public List<ProductLine> getAllProducts() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from ProductLine");
+        Query query = entityManager.createQuery("Select * from productlines");
         List<ProductLine> productLineList = query.getResultList();
         return productLineList;
     }
