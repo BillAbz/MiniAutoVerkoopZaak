@@ -19,7 +19,7 @@ public class CustomerDAO {
         emf = EMFactory.getEMF();
     }
 
-    public void addCostumers(Customer customer) {
+    public void addCustomers(Customer customer) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(customer);
@@ -44,7 +44,7 @@ public class CustomerDAO {
         return new HashSet<>(query.getResultList());
     }
 
-    public void updateCostumers(Customer customer) {
+    public void updateCustomers(Customer customer) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.merge(customer);
@@ -52,7 +52,7 @@ public class CustomerDAO {
     }
 
 
-    public void deleteCostumers(Customer customer) {
+    public void deleteCustomers(Customer customer) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.remove (em.find (Customer.class, customer.getCustomerNumber()));

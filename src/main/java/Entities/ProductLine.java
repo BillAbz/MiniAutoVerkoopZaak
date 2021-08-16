@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.sql.Blob;
 
 @Entity
-@Table(name = "productlines")
+@Table(name = "product_lines")
 public class ProductLine {
     @Id
     private String productLine;
