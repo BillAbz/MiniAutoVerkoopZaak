@@ -17,12 +17,12 @@ public class PaymentDAO {
         emf = EMFactory.getEMF ();
     }
 
-    public Payment getProductByCustomerNumber(Customer customerNumber) throws SQLException {
+    public Payment getPaymentByCheckNumber(int checkNumber) throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
-        return entityManager.find(Payment.class , customerNumber);
+        return entityManager.find(Payment.class , checkNumber);
     }
 
-    public List<Payment> getAllOrderDetails() throws SQLException {
+    public List<Payment> getAllPayments() throws SQLException {
         EntityManager entityManager = emf.createEntityManager();
         Query query = entityManager.createQuery("Select * from Payment");
         List<Payment> paymentList = query.getResultList();
