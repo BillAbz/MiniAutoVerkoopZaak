@@ -26,11 +26,11 @@ public class CustomerService {
     public void showCustomerByCustomerNumber() throws SQLException {
         System.out.println("What is the id of the customer you want to lookup?");
         int input = scanner.nextInt();
-        Customer customer =  customerDAO.getCostumerByCustomerNumber(input);
+        Customer customer =  customerDAO.getCustomerByCustomerNumber(input);
         if (customer != null)
             System.out.println(customer);
         else
-            System.out.println("Id does not match any of the customer.");
+            System.out.println("Id does not match any existing customers.");
     }
 
 
