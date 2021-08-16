@@ -13,18 +13,8 @@ public class Employee {
     private String firstName;
     private String extension;
     private String email;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private Office officeCode;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private Employee reportsTo;
+    private String officeCode;
+    private int reportsTo;
     private String jobTitle;
 
 
@@ -71,19 +61,19 @@ public class Employee {
         this.email = email;
     }
 
-    public Office getOfficeCode() {
+    public String  getOfficeCode() {
         return officeCode;
     }
 
-    public void setOfficeCode(Office officeCode) {
+    public void setOfficeCode(String officeCode) {
         this.officeCode = officeCode;
     }
 
-    public Employee getReportsTo() {
+    public int getReportsTo() {
         return reportsTo;
     }
 
-    public void setReportsTo(Employee reportsTo) {
+    public void setReportsTo(int reportsTo) {
         this.reportsTo = reportsTo;
     }
 

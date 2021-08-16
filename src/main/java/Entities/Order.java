@@ -10,20 +10,14 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
-    @OneToMany(mappedBy = "order")
+    @OneToMany
     private List<OrderDetail> orderDetails;
     private Date orderDate;
     private Date requiredDate;
     private Date shippedDate;
     private String status;
     private String comments;
-    @ManyToOne
-            (cascade = {
-                    CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH})
-    private Customer customerNumber;
+    private int customerNumber;
 
     public Order() {
     }
@@ -84,11 +78,11 @@ public class Order {
         this.comments = comments;
     }
 
-    public Customer getCustomerNumber() {
+    public int getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(Customer customerNumber) {
+    public void setCustomerNumber(int customerNumber) {
         this.customerNumber = customerNumber;
     }
 

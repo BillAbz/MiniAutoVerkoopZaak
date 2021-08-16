@@ -25,7 +25,7 @@ public class Customer {
     private Employee salesRepEmployeeNumber;
     private String pattern = "#,###,###,###.00";
     private DecimalFormat creditLimit = new DecimalFormat(pattern);
-    @OneToMany (mappedBy = "customerNumber")
+    @OneToMany
     private List<Payment> payments;
 
 

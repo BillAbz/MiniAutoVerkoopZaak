@@ -10,6 +10,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class MainApp {
+
+    public static void main(String[] args) {
+        CustomerService customerService = new CustomerService();
+
+    }
 /*
     private Scanner scanner;
     public static final String MENU = "What do you want to look at?\n1: Customers\n2: Products\n3: Employees\n4: Offices\n0: End";

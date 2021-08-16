@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany(mappedBy = "officeCode")
     private int officeCode;
     private String city;
     private String phone;

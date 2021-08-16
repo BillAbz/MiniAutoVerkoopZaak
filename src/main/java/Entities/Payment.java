@@ -7,27 +7,25 @@ import java.util.Date;
 @Entity
 @Table(name = "payments")
 public class Payment {
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private Customer customerNumber;
+
+    private int customerNumber;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int checkNumber;
     private Date paymentDate;
+    @Transient
     private String pattern = "#,###,###,###.00";
+    @Transient
     private DecimalFormat amount = new DecimalFormat(pattern);
 
     public Payment() {
     }
 
-    public Customer getCustomerNumber() {
+    public int getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(Customer customerNumber) {
+    public void setCustomerNumber(int customerNumber) {
         this.customerNumber = customerNumber;
     }
 

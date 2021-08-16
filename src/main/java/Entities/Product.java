@@ -8,23 +8,16 @@ import java.util.List;
 @Table(name = "products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productCode;
+    @Column(length = 15)
+    private String productCode;
     private String productName;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private ProductLine productLine;
-    @OneToMany(mappedBy = "productCode")
-    private List<OrderDetail> orderDetails;
+    private String productLine;
     private String productScale;
     private String productVendor;
     private String productDescription;
     private int quantityInStock;
-    private String pattern = "#,###,###,###.00";
     @Transient
+    private String pattern = "#,###,###,###.00";
     private DecimalFormat buyPrice = new DecimalFormat(pattern);
     @Transient
     private DecimalFormat MSRP = new DecimalFormat(pattern);
@@ -32,11 +25,11 @@ public class Product {
     public Product() {
     }
 
-    public int getProductCode() {
+    public String getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(int productCode) {
+    public void setProductCode(String productCode) {
         this.productCode = productCode;
     }
 
@@ -48,7 +41,7 @@ public class Product {
         this.productName = productName;
     }
 
-    public ProductLine  getProductLine() {
+    public String getProductLine() {
         return productLine;
     }
 

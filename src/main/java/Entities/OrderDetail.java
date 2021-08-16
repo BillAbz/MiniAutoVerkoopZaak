@@ -6,23 +6,15 @@ import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "orderdetails")
-public class OrderDetail implements Serializable {
+public class OrderDetail implements Serializable{
 
 
     @Id
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private Order order;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    private Product productCode;
+    private int orderNumber;
+    @Column(length = 15)
+    private String productCode;
     private int quantityOrdered;
+    @Transient
     private String pattern = "#,###,###,###.00";
     private DecimalFormat priceEach = new DecimalFormat(pattern);
     private int orderLineNumber;
@@ -30,15 +22,15 @@ public class OrderDetail implements Serializable {
     public OrderDetail() {
     }
 
-    public Order getOderNumber() {
-        return order;
+    public int getOderNumber() {
+        return orderNumber;
     }
 
-    public Product getProductCode() {
+    public String getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(Product productCode) {
+    public void setProductCode(String productCode) {
         this.productCode = productCode;
     }
 
@@ -77,7 +69,7 @@ public class OrderDetail implements Serializable {
     @Override
     public String toString() {
         return "OrderDetail{" +
-                "oderNumber=" + order +
+                "oderNumber=" + orderNumber +
                 ", productCode='" + productCode + '\'' +
                 ", quantityOrdered=" + quantityOrdered +
                 ", priceEach=" + priceEach +
