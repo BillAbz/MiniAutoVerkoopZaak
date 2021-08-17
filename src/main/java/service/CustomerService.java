@@ -36,41 +36,7 @@ public class CustomerService {
 
 
     public Customer createACustomer() {
-
-
-        Customer customer = new Customer();
-
-        System.out.println("Enter Customer Details:");
-
-        System.out.println();
-
-        String customerName;
-        boolean isUnique;
-        do {
-            isUnique = true;
-            System.out.println("Customer name:");
-            customerName = scanner.nextLine();
-            for (Customer customer1 :customerDAO.getAllCustomers()) {
-                if (customer.getCustomerName().contentEquals(customerName)) {
-                    System.out.println("Customer name already exists.");
-                    isUnique = false;
-                    break;
-                }
-            }
-        } while (!isUnique);
-
-        System.out.println("First Name:");
-        String firstName = scanner.nextLine();
-
-        System.out.println("Last Name:");
-        String lastName = scanner.nextLine();
-
-
-        // TO DO
-        System.out.println("PhoneNumber (Only numbers):");
-        String phone = scanner.nextLine();
-
-        //        long phoneNumber = scanner.nextLong();
+//        long phoneNumber = scanner.nextLong();
 //        if (phoneNumber<9 || phoneNumber>10){
 //            System.out.println("doesn't seem right");
 //            phoneNumber = scanner.nextLong();
@@ -83,40 +49,6 @@ public class CustomerService {
 //            }
 //            System.out.println("thanks");
 //        }
-
-        //
-
-        System.out.println("AddressLine1:");
-        String addressLine1 = scanner.nextLine();
-
-        System.out.println("AddressLine2:");
-        String addressLine2 = scanner.nextLine();
-
-        System.out.println("City:");
-        String city = scanner.nextLine();
-
-        System.out.println("State:");
-        String state = scanner.nextLine();
-
-        System.out.println("PostalCode:");
-        String postalCode = scanner.nextLine();
-
-        System.out.println("Country:");
-        String country = scanner.nextLine();
-
-        customer.setCustomerName(customerName);
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setPhone(phone);
-        customer.setAddressLine1(addressLine1);
-        customer.setAddressLine2(addressLine2);
-        customer.setCity(city);
-        customer.setState(state);
-        customer.setPostalCode(postalCode);
-        customer.setCountry(country);
-
-        customerDAO.addCustomers(customer);
-
         return new Customer();
     }
 
