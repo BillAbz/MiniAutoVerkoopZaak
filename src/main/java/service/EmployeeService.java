@@ -18,6 +18,7 @@ public class EmployeeService {
     private OfficeDAO officeDAO;
 
 
+
     public EmployeeService() {
         employeeDAO = new EmployeeDAO();
         scanner = new Scanner(System.in);
@@ -59,6 +60,36 @@ public class EmployeeService {
             System.out.println(employee);
         else
             System.out.println("Id does not match any of the employees.");
+    }
+
+    public void showEmployeeByLand() {
+        System.out.println ("Which country would you like to look at employees in? \n1: U.S.A\n2: France\n3: Japan\n4: Australia\n5: England\n0: End");
+        int input = scanner.nextInt();
+        if (input == 1){
+            System.out.println ("Employees working in the U.S.A.");
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("1"))).forEach (System.out::println);
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("2"))).forEach (System.out::println);
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("3"))).forEach (System.out::println);
+        }else if (input == 2){
+            System.out.println ("Employees working in the France");
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("4"))).forEach (System.out::println);
+        }
+        else if (input == 3){
+            System.out.println ("Employees working in the Japan");
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("5"))).forEach (System.out::println);
+        }
+        else if (input == 4){
+            System.out.println ("Employees working in the Australia");
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("6"))).forEach (System.out::println);
+        }
+        else if (input == 5){
+            System.out.println ("Employees working in the England");
+            employeeDAO.getAllEmployees ().stream().filter (employee -> (employee.getOfficeCode ().equals ("7"))).forEach (System.out::println);
+        }else {
+            System.out.println ("Please write correct number!");
+            showEmployeeByLand ();
+        }
+
     }
 
     public void setOffice(Office office) {
