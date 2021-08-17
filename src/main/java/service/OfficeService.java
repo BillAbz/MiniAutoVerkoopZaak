@@ -36,7 +36,24 @@ public class OfficeService {
 
 
     public Office createAnOffice() {
-        return new Office();
+        System.out.println("What city is the office located?");
+        String city = scanner.nextLine();
+        System.out.println("What is the phone number of the office?"); //TODO:: check for right phone number
+        String phone = scanner.nextLine();
+        System.out.println("What is the first addressline of the office?");
+        String addressLine1 = scanner.nextLine();
+        System.out.println("What's the second addressline of the office?");
+        String addressLine2 = scanner.nextLine();
+        System.out.println("What is the state of the office?");
+        String state = scanner.nextLine();
+        System.out.println("What is the Country of the office?");
+        String country = scanner.nextLine();
+        System.out.println("What is the postal code of the office?");
+        String postalCode = scanner.nextLine();
+        System.out.println("What is the territory of the office?");
+        String territory = scanner.nextLine();
+        Office office = new Office(city,phone,addressLine1,addressLine2,state,country,postalCode,territory);
+        return office;
     }
 
     public void updateAnOffice() {
