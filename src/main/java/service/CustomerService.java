@@ -4,6 +4,7 @@ import DAO.CustomerDAO;
 import Entities.Customer;
 
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CustomerService {
@@ -34,89 +35,24 @@ public class CustomerService {
     }
 
 
-    public void createACustomer() {
-        Customer customer = new Customer();
-
-        System.out.println("Enter Customer Details:");
-
-        System.out.println();
-
-        String customerName;
-        boolean isUnique;
-        do {
-            isUnique = true;
-            System.out.println("Customer name:");
-            customerName = scanner.nextLine();
-            for (Customer customer1 :customerDAO.getAllCustomers()) {
-                if (customer.getCustomerName().contentEquals(customerName)) {
-                    System.out.println("Customer name already exists.");
-                    isUnique = false;
-                    break;
-                }
-            }
-        } while (!isUnique);
-
-        System.out.println("First Name:");
-        String firstName = scanner.nextLine();
-
-        System.out.println("Last Name:");
-        String lastName = scanner.nextLine();
-
-
-        // TO DO
-        System.out.println("PhoneNumber (Only numbers):");
-        String phone = scanner.nextLine();
-
-        //
-
-        System.out.println("AddressLine1:");
-        String addressLine1 = scanner.nextLine();
-
-        System.out.println("AddressLine2:");
-        String addressLine2 = scanner.nextLine();
-
-        System.out.println("City:");
-        String city = scanner.nextLine();
-
-        System.out.println("State:");
-        String state = scanner.nextLine();
-
-        System.out.println("PostalCode:");
-        String postalCode = scanner.nextLine();
-
-        System.out.println("Country:");
-        String country = scanner.nextLine();
-
-        customer.setCustomerName(customerName);
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setPhone(phone);
-        customer.setAddressLine1(addressLine1);
-        customer.setAddressLine2(addressLine2);
-        customer.setCity(city);
-        customer.setState(state);
-        customer.setPostalCode(postalCode);
-        customer.setCountry(country);
-
-        customerDAO.addCustomers(customer);
-
-
-
-
+    public Customer createACustomer() {
+//        long phoneNumber = scanner.nextLong();
+//        if (phoneNumber<9 || phoneNumber>10){
+//            System.out.println("doesn't seem right");
+//            phoneNumber = scanner.nextLong();
+//        }else {
+//            System.out.println(phoneNumber);                      //PhoneCheck
+//            System.out.println("klopt dit nummer?   Y/N");
+//            String yesNo= scanner.next();
+//            if (yesNo.toUpperCase(Locale.ROOT)=="N"){
+//                phoneNumber =scanner.nextLong();
+//            }
+//            System.out.println("thanks");
+//        }
+        return new Customer();
     }
 
-
     public void updateACustomer() {
-        System.out.println("Please enter the customer name of the customer you would like to update:");
-        String customerName = scanner.next();
-        for (Customer customer1 :customerDAO.getAllCustomers()) {
-            if (customer.getCustomerName().contentEquals(customerName)) {
-                System.out.println("Customer name already exists.");
-
-                break;
-            }
-        }
-
 
     }
 
