@@ -27,7 +27,7 @@ public class CustomerService {
     public void showCustomerByCustomerNumber() throws SQLException {
         System.out.println("What is the id of the customer you want to lookup?");
         int input = scanner.nextInt();
-        Customer customer =  customerDAO.getCustomerByCustomerNumber(input);
+        Customer customer = customerDAO.getCustomerByCustomerNumber(input);
         if (customer != null)
             System.out.println(customer);
         else
@@ -37,66 +37,64 @@ public class CustomerService {
 
     public Customer createACustomer() {
 
-            Customer customer = new Customer();
-            System.out.println("Enter Customer Details:");
-            System.out.println();
-            String customerName;
-            boolean isUnique;
-            do {
-                isUnique = true;
-                System.out.println("Customer name:");
-                customerName = scanner.nextLine();
-                for (Customer customer1 : customerDAO.getAllCustomers()) {
-                    if (customer.getCustomerName().contentEquals(customerName)) {
-                        System.out.println("Customer name already exists.");
-                        isUnique = false;
-                        break;
-                    }
+        Customer customer = new Customer();
+        System.out.println("Enter Customer Details:");
+        System.out.println();
+        String customerName;
+        boolean isUnique;
+        do {
+            isUnique = true;
+            System.out.println("Customer name:");
+            customerName = scanner.nextLine();
+            for (Customer customer1 : customerDAO.getAllCustomers()) {
+                if (customer.getCustomerName().contentEquals(customerName)) {
+                    System.out.println("Customer name already exists.");
+                    isUnique = false;
+                    break;
                 }
-            } while (!isUnique);
-            System.out.println("First Name:");
-            String firstName = scanner.nextLine();
-            System.out.println("Last Name:");
-            String lastName = scanner.nextLine();
-            System.out.println("PhoneNumber:");//        long phoneNumber = scanner.nextLong();
-//        if (phoneNumber<9 || phoneNumber>10){
-//            System.out.println("doesn't seem right");
-//            phoneNumber = scanner.nextLong();
-//        }else {
-//            System.out.println(phoneNumber);                      //PhoneCheck
-//            System.out.println("klopt dit nummer?   Y/N");
-//            String yesNo= scanner.next();
-//            if (yesNo.toUpperCase(Locale.ROOT)=="N"){
-//                phoneNumber =scanner.nextLong();
-//            }
-//            System.out.println("thanks");
-
-//        }
-            String phone = scanner.nextLine();
-            System.out.println("AddressLine1:");
-            String addressLine1 = scanner.nextLine();
-            System.out.println("AddressLine2:");
-            String addressLine2 = scanner.nextLine();
-            System.out.println("City:");
-            String city = scanner.nextLine();
-            System.out.println("State:");
-            String state = scanner.nextLine();
-            System.out.println("PostalCode:");
-            String postalCode = scanner.nextLine();
-            System.out.println("Country:");
-            String country = scanner.nextLine();
-            customer.setCustomerName(customerName);
-            customer.setFirstName(firstName);
-            customer.setLastName(lastName);
-            customer.setPhone(phone);
-            customer.setAddressLine1(addressLine1);
-            customer.setAddressLine2(addressLine2);
-            customer.setCity(city);
-            customer.setState(state);
-            customer.setPostalCode(postalCode);
-            customer.setCountry(country);
-            customerDAO.addCustomers(customer);
-
+            }
+        } while (!isUnique);
+        System.out.println("First Name:");
+        String firstName = scanner.nextLine();
+        System.out.println("Last Name:");
+        String lastName = scanner.nextLine();
+        System.out.println("PhoneNumber:");
+        String phone = scanner.nextLine();
+        if (phone.length() < 9 || phone.length() > 10) {
+            System.out.println("doesn't seem right");
+            phone = scanner.next();
+        } else {
+            System.out.println(phone);
+            System.out.println("klopt dit nummer?   Y/N");
+            String yesNo = scanner.next();
+            if (yesNo.toUpperCase(Locale.ROOT) == "N") {
+                phone = scanner.next();
+            }
+            System.out.println("thanks");
+        }
+        System.out.println("AddressLine1:");
+        String addressLine1 = scanner.nextLine();
+        System.out.println("AddressLine2:");
+        String addressLine2 = scanner.nextLine();
+        System.out.println("City:");
+        String city = scanner.nextLine();
+        System.out.println("State:");
+        String state = scanner.nextLine();
+        System.out.println("PostalCode:");
+        String postalCode = scanner.nextLine();
+        System.out.println("Country:");
+        String country = scanner.nextLine();
+        customer.setCustomerName(customerName);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setPhone(phone);
+        customer.setAddressLine1(addressLine1);
+        customer.setAddressLine2(addressLine2);
+        customer.setCity(city);
+        customer.setState(state);
+        customer.setPostalCode(postalCode);
+        customer.setCountry(country);
+        customerDAO.addCustomers(customer);
 
         return new Customer();
     }
