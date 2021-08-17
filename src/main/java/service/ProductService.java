@@ -35,15 +35,7 @@ public class ProductService {
             System.out.println("Id does not match any of the products.");
     }
 
-    private void outOfStock(){
-        Product product =new Product();
-        if (product.getQuantityInStock()==10){
-            System.out.println("You only got 10 left!");
-        }else if (product.getQuantityInStock()==0) {
-            System.out.println("You're out of that product");
-            System.out.println(product.getQuantityInStock());
-        }
-    }
+
 
     public Product createAProduct() {
         return new Product();

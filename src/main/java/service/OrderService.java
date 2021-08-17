@@ -4,6 +4,7 @@ import DAO.EmployeeDAO;
 import DAO.OrderDAO;
 import Entities.Employee;
 import Entities.Order;
+import Entities.Product;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -36,9 +37,16 @@ public class OrderService {
     }
 
 
-    public Order createAnOrder() {
-        return new Order();
-    }
+//    public Order createAnOrder() {
+//            Product product =new Product();
+//            if (product.getQuantityInStock()==10){
+//                System.out.println("You only got 10 left!");
+//            }else if (product.getQuantityInStock()==0) {
+//                System.out.println("You're out of that product");
+//                System.out.println(product.getQuantityInStock());
+//            }
+//        }
+
 
     public void updateAnOrder() {
 
