@@ -146,7 +146,7 @@ public class CustomerService {
 
                             System.out.println("\nWould you like to update anything else?: Y/N");
                             updateMore = scanner.next();
-                            while (updateMore != "Y" || updateMore != "N") {
+                            while (updateMore != "Y" && updateMore != "N") {
                                 System.out.println("Would you like to update anything else?: ->Y/N<-");
                                 updateMore = scanner.next();
                             }
@@ -168,7 +168,7 @@ public class CustomerService {
 
 
                         }
-                }while (done == false);
+                }while (!done);
 
 
             }
