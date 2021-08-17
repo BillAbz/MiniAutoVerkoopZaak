@@ -101,60 +101,65 @@ public class CustomerService {
 
     public void updateACustomer() {
 
-
+        boolean done = false;
         int id = scanner.nextInt();
         Customer customer = customerDAO.getCustomerByCustomerNumber(id);
 
         if (customer == null) {
             System.err.println("Customer doesn't exist.");
         } else {
-            System.out.println("What would you like to update:");
-            System.out.println();
+            System.out.println("What would you like to update:\n");
 
 
-            do{
-                boolean done= false;
-                String updateMore;
-                int selection = scanner.nextInt();
+
+            do {
+
+                String updateMore = "Y";
 
                 System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country");
-                if (selection > 10 || selection <1){
+                int selection = scanner.nextInt();
+                if (selection > 10 || selection < 1) {
                     System.out.println("Please make a valid selection");
                     selection = scanner.nextInt();
                 }
-            switch (selection){
-                case 1 : System.out.println("customer name:");
-                    String customerName;
-                    boolean isUnique;
-                    do {
-                        isUnique = true;
-                        System.out.println("Customer name:");
-                        customerName = scanner.nextLine();
-                        for (Customer customer1 : customerDAO.getAllCustomers()) {
-                            if (customer.getCustomerName().contentEquals(customerName)) {
-                                System.out.println("Customer name already exists.");
-                                isUnique = false;
-                                System.out.println("Username has been updated to: "+customerName);
-                                System.out.println("Would you like to update anything else?: Y/N");
+                switch (selection) {
+                    case 1:
+                        System.out.println("customer name:");
+                        String customerName;
+                        boolean isUnique;
+                        do {
+                            isUnique = true;
+                            System.out.println("Customer name:");
+                            customerName = scanner.nextLine();
+                            for (Customer customer1 : customerDAO.getAllCustomers()) {
+                                if (customer.getCustomerName().contentEquals(customerName)) {
+                                    System.out.println("Customer name already exists.");
+                                    isUnique = false;
+                                    break;
+                                }
+                            }}while (!isUnique);
+
+                        customer.setCustomerName(customerName);
+                            System.out.println("Username has been updated to: " + customerName);
+
+                            System.out.println("\nWould you like to update anything else?: Y/N");
+                            updateMore = scanner.next();
+                            if (updateMore != "Y" || updateMore != "N") {
+                                System.out.println("Would you like to update anything else?: ->Y/N<-");
                                 updateMore = scanner.next();
-                                if (updateMore != "Y" || updateMore != "N") {
-                                    System.out.println("Would you like to update anything else?: ->Y/N<-");
-                                    updateMore = scanner.next();
-                                }else if (updateMore == "N")
-                                {
-                                    System.out.println("All updates have been saved");
-                                    false;
-                                }else
+                            } else if (updateMore == "N") {
+                                done = true;
+                                System.out.println("All updates have been saved");
+
+                            } else
                                 break;
-                            }
+
+
                         }
-                    } while (!isUnique);
+                }while (done == false);
+
 
             }
-            }
-
-
-    }
 
     public void deleteACustomer() {
 
