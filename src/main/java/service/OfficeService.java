@@ -5,6 +5,7 @@ import Entities.Employee;
 import Entities.Office;
 
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class OfficeService {
@@ -38,8 +39,20 @@ public class OfficeService {
     public Office createAnOffice() {
         System.out.println("What city is the office located?");
         String city = scanner.nextLine();
-        System.out.println("What is the phone number of the office?"); //TODO:: check for right phone number
-        String phone = scanner.nextLine();
+        System.out.println("What is the phone number of the office?");
+        String phoneNumber = scanner.next();
+        if (phoneNumber.length()<9 || phoneNumber.length()>10){
+            System.out.println("doesn't seem right");
+            phoneNumber = scanner.next();
+        }else {
+            System.out.println(phoneNumber);
+            System.out.println("klopt dit nummer?   Y/N");
+            String yesNo= scanner.next();
+            if (yesNo.toUpperCase(Locale.ROOT)=="N"){
+                phoneNumber =scanner.next();
+            }
+            System.out.println("thanks");
+        }
         System.out.println("What is the first addressline of the office?");
         String addressLine1 = scanner.nextLine();
         System.out.println("What's the second addressline of the office?");
@@ -52,7 +65,7 @@ public class OfficeService {
         String postalCode = scanner.nextLine();
         System.out.println("What is the territory of the office?");
         String territory = scanner.nextLine();
-        Office office = new Office(city,phone,addressLine1,addressLine2,state,country,postalCode,territory);
+        Office office = new Office(city,phoneNumber,addressLine1,addressLine2,state,country,postalCode,territory);
         return office;
     }
 
