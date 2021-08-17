@@ -116,6 +116,7 @@ public class CustomerService {
 
                 String updateMore;
 
+
                 System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country");
                 int selection = scanner.nextInt();
 
@@ -146,7 +147,7 @@ public class CustomerService {
 
                             System.out.println("\nWould you like to update anything else?: Y/N");
                             updateMore = scanner.next();
-                            while (updateMore != "Y" || updateMore != "N") {
+                            while (updateMore != "Y" && updateMore != "N") {
                                 System.out.println("Would you like to update anything else?: ->Y/N<-");
                                 updateMore = scanner.next();
                             }
@@ -156,6 +157,11 @@ public class CustomerService {
 
                             break;
                     case 2:
+                        System.out.println("First Name:");
+                        String firstName = scanner.nextLine();
+                        System.out.println("First name has been updated to: "+firstName);
+                        tryAgain;
+
                     case 3:
                     case 4:
                     case 5:
@@ -168,7 +174,7 @@ public class CustomerService {
 
 
                         }
-                }while (done == false);
+                }while (!done);
 
 
             }
