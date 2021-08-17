@@ -4,6 +4,7 @@ import DAO.CustomerDAO;
 import Entities.Customer;
 
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CustomerService {
@@ -35,6 +36,19 @@ public class CustomerService {
 
 
     public Customer createACustomer() {
+//        long phoneNumber = scanner.nextLong();
+//        if (phoneNumber<9 || phoneNumber>10){
+//            System.out.println("doesn't seem right");
+//            phoneNumber = scanner.nextLong();
+//        }else {
+//            System.out.println(phoneNumber);                      //PhoneCheck
+//            System.out.println("klopt dit nummer?   Y/N");
+//            String yesNo= scanner.next();
+//            if (yesNo.toUpperCase(Locale.ROOT)=="N"){
+//                phoneNumber =scanner.nextLong();
+//            }
+//            System.out.println("thanks");
+//        }
         return new Customer();
     }
 
