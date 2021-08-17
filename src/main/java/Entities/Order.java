@@ -1,6 +1,7 @@
 package Entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,9 @@ public class Order {
     private int orderNumber;
     @OneToMany
     private List<OrderDetail> orderDetails;
-    private Date orderDate;
-    private Date requiredDate;
-    private Date shippedDate;
+    private LocalDate orderDate;
+    private LocalDate requiredDate;
+    private LocalDate shippedDate;
     private String status;
     private String comments;
     private int customerNumber;
@@ -38,27 +39,35 @@ public class Order {
         this.orderDetails = orderDetails;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getRequiredDate() {
+    public LocalDate getRequiredDate() {
         return requiredDate;
     }
 
-    public void setRequiredDate(Date requiredDate) {
-        this.requiredDate = requiredDate;
+    public void setRequiredDate(LocalDate requiredDate) {
+        boolean dateBeforeToday = true;
+        LocalDate dateToday = LocalDate.now();
+        while (dateBeforeToday) {
+            if (requiredDate.isBefore(dateToday)) {
+                System.out.println("please enter a date thats after today");
+            }else {
+                this.requiredDate = requiredDate;
+                dateBeforeToday = false;
+            }
+        }
     }
-
-    public Date getShippedDate() {
+    public LocalDate getShippedDate() {
         return shippedDate;
     }
 
-    public void setShippedDate(Date shippedDate) {
+    public void setShippedDate(LocalDate shippedDate) {
         this.shippedDate = shippedDate;
     }
 
