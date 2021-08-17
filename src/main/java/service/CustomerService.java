@@ -99,6 +99,7 @@ public class CustomerService {
         return new Customer();
     }
 
+
     public void updateACustomer() {
 
         boolean done;
@@ -113,6 +114,7 @@ public class CustomerService {
 
 
             do {
+                done = false;
 
                 String updateMore;
 
@@ -159,17 +161,162 @@ public class CustomerService {
                     case 2:
                         System.out.println("First Name:");
                         String firstName = scanner.nextLine();
+                        customer.setFirstName(firstName);
                         System.out.println("First name has been updated to: "+firstName);
-                        tryAgain;
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
 
                     case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
+                        System.out.println("Last Name:");
+                        String lastName = scanner.nextLine();
+                        customer.setLastName(lastName);
+                        System.out.println("Last name has been updated to: "+lastName);
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+
+
+                    case 4:System.out.println("PhoneNumber:");
+                        String phone = scanner.nextLine();
+                        if (phone.length() < 9 || phone.length() > 10) {
+                            System.out.println("doesn't seem right");
+                            phone = scanner.next();
+                        } else {
+                            System.out.println(phone);
+                            System.out.println("klopt dit nummer?   Y/N");
+                            String yesNo = scanner.next();
+                            if (yesNo.toUpperCase(Locale.ROOT) == "N") {
+                                phone = scanner.next();
+                            }
+                            System.out.println("thanks");
+                            customer.setPhone(phone);
+                        }System.out.println("Phone number has been updated to: "+phone);
+
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+
+
+                    case 5:System.out.println("AddressLine1:");
+                        String addressLine1 = scanner.nextLine();
+                        customer.setAddressLine1(addressLine1);
+                        System.out.println("Address line 1 has been updated to: "+addressLine1);
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+                    case 6:System.out.println("AddressLine2:");
+                        String addressLine2 = scanner.nextLine();
+                        customer.setAddressLine2(addressLine2);
+                        System.out.println("Address line 2 has been updated to: "+addressLine2);
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+                    case 7:System.out.println("City:");
+                        String city = scanner.nextLine();
+                        customer.setCity(city);
+                        System.out.println("City has been updated to: "+city);
+
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+                    case 8:System.out.println("State:");
+                        String state = scanner.nextLine();
+                        customer.setState(state);
+                        System.out.println("State has been updated to: "+state);
+
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
+                    case 9: System.out.println("PostalCode:");
+                        String postalCode = scanner.nextLine();
+                        customer.setPostalCode(postalCode);
+                        System.out.println("Postal code has been updated to: "+postalCode);
+
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
                     case 10:
+                        System.out.println("Country:");
+                        String country = scanner.nextLine();
+                        customer.setCountry(country);
+                        System.out.println("Country has been updated to: "+country);
+                        System.out.println("\nWould you like to update anything else?: Y/N");
+                        updateMore = scanner.next();
+                        while (updateMore != "Y" && updateMore != "N") {
+                            System.out.println("Would you like to update anything else?: ->Y/N<-");
+                            updateMore = scanner.next();
+                        }
+                        if (updateMore == "N"){
+                            done = true;
+                        }else done = false;
+
+                        break;
 
 
 
@@ -179,9 +326,10 @@ public class CustomerService {
 
             }
 
-    public void deleteACustomer() {
 
-    }
+
+}
+public void deleteACustomer(){
 
 }
 }
