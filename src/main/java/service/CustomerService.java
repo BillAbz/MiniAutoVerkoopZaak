@@ -47,7 +47,7 @@ public class CustomerService {
             System.out.println("Customer name:");
             customerName = scanner.nextLine();
             for (Customer customer1 : customerDAO.getAllCustomers()) {
-                if (customer.getCustomerName().contentEquals(customerName)) {
+                if (customer1.getCustomerName().contentEquals(customerName)) {
                     System.out.println("Customer name already exists.");
                     isUnique = false;
                     break;
@@ -101,7 +101,7 @@ public class CustomerService {
 
     public void updateACustomer() {
 
-        boolean done = false;
+        boolean done;
         int id = scanner.nextInt();
         Customer customer = customerDAO.getCustomerByCustomerNumber(id);
 
@@ -114,14 +114,16 @@ public class CustomerService {
 
             do {
 
-                String updateMore = "Y";
+                String updateMore;
 
                 System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country");
                 int selection = scanner.nextInt();
-                if (selection > 10 || selection < 1) {
+
+                while (selection > 10 || selection < 1) {
                     System.out.println("Please make a valid selection");
                     selection = scanner.nextInt();
                 }
+
                 switch (selection) {
                     case 1:
                         System.out.println("customer name:");
@@ -132,7 +134,7 @@ public class CustomerService {
                             System.out.println("Customer name:");
                             customerName = scanner.nextLine();
                             for (Customer customer1 : customerDAO.getAllCustomers()) {
-                                if (customer.getCustomerName().contentEquals(customerName)) {
+                                if (customer1.getCustomerName().contentEquals(customerName)) {
                                     System.out.println("Customer name already exists.");
                                     isUnique = false;
                                     break;
@@ -144,15 +146,25 @@ public class CustomerService {
 
                             System.out.println("\nWould you like to update anything else?: Y/N");
                             updateMore = scanner.next();
-                            if (updateMore != "Y" || updateMore != "N") {
+                            while (updateMore != "Y" || updateMore != "N") {
                                 System.out.println("Would you like to update anything else?: ->Y/N<-");
                                 updateMore = scanner.next();
-                            } else if (updateMore == "N") {
+                            }
+                            if (updateMore == "N"){
                                 done = true;
-                                System.out.println("All updates have been saved");
+                            }else done = false;
 
-                            } else
-                                break;
+                            break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+
 
 
                         }
