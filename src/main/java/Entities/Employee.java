@@ -98,4 +98,7 @@ public class Employee {
                 ", jobTitle='" + jobTitle + '\'' +
                 '}';
     }
+
+    public void setOffice(Office office) {
+    }
 }
