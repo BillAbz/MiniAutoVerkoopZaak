@@ -101,6 +101,7 @@ public class CustomerService {
 
 
     public void updateACustomer() { //Todo:: String values are compared with != and ==, but must be with string.equals("Otherstring") or string.contentEquals("otherstring")
+        //Todo :: the updateMore question can be placed all the way under the switch case right before the do while loop ends so there will be a much shorter and cleaner code.
 
         boolean done;
         int id = scanner.nextInt();
