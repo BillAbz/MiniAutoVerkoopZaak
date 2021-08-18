@@ -100,7 +100,7 @@ public class CustomerService {
     }
 
 
-    public void updateACustomer() {
+    public void updateACustomer() { //Todo:: String values are compared with != and ==, but must be with string.equals("Otherstring") or string.contentEquals("otherstring")
 
         boolean done;
         int id = scanner.nextInt();
@@ -193,7 +193,7 @@ public class CustomerService {
                         break;
 
 
-                    case 4:System.out.println("PhoneNumber:");
+                    case 4:System.out.println("PhoneNumber:"); //Todo:: Make loop instead of passing once in if else statement, also make check more solid
                         String phone = scanner.nextLine();
                         if (phone.length() < 9 || phone.length() > 10) {
                             System.out.println("doesn't seem right");
