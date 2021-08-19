@@ -249,7 +249,12 @@ public class CustomerService {
                     done = true;
                 }else done = false;
 
+
+                customerDAO.updateCustomers(customer);
+
                 }while (!done);
+
+            customerDAO.updateCustomers(customer);
 
 
             }
@@ -258,6 +263,7 @@ public class CustomerService {
 
 }
 public void deleteACustomer(){
+
 
 }
 }
