@@ -31,12 +31,12 @@ public class CustomerDAO {
         return entityManager.find(Customer.class , customerNumber);
     }
 
-    //?
+
     public Customer getCustomerByCountry(String country){
         EntityManager entityManager = emf.createEntityManager();
         return entityManager.find(Customer.class, country);
     }
-    //
+
 
     public Set<Customer> getAllCustomers() {
         EntityManager em = emf.createEntityManager();
