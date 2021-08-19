@@ -80,55 +80,57 @@ public class PaymentService {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if (payment != null)
-            System.out.println(payment);
+            if (payment != null){
+                System.out.println(payment);
+
+                System.out.println("Please select an option: \n(1)New Date\n(2)Set Amount\n(3)New Pattern\n(4)Phone number");
+
+                int selection = scanner.nextInt();
+
+                while (selection > 4 || selection < 0) {
+                    System.out.println("Please make a valid selection");
+                    selection = scanner.nextInt();
+                }
+
+                switch (selection) {
+                    default:
+                        break;
+                    case 1:
+                        System.out.println("What is the new date?");
+                        System.out.println("Enter the date year,month,week after you entered one press enter for the next.");
+                        System.out.println("Year:");
+                        int year =scanner.nextInt();
+                        System.out.println("Month:");
+                        int month = scanner.nextInt();
+                        System.out.println("Week:");
+                        int week = scanner.nextInt();
+                        LocalDate date = LocalDate.of(year,month,week);
+                        payment.setPaymentDate(date);
+                        System.out.println("Done.");
+                        break;
+                    case 2:
+                        System.out.println("What is the new Amount?");
+                        String priceEach = scanner.next();
+                        DecimalFormat decimalFormat = new DecimalFormat(priceEach);
+                        payment.setAmount(decimalFormat);
+                        System.out.println("Done.");
+
+                        break;
+                    case 3:
+                        System.out.println("What is the new Pattern?");
+                        String pattern = scanner.nextLine();
+                        payment.setPattern(pattern);
+                        break;
+                    case 4:
+                        System.out.println("What is the new CustomerNumber?");
+                        int customerNumber = scanner.nextInt();
+                        payment.setCustomerNumber(customerNumber);
+                }
+                paymentDAO.updatePayment(payment);
+
+            }
         else
             System.out.println("Id does not match any of the payments.");
-
-            System.out.println("Please select an option: \n(1)New Date\n(2)Set Amount\n(3)New Pattern\n(4)Phone number");
-
-            int selection = scanner.nextInt();
-
-            while (selection > 4 || selection < 0) {
-                System.out.println("Please make a valid selection");
-                selection = scanner.nextInt();
-            }
-
-            switch (selection) {
-                default:
-                    break;
-                case 1:
-                    System.out.println("What is the new date?");
-                    System.out.println("Enter the date year,month,week after you entered one press enter for the next.");
-                    System.out.println("Year:");
-                    int year =scanner.nextInt();
-                    System.out.println("Month:");
-                    int month = scanner.nextInt();
-                    System.out.println("Week:");
-                    int week = scanner.nextInt();
-                    LocalDate date = LocalDate.of(year,month,week);
-                    payment.setPaymentDate(date);
-                    System.out.println("Done.");
-                    break;
-                case 2:
-                    System.out.println("What is the new Amount?");
-                    String priceEach = scanner.next();
-                    DecimalFormat decimalFormat = new DecimalFormat(priceEach);
-                    payment.setAmount(decimalFormat);
-                    System.out.println("Done.");
-
-                    break;
-                case 3:
-                    System.out.println("What is the new Pattern?");
-                    String pattern = scanner.nextLine();
-                    payment.setPattern(pattern);
-                    break;
-                case 4:
-                    System.out.println("What is the new CustomerNumber?");
-                    int customerNumber = scanner.nextInt();
-                    payment.setCustomerNumber(customerNumber);
-            }
-                paymentDAO.updatePayment(payment);
             }
 
 

@@ -66,33 +66,57 @@ public class OrderDetailService {
 
     public void updateAnOrderDetail() {
         try {
-            System.out.println("What is the id of the OrderDetail you want to change?");
-
+            System.out.println("What is the id of the Order you want to lookup?");
             int input = scanner.nextInt();
             order = orderDAO.getOrderByOrderNumber(input);
+
+
             OrderDetail orderDetail = orderDetailDAO.getProductByOrderNumber(order);
+
             if (orderDetail != null) {
                 System.out.println(orderDetail);
+                System.out.println("Please select an option: \n(1)New OrderLineNumber\n(2)Set QuantityOrdered\n(3)New Pattern\n(4)Product Code\n(5)Price Each");
 
-                System.out.println("Enter the OrderLineNumber pls:");
-                int orderLineNumber = scanner.nextInt();
-                System.out.println("Enter the Pattern for example:  '#,###,###,###.00'");
-                String pattern = scanner.next();
-                System.out.println("Enter Quantity Ordered:");
-                int quantityOrdered = scanner.nextInt();
-                System.out.println("And enter the ProductCode:");
-                String productCode = scanner.next();
+                int selection = scanner.nextInt();
 
-                DecimalFormat priceEach = new DecimalFormat(pattern);
-                orderDetail.setOrderLineNumber(orderLineNumber);
-                orderDetail.setPattern(pattern);
-                orderDetail.setQuantityOrdered(quantityOrdered);
-                orderDetail.setProductCode(productCode);
-                orderDetail.setPriceEach(priceEach);
-
-                orderDetailDAO.updateOrderDetail(orderDetail);
+                while (selection > 5 || selection < 0) {
+                    System.out.println("Please make a valid selection");
+                    selection = scanner.nextInt();
+                }
+                switch (selection) {
+                    default:
+                        break;
+                    case 1:
+                        System.out.println("Enter the new OrderLineNumber pls:");
+                        int orderLineNumber = scanner.nextInt();
+                        orderDetail.setOrderLineNumber(orderLineNumber);
+                        break;
+                    case 2:
+                        System.out.println("Enter the new Quantity Ordered:");
+                        int quantityOrdered = scanner.nextInt();
+                        orderDetail.setQuantityOrdered(quantityOrdered);
+                        break;
+                    case 3:
+                        System.out.println("Enter the new Pattern for example:  '#,###,###,###.00'");
+                        String pattern = scanner.next();
+                        orderDetail.setPattern(pattern);
+                        break;
+                    case 4:
+                        System.out.println("Enter the New ProductCode:");
+                        String productCode = scanner.next();
+                        orderDetail.setProductCode(productCode);
+                        break;
+                    case 5:
+                        System.out.println("Enter the new Price Each:");
+                        String priceEach = scanner.next();
+                        DecimalFormat decimalFormat = new DecimalFormat(priceEach);
+                        orderDetail.setPriceEach(decimalFormat);
+                        break;
+                }
             } else
-                System.out.println("Id does not match any of the employees.");
+                System.out.println("Id does not match any of the payments.");
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
