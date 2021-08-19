@@ -11,6 +11,7 @@ import net.bytebuddy.asm.Advice;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class OrderService {
@@ -87,10 +88,10 @@ public class OrderService {
             order = orderDAO.getOrderByOrderNumber(orderNumber);
         }
 
-        System.out.println("Please select an option: \n(1)required date of delivery\n(2)comments\n(3)customer number");
+        System.out.println("Please select an option: \n(1)comments\n(2)status");
         int selection = scanner.nextInt();
 
-        while (selection > 3 || selection < 0) {
+        while (selection > 2 || selection < 0) {
             System.out.println("Please make a valid selection");
             selection = scanner.nextInt();
         }
@@ -98,29 +99,30 @@ public class OrderService {
             default:
                 break;
             case 1:
-                System.out.println("please give the new required date of delivering , xxxx-xx-xx");
-                String requiredDate = scanner.nextLine();
-                LocalDate requiredLocalDate = LocalDate.parse(requiredDate);
-
-                boolean reqDateBeforeToday = true;
-                while (reqDateBeforeToday) {
-                    if (requiredLocalDate.isBefore(LocalDate.now())) {
-                        System.out.println("please enter a date that is after the current date");
-                    } else {
-                        order.setRequiredDate(requiredLocalDate);
-                        reqDateBeforeToday = false;
-                    }
-                }
-                System.out.println("Done.");
-                break;
-            case 2:
                 System.out.println("please enter your comments");
                 order.setComments(scanner.nextLine());
                 System.out.println("Done.");
                 break;
-            case 3:
-                System.out.println("please enter the new customer number");
-                order.setCustomerNumber(scanner.nextInt());
+            case 2:
+                System.out.println("please enter the new status : 'SHIPPED' , 'CANCELLED' , 'ON_HOLD' , 'DISPUTED' , 'RESOLVED' ");
+                String status = scanner.next();
+
+                if (status.equalsIgnoreCase("shipped")){
+                order.setStatus(ShippingStatus.SHIPPED);
+
+                }if (status.equalsIgnoreCase("cancelled")){
+                    order.setStatus(ShippingStatus.CANCELLED);
+
+                }if (status.equalsIgnoreCase("on_hold")){
+                order.setStatus(ShippingStatus.ON_HOLD);
+
+                }if (status.equalsIgnoreCase("disputed")){
+                order.setStatus(ShippingStatus.DISPUTED);
+
+                }if (status.equalsIgnoreCase("resolved")){
+                order.setStatus(ShippingStatus.RESOLVED);
+                }
+
                 System.out.println("Done.");
                 break;
         }
