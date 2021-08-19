@@ -47,7 +47,7 @@ public class CustomerService {
             System.out.println("Customer name:");
             customerName = scanner.nextLine();
             for (Customer customer1 : customerDAO.getAllCustomers()) {
-                if (customer.getCustomerName().contentEquals(customerName)) {
+                if (customer1.getCustomerName().contentEquals(customerName)) {
                     System.out.println("Customer name already exists.");
                     isUnique = false;
                     break;
@@ -99,12 +99,210 @@ public class CustomerService {
         return new Customer();
     }
 
+
     public void updateACustomer() {
+        boolean done;
+        System.out.println("please enter the id of the customer you wish to update");
+        int id = scanner.nextInt();
+        Customer customer = customerDAO.getCustomerByCustomerNumber(id);
+
+        if (customer == null) {
+            System.err.println("Customer doesn't exist.");
+        } else {
+            System.out.println("What would you like to update:\n");
+
+
+
+            do {
+                done = false;
+
+                String updateMore;
+
+
+                System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country");
+                int selection = scanner.nextInt();
+
+                while (selection > 10 || selection < 1) {
+                    System.out.println("Please make a valid selection");
+                    selection = scanner.nextInt();
+                }
+
+                switch (selection) {
+                    case 1:
+                        System.out.println("customer name:");
+                        String customerName;
+                        boolean isUnique;
+                        do {
+                            isUnique = true;
+                            System.out.println("Customer name:");
+                            customerName = scanner.nextLine();
+                            for (Customer customer1 : customerDAO.getAllCustomers()) {
+                                if (customer1.getCustomerName().contentEquals(customerName)) {
+                                    System.out.println("Customer name already exists.");
+                                    isUnique = false;
+                                    break;
+                                }
+                            }
+                        } while (!isUnique);
+
+                        customer.setCustomerName(customerName);
+                        System.out.println("Username has been updated to: " + customerName);
+
+
+                        break;
+                    case 2:
+                        System.out.println("First Name:");
+                        String firstName = scanner.nextLine();
+                        customer.setFirstName(firstName);
+                        System.out.println("First name has been updated to: " + firstName);
+
+
+                        break;
+
+                    case 3:
+                        System.out.println("Last Name:");
+                        String lastName = scanner.nextLine();
+                        customer.setLastName(lastName);
+                        System.out.println("Last name has been updated to: " + lastName);
+
+
+                        break;
+
+
+                    case 4:
+                        System.out.println("PhoneNumber:"); //Todo:: Make loop instead of passing once in if else statement, also make check more solid
+                        String phone = scanner.nextLine();
+                        if (phone.length() < 9 || phone.length() > 10) {
+                            System.out.println("doesn't seem right");
+                            phone = scanner.next();
+                        } else {
+                            System.out.println(phone);
+                            System.out.println("klopt dit nummer?   Y/N");
+                            String yesNo = scanner.next();
+                            if (yesNo.toUpperCase(Locale.ROOT) == "N") {
+                                phone = scanner.next();
+                            }
+                            System.out.println("thanks");
+                            customer.setPhone(phone);
+                        }
+                        System.out.println("Phone number has been updated to: " + phone);
+
+
+                        break;
+
+
+                    case 5:
+                        System.out.println("AddressLine1:");
+                        String addressLine1 = scanner.nextLine();
+                        customer.setAddressLine1(addressLine1);
+                        System.out.println("Address line 1 has been updated to: " + addressLine1);
+
+                        break;
+                    case 6:
+                        System.out.println("AddressLine2:");
+                        String addressLine2 = scanner.nextLine();
+                        customer.setAddressLine2(addressLine2);
+                        System.out.println("Address line 2 has been updated to: " + addressLine2);
+
+                        break;
+                    case 7:
+                        System.out.println("City:");
+                        String city = scanner.nextLine();
+                        customer.setCity(city);
+                        System.out.println("City has been updated to: " + city);
+
+
+                        break;
+                    case 8:
+                        System.out.println("State:");
+                        String state = scanner.nextLine();
+                        customer.setState(state);
+                        System.out.println("State has been updated to: " + state);
+
+
+
+                        break;
+                    case 9:
+                        System.out.println("PostalCode:");
+                        String postalCode = scanner.nextLine();
+                        customer.setPostalCode(postalCode);
+                        System.out.println("Postal code has been updated to: " + postalCode);
+
+
+                        break;
+                    case 10:
+                        System.out.println("Country:");
+                        String country = scanner.nextLine();
+                        customer.setCountry(country);
+                        System.out.println("Country has been updated to: " + country);
+
+                        break;
+
+
+                }
+                System.out.println("\nWould you like to update anything else?: Y/N");
+                updateMore = scanner.next();
+                while (!updateMore.equalsIgnoreCase("y") && !updateMore.equalsIgnoreCase("n") ) {
+                    System.out.println("Would you like to update anything else?: ->Y/N<-");
+                    updateMore = scanner.next();
+                }
+                if (updateMore.equalsIgnoreCase("n")){
+                    done = true;
+                }else done = false;
+
+
+
+
+                }while (!done);
+
+            customerDAO.updateCustomers(customer);
+
+
+            }
+
+
+
+}
+public void deleteACustomer(){
+        boolean delete;
+        String deleteMore;
+
+do{
+
+    System.out.println("please enter the id of the customer you wish to delete");
+    int id = scanner.nextInt();
+    Customer customer = customerDAO.getCustomerByCustomerNumber(id);
+
+    if (customer == null) {
+        System.err.println("Customer doesn't exist.");
+    } else {
+
+        System.out.println(customer);
+        System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
+        String answer = scanner.nextLine();
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+            System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
+            answer = scanner.nextLine();
+        }
+        if (answer.equalsIgnoreCase("y")) {
+            customerDAO.deleteCustomers(customer);
+        }if (answer.equalsIgnoreCase("n")){
+            System.out.println("No changes have been made.");
+        }
 
     }
 
-    public void deleteACustomer() {
-
+    System.out.println("\nWould you like to update anything else?: Y/N");
+    deleteMore = scanner.next();
+    while (!deleteMore.equalsIgnoreCase("y") && !deleteMore.equalsIgnoreCase("n") ) {
+        System.out.println("Would you like to update anything else?: ->Y/N<-");
+        deleteMore = scanner.next();
     }
+    if (deleteMore.equalsIgnoreCase("n")){
+        delete = true;
+    }else delete = false;
 
+
+    }while (!delete);
+}
 }

@@ -1,11 +1,12 @@
 package service;
 
-import DAO.EmployeeDAO;
+import DAO.OrderDAO;
 import DAO.OrderDetailDAO;
-import Entities.Employee;
+import Entities.Order;
 import Entities.OrderDetail;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class OrderDetailService {
@@ -13,6 +14,8 @@ public class OrderDetailService {
 
     private OrderDetailDAO orderDetailDAO;
     private Scanner scanner;
+    private OrderDAO orderDAO;
+    private Order order;
 
     public OrderDetailService() {
         orderDetailDAO = new OrderDetailDAO();
@@ -26,28 +29,91 @@ public class OrderDetailService {
             System.out.println("No Orderdetails to show.");
     }
 
-    public void showOrderDetailsByOrderNumber() throws SQLException { //TODO:: showOrder or showOrderDetails??
-      /*  System.out.println("What is the id of the customer you want to lookup?");
+    public void showOrderDetailsByOrderNumber() throws SQLException { //TODO:: showOrder or showOrderDetails?? for now it has to be shown with an Order id so it's both
+        System.out.println("What is the id of the OrderDetail you want to lookup?");
         int input = scanner.nextInt();
-        OrderDetail orderDetail =  orderDetailDAO.getProductByOrderNumber(input);
-        if (employee != null)
-            System.out.println(employee);
+        order = orderDAO.getOrderByOrderNumber(input);
+        OrderDetail orderDetail = orderDetailDAO.getProductByOrderNumber(order);
+        if (orderDetail != null)
+            System.out.println(orderDetail);
         else
             System.out.println("Id does not match any of the employees.");
-
-       */
     }
 
 
     public OrderDetail createAnOrderDetail() {
+        OrderDetail orderDetail = new OrderDetail();
+
+        System.out.println("Enter the OrderLineNumber pls:");
+        int orderLineNumber = scanner.nextInt();
+        System.out.println("Enter the Pattern for example:  '#,###,###,###.00'");
+        String pattern = scanner.next();
+        System.out.println("Enter Quantity Ordered:");
+        int quantityOrdered = scanner.nextInt();
+        System.out.println("And enter the ProductCode:");
+        String productCode = scanner.next();
+
+
+        DecimalFormat priceEach = new DecimalFormat(pattern);
+        orderDetail.setOrderLineNumber(orderLineNumber);
+        orderDetail.setPattern(pattern);
+        orderDetail.setQuantityOrdered(quantityOrdered);
+        orderDetail.setProductCode(productCode);
+        orderDetail.setPriceEach(priceEach);
+        orderDetailDAO.addOrderDetail(orderDetail);
         return new OrderDetail();
     }
 
     public void updateAnOrderDetail() {
+        try {
+            System.out.println("What is the id of the OrderDetail you want to change?");
 
+            int input = scanner.nextInt();
+            order = orderDAO.getOrderByOrderNumber(input);
+            OrderDetail orderDetail = orderDetailDAO.getProductByOrderNumber(order);
+            if (orderDetail != null) {
+                System.out.println(orderDetail);
+
+                System.out.println("Enter the OrderLineNumber pls:");
+                int orderLineNumber = scanner.nextInt();
+                System.out.println("Enter the Pattern for example:  '#,###,###,###.00'");
+                String pattern = scanner.next();
+                System.out.println("Enter Quantity Ordered:");
+                int quantityOrdered = scanner.nextInt();
+                System.out.println("And enter the ProductCode:");
+                String productCode = scanner.next();
+
+                DecimalFormat priceEach = new DecimalFormat(pattern);
+                orderDetail.setOrderLineNumber(orderLineNumber);
+                orderDetail.setPattern(pattern);
+                orderDetail.setQuantityOrdered(quantityOrdered);
+                orderDetail.setProductCode(productCode);
+                orderDetail.setPriceEach(priceEach);
+
+                orderDetailDAO.updateOrderDetail(orderDetail);
+            } else
+                System.out.println("Id does not match any of the employees.");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void deleteAnOrderDetail() {
+        try {
+            System.out.println("Choose OrderDetail you want to delete by id:");
+
+            int input = scanner.nextInt();
+            order = orderDAO.getOrderByOrderNumber(input);
+
+            OrderDetail orderDetail = orderDetailDAO.getProductByOrderNumber(order);
+
+            if (orderDetail == null)
+                System.err.println("Exam doesn't exist.");
+            else
+                orderDetailDAO.deleteOrderDetail(orderDetail);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
