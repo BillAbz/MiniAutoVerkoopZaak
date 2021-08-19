@@ -102,6 +102,7 @@ public class CustomerService {
 
     public void updateACustomer() {
         boolean done;
+        System.out.println("please enter the id of the customer you wish to update");
         int id = scanner.nextInt();
         Customer customer = customerDAO.getCustomerByCustomerNumber(id);
 
@@ -250,7 +251,7 @@ public class CustomerService {
                 }else done = false;
 
 
-                customerDAO.updateCustomers(customer);
+
 
                 }while (!done);
 
@@ -263,7 +264,45 @@ public class CustomerService {
 
 }
 public void deleteACustomer(){
+        boolean delete;
+        String deleteMore;
+
+do{
+
+    System.out.println("please enter the id of the customer you wish to delete");
+    int id = scanner.nextInt();
+    Customer customer = customerDAO.getCustomerByCustomerNumber(id);
+
+    if (customer == null) {
+        System.err.println("Customer doesn't exist.");
+    } else {
+
+        System.out.println(customer);
+        System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
+        String answer = scanner.nextLine();
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+            System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
+            answer = scanner.nextLine();
+        }
+        if (answer.equalsIgnoreCase("y")) {
+            customerDAO.deleteCustomers(customer);
+        }if (answer.equalsIgnoreCase("n")){
+            System.out.println("No changes have been made.");
+        }
+
+    }
+
+    System.out.println("\nWould you like to update anything else?: Y/N");
+    deleteMore = scanner.next();
+    while (!deleteMore.equalsIgnoreCase("y") && !deleteMore.equalsIgnoreCase("n") ) {
+        System.out.println("Would you like to update anything else?: ->Y/N<-");
+        deleteMore = scanner.next();
+    }
+    if (deleteMore.equalsIgnoreCase("n")){
+        delete = true;
+    }else delete = false;
 
 
+    }while (!delete);
 }
 }
