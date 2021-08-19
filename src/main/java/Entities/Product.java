@@ -1,6 +1,7 @@
 package Entities;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -17,12 +18,15 @@ public class Product {
     private String productDescription;
     private int quantityInStock;
     @Transient
-    private String pattern = "#,###,###,###.00";
-    private DecimalFormat buyPrice = new DecimalFormat(pattern);
+    private BigDecimal buyPrice;
     @Transient
-    private DecimalFormat MSRP = new DecimalFormat(pattern);
+    private BigDecimal MSRP;
 
     public Product() {
+    }
+
+    public void setProductLine(String productLine) {
+        this.productLine = productLine;
     }
 
     public String getProductCode() {
@@ -78,27 +82,20 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public String getPattern() {
-        return pattern;
-    }
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public DecimalFormat getBuyPrice() {
+    public BigDecimal getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(DecimalFormat buyPrice) {
+    public void setBuyPrice(BigDecimal buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public DecimalFormat getMSRP() {
+    public BigDecimal getMSRP() {
         return MSRP;
     }
 
-    public void setMSRP(DecimalFormat MSRP) {
+    public void setMSRP(BigDecimal MSRP) {
         this.MSRP = MSRP;
     }
 
