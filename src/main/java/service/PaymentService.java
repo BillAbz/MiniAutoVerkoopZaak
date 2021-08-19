@@ -5,6 +5,8 @@ import Entities.Employee;
 import Entities.OrderDetail;
 import Entities.Payment;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -70,42 +72,65 @@ public class PaymentService {
     }
 
     public void updateAPayment() {
-        try {
-            System.out.println("What is the checkNumber of the Payment you want to change?");
+        System.out.println("What is the id of the payment you want to lookup?");
+        int input = scanner.nextInt();
+            Payment payment = null;
+            try {
+                payment = paymentDAO.getPaymentByCheckNumber(input);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (payment != null)
+            System.out.println(payment);
+        else
+            System.out.println("Id does not match any of the payments.");
 
-            int input = scanner.nextInt();
-            Payment payment = paymentDAO.getPaymentByCheckNumber(input);
-            if (payment != null) {
-                System.out.println(payment);
+            System.out.println("Please select an option: \n(1)New Date\n(2)Set Amount\n(3)New Pattern\n(4)Phone number");
 
-                System.out.println("Enter CustomerNumber:");
-                int customerNumber = scanner.nextInt();
+            int selection = scanner.nextInt();
 
-                System.out.println("Enter the date year,month,week after you entered one press enter for the next.");
-                System.out.println("Year:");
-                int year =scanner.nextInt();
-                System.out.println("Month:");
-                int month = scanner.nextInt();
-                System.out.println("Week:");
-                int week = scanner.nextInt();
+            while (selection > 4 || selection < 0) {
+                System.out.println("Please make a valid selection");
+                selection = scanner.nextInt();
+            }
 
-                System.out.println("Enter the Pattern");
-                String pattern = scanner.nextLine();
+            switch (selection) {
+                default:
+                    break;
+                case 1:
+                    System.out.println("What is the new date?");
+                    System.out.println("Enter the date year,month,week after you entered one press enter for the next.");
+                    System.out.println("Year:");
+                    int year =scanner.nextInt();
+                    System.out.println("Month:");
+                    int month = scanner.nextInt();
+                    System.out.println("Week:");
+                    int week = scanner.nextInt();
+                    LocalDate date = LocalDate.of(year,month,week);
+                    payment.setPaymentDate(date);
+                    System.out.println("Done.");
+                    break;
+                case 2:
+                    System.out.println("What is the new Amount?");
+                    String priceEach = scanner.next();
+                    DecimalFormat decimalFormat = new DecimalFormat(priceEach);
+                    payment.setAmount(decimalFormat);
+                    System.out.println("Done.");
 
-                LocalDate date = LocalDate.of(year,month,week);
-                DecimalFormat priceEach = new DecimalFormat(pattern);
-                payment.setPaymentDate(date);
-                payment.setPattern(pattern);
-                payment.setAmount(priceEach);
-                payment.setCustomerNumber(customerNumber); //todo is het setCheckNumber of setCustomerId
-
+                    break;
+                case 3:
+                    System.out.println("What is the new Pattern?");
+                    String pattern = scanner.nextLine();
+                    payment.setPattern(pattern);
+                    break;
+                case 4:
+                    System.out.println("What is the new CustomerNumber?");
+                    int customerNumber = scanner.nextInt();
+                    payment.setCustomerNumber(customerNumber);
+            }
                 paymentDAO.updatePayment(payment);
-            } else
-                System.out.println("Id does not match any of the employees.");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+            }
+
 
     public void deleteAPayment() {
         try {
