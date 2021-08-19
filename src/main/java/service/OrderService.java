@@ -75,7 +75,55 @@ public class OrderService {
 
 
     public void updateAnOrder() {
+        orderDAO.getAllOrders();
 
+        System.out.println("Please enter the number of the order you wish to update");
+        int orderNumber = scanner.nextInt();
+        Order order = orderDAO.getOrderByOrderNumber(orderNumber);
+
+        while (order == null) {
+            System.err.println("Product doesn't exist. Please enter a valid id.");
+            orderNumber = scanner.nextInt();
+            order = orderDAO.getOrderByOrderNumber(orderNumber);
+        }
+
+        System.out.println("Please select an option: \n(1)required date of delivery\n(2)comments\n(3)customer number");
+        int selection = scanner.nextInt();
+
+        while (selection > 3 || selection < 0) {
+            System.out.println("Please make a valid selection");
+            selection = scanner.nextInt();
+        }
+        switch (selection) {
+            default:
+                break;
+            case 1:
+                System.out.println("please give the new required date of delivering , xxxx-xx-xx");
+                String requiredDate = scanner.nextLine();
+                LocalDate requiredLocalDate = LocalDate.parse(requiredDate);
+
+                boolean reqDateBeforeToday = true;
+                while (reqDateBeforeToday) {
+                    if (requiredLocalDate.isBefore(LocalDate.now())) {
+                        System.out.println("please enter a date that is after the current date");
+                    } else {
+                        order.setRequiredDate(requiredLocalDate);
+                        reqDateBeforeToday = false;
+                    }
+                }
+                System.out.println("Done.");
+                break;
+            case 2:
+                System.out.println("please enter your comments");
+                order.setComments(scanner.nextLine());
+                System.out.println("Done.");
+                break;
+            case 3:
+                System.out.println("please enter the new customer number");
+                order.setCustomerNumber(scanner.nextInt());
+                System.out.println("Done.");
+                break;
+        }
     }
 
     public void deleteAnOrder() {
