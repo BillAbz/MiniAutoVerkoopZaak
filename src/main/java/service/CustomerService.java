@@ -264,7 +264,7 @@ public class CustomerService {
 
 
 
-}
+
 public void deleteACustomer(){
         boolean delete;
         String deleteMore;
@@ -275,9 +275,11 @@ do{
     int id = scanner.nextInt();
     Customer customer = customerDAO.getCustomerByCustomerNumber(id);
 
-    if (customer == null) {
-        System.err.println("Customer doesn't exist.");
-    } else {
+    while (customer == null) {
+        System.err.println("Customer doesn't exist. Please enter a valid id.");
+        id = scanner.nextInt();
+        customer = customerDAO.getCustomerByCustomerNumber(id);
+    }
 
         System.out.println(customer);
         System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
@@ -292,9 +294,9 @@ do{
             System.out.println("No changes have been made.");
         }
 
-    }
 
-    System.out.println("\nWould you like to update anything else?: Y/N");
+
+    System.out.println("\nWould you like to delete anything else?: Y/N");
     deleteMore = scanner.next();
     while (!deleteMore.equalsIgnoreCase("y") && !deleteMore.equalsIgnoreCase("n") ) {
         System.out.println("Would you like to update anything else?: ->Y/N<-");
@@ -308,3 +310,4 @@ do{
     }while (!delete);
 }
 }
+
