@@ -96,7 +96,7 @@ public class CustomerService {
         customer.setCountry(country);
         customerDAO.addCustomers(customer);
 
-        return new Customer();
+        return customer;
     }
 
 
@@ -106,10 +106,12 @@ public class CustomerService {
         int id = scanner.nextInt();
         Customer customer = customerDAO.getCustomerByCustomerNumber(id);
 
-        if (customer == null) {
-            System.err.println("Customer doesn't exist.");
-        } else {
-            System.out.println("What would you like to update:\n");
+        while (customer == null) {
+            System.err.println("Customer doesn't exist. Please enter a valid id.");
+            id = scanner.nextInt();
+            customer = customerDAO.getCustomerByCustomerNumber(id);
+        }
+        System.out.println("What would you like to update:\n");
 
 
 
