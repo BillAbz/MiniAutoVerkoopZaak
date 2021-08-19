@@ -70,82 +70,83 @@ public class ProductLineService {
         System.out.println("What productline do you want to update? give the product line name:");
         String id = scanner.nextLine();
         ProductLine productLine = productLineDAO.getProductLinesByLine(id);
-        if (productLine == null) {
+        while (productLine == null) {
             System.err.println("Productline doesn't exist.");
-        } else {
-            System.out.println("What would you like to update:\n");
-
-
-            do {
-                String updateMore;
-                System.out.println("Please select an option: \n(1)Product line name\n(2)Text description\n(3)HTML Description\n(4)image\n(0)Cancel");
-                int selection = scanner.nextInt();
-
-                while (selection > 4 || selection < 0) {
-                    System.out.println("Please make a valid selection");
-                    selection = scanner.nextInt();
-                }
-
-                switch (selection) {
-                    default:
-                        break;
-                    case 1:
-                        System.out.println("Give the new name for the product line:");
-                        productLine.setProductLine(scanner.nextLine());
-                        System.out.println("Done.");
-                        break;
-                    case 2:
-                        System.out.println("What is the new text description?");
-                        productLine.setTextDescription(scanner.nextLine());
-                        System.out.println("Done.");
-                        break;
-                    case 3:
-                        System.out.println("What is the new HTML description?");
-                        productLine.setHtmlDescription(scanner.nextLine());
-                        System.out.println("Done.");
-                        break;
-                    case 4:
-                        System.out.println("What is the path of the image? Leave blank if you want to skip this.");
-                        String path = scanner.nextLine();
-                        if (path.length() > 3) {
-                            File file = new File(path);
-                            byte[] picInBytes = new byte[(int) file.length()];
-                            FileInputStream fileInputStream = new FileInputStream(file);
-                            fileInputStream.read(picInBytes);
-                            fileInputStream.close();
-                            productLine.setImage(picInBytes);
-                        }
-                        break;
-                }
-                if (selection == 0)
-                    break;
-
-                System.out.println("\nWould you like to update anything else?: Y/N");
-                updateMore = scanner.next();
-                while (!updateMore.equalsIgnoreCase("y") && !updateMore.equalsIgnoreCase("n")) {
-                    System.out.println("Would you like to update anything else?: ->Y/N<-");
-                    updateMore = scanner.next();
-                }
-                if (updateMore.equalsIgnoreCase("n")) {
-                    done = true;
-                } else done = false;
-
-            } while (!done);
-            productLineDAO.updateProductLines(productLine);
+            System.out.println("What productline do you want to update? give the product line name:");
+            productLine = productLineDAO.getProductLinesByLine(id);
         }
+        System.out.println("What would you like to update:\n");
+
+
+        do {
+            String updateMore;
+            System.out.println("Please select an option: \n(1)Product line name\n(2)Text description\n(3)HTML Description\n(4)image\n(0)Cancel");
+            int selection = scanner.nextInt();
+
+            while (selection > 4 || selection < 0) {
+                System.out.println("Please make a valid selection");
+                selection = scanner.nextInt();
+            }
+
+            switch (selection) {
+                default:
+                    break;
+                case 1:
+                    System.out.println("Give the new name for the product line:");
+                    productLine.setProductLine(scanner.nextLine());
+                    System.out.println("Done.");
+                    break;
+                case 2:
+                    System.out.println("What is the new text description?");
+                    productLine.setTextDescription(scanner.nextLine());
+                    System.out.println("Done.");
+                    break;
+                case 3:
+                    System.out.println("What is the new HTML description?");
+                    productLine.setHtmlDescription(scanner.nextLine());
+                    System.out.println("Done.");
+                    break;
+                case 4:
+                    System.out.println("What is the path of the image? Leave blank if you want to skip this.");
+                    String path = scanner.nextLine();
+                    if (path.length() > 3) {
+                        File file = new File(path);
+                        byte[] picInBytes = new byte[(int) file.length()];
+                        FileInputStream fileInputStream = new FileInputStream(file);
+                        fileInputStream.read(picInBytes);
+                        fileInputStream.close();
+                        productLine.setImage(picInBytes);
+                    }
+                    break;
+            }
+            if (selection == 0)
+                break;
+
+            System.out.println("\nWould you like to update anything else?: Y/N");
+            updateMore = scanner.next();
+            while (!updateMore.equalsIgnoreCase("y") && !updateMore.equalsIgnoreCase("n")) {
+                System.out.println("Would you like to update anything else?: ->Y/N<-");
+                updateMore = scanner.next();
+            }
+            if (updateMore.equalsIgnoreCase("n")) {
+                done = true;
+            } else done = false;
+
+        } while (!done);
+        productLineDAO.updateProductLines(productLine);
     }
 
     public void deleteAProductLine() throws SQLException {
         showAllProductlines();
-        System.out.println("What productline do you want to update? give the product line name:");
+        System.out.println("What productline do you want to delete? give the product line name:");
         String id = scanner.nextLine();
         ProductLine productLine = productLineDAO.getProductLinesByLine(id);
-        if (productLine == null) {
+        while (productLine == null) {
             System.err.println("Productline doesn't exist.");
-        } else {
-            productLineDAO.deleteProductLines(productLine);
+            System.out.println("What productline do you want to update? give the product line name:");
+            productLine = productLineDAO.getProductLinesByLine(id);
         }
+        productLineDAO.deleteProductLines(productLine);
     }
-
-
 }
+
