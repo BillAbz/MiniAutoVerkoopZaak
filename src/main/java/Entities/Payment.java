@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int checkNumber;
-    private Date paymentDate;
+    private LocalDate paymentDate;
     @Transient
     private String pattern = "#,###,###,###.00";
     private DecimalFormat amount = new DecimalFormat(pattern);
@@ -36,11 +37,11 @@ public class Payment {
         this.checkNumber = checkNumber;
     }
 
-    public Date getPaymentDate() {
+    public LocalDate getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public void setPaymentDate(LocalDate paymentDate) {
         this.paymentDate = paymentDate;
     }
 
