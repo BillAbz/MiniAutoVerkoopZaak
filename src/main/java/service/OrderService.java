@@ -5,8 +5,12 @@ import DAO.OrderDAO;
 import Entities.Employee;
 import Entities.Order;
 import Entities.Product;
+import Entities.ShippingStatus;
+import net.bytebuddy.asm.Advice;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 public class OrderService {
@@ -37,15 +41,37 @@ public class OrderService {
     }
 
 
-//    public Order createAnOrder() {
-//            Product product =new Product();
-//            if (product.getQuantityInStock()==10){
-//                System.out.println("You only got 10 left!");
-//            }else if (product.getQuantityInStock()==0) {
-//                System.out.println("You're out of that product");
-//                System.out.println(product.getQuantityInStock());
-//            }
-//        }
+    public Order createAnOrder() {
+        Order order = new Order();
+
+        order.setOrderDate(LocalDate.now());
+
+        System.out.println("please give the required date of delivering , xxxx-xx-xx");
+        String requiredDate = scanner.nextLine();
+        LocalDate requiredLocalDate = LocalDate.parse(requiredDate);
+
+        boolean reqDateBeforeToday = true;
+        while (reqDateBeforeToday) {
+                if (requiredLocalDate.isBefore(LocalDate.now())) {
+                     System.out.println("please enter a date that is after the current date");
+                 } else {
+                order.setRequiredDate(requiredLocalDate);
+                reqDateBeforeToday = false;
+                 }
+        }
+
+        order.setShippedDate(LocalDate.now());
+
+        System.out.println("do you got any comments?");
+        order.setComments(scanner.nextLine());
+
+        System.out.println("please give your customernumber");
+        order.setCustomerNumber(scanner.nextInt());
+
+        order.setStatus(ShippingStatus.SHIPPED);
+
+           return order;
+      }
 
 
     public void updateAnOrder() {

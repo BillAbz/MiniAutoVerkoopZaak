@@ -16,7 +16,7 @@ public class Order {
     private LocalDate orderDate;
     private LocalDate requiredDate;
     private LocalDate shippedDate;
-    private String status;
+    private ShippingStatus status;
     private String comments;
     private int customerNumber;
 
@@ -52,16 +52,7 @@ public class Order {
     }
 
     public void setRequiredDate(LocalDate requiredDate) {
-        boolean dateBeforeToday = true;
-        LocalDate dateToday = LocalDate.now();
-        while (dateBeforeToday) {
-            if (requiredDate.isBefore(dateToday)) {
-                System.out.println("please enter a date thats after today");
-            }else {
-                this.requiredDate = requiredDate;
-                dateBeforeToday = false;
-            }
-        }
+        this.requiredDate = requiredDate;
     }
     public LocalDate getShippedDate() {
         return shippedDate;
@@ -71,11 +62,11 @@ public class Order {
         this.shippedDate = shippedDate;
     }
 
-    public String getStatus() {
+    public ShippingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ShippingStatus status) {
         this.status = status;
     }
 
