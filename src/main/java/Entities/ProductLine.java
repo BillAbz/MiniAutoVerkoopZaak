@@ -1,10 +1,8 @@
 package Entities;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.awt.image.BufferedImage;
 import java.sql.Blob;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "product_lines")
@@ -14,7 +12,7 @@ public class ProductLine {
     private String textDescription;
     private String htmlDescription;
     @Lob
-    private Blob image;
+    private byte[] image;
 
     public ProductLine() {
     }
@@ -43,11 +41,11 @@ public class ProductLine {
         this.htmlDescription = htmlDescription;
     }
 
-    public Blob getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -57,7 +55,7 @@ public class ProductLine {
                 "productLine='" + productLine + '\'' +
                 ", textDescription='" + textDescription + '\'' +
                 ", htmlDescription='" + htmlDescription + '\'' +
-                ", image=" + image +
+                ", image=" + Arrays.toString(image) +
                 '}';
     }
 }
