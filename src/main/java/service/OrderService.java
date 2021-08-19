@@ -2,10 +2,7 @@ package service;
 
 import DAO.EmployeeDAO;
 import DAO.OrderDAO;
-import Entities.Employee;
-import Entities.Order;
-import Entities.Product;
-import Entities.ShippingStatus;
+import Entities.*;
 import net.bytebuddy.asm.Advice;
 
 import java.sql.SQLException;
@@ -128,7 +125,21 @@ public class OrderService {
         }
     }
 
-    public void deleteAnOrder() {
+    public void deleteAnOrder() throws SQLException {
+        orderDAO.getAllOrders();
+
+        System.out.println("What order do you want to delete? give the number");
+        int number = scanner.nextInt();
+
+        Order order = orderDAO.getOrderByOrderNumber(number);
+
+        while (order == null) {
+            System.err.println("order doesn't exist.");
+            System.out.println("What order do you want to delete? give the number");
+            order = orderDAO.getOrderByOrderNumber(scanner.nextInt());
+        }
+
+        orderDAO.deleteOrder(order);
 
     }
 
