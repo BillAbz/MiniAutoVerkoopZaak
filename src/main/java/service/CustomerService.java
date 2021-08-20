@@ -195,7 +195,7 @@ public class CustomerService {
                         do {
                             isUnique = true;
                             System.out.println("Customer name:");
-                            customerName = scanner.nextLine();
+                            customerName = scanner.next();
                             for (Customer customer1 : customerDAO.getAllCustomers()) {
                                 if (customer1.getCustomerName().contentEquals(customerName)) {
                                     System.out.println("Customer name already exists.");
@@ -231,7 +231,7 @@ public class CustomerService {
 
                     case 4:
                         System.out.println("PhoneNumber:"); //Todo:: Make loop instead of passing once in if else statement, also make check more solid
-                        String phone = scanner.nextLine();
+                        String phone = scanner.next();
                         if (phone.length() < 9 || phone.length() > 10) {
                             System.out.println("doesn't seem right");
                             phone = scanner.next();

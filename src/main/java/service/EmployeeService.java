@@ -102,9 +102,8 @@ public class EmployeeService {
 
 
         Employee employee = new Employee();
-        System.out.println("Enter Employee Details:");
-        System.out.println();
-        String customerName;
+        System.out.println("Enter Employee Details: \n");
+
 
         System.out.println("First Name:");
         String firstName = scanner.next();

@@ -31,7 +31,7 @@ public class ProductService {
 
     public void showProductByProductNumber() throws SQLException {
         System.out.println("What is the id of the product you want to lookup?");
-        String input = scanner.nextLine();
+        String input = scanner.next();
         Product product =  productDAO.getProductByProductCode(input);
         if (product != null)
             System.out.println(product);
@@ -49,7 +49,7 @@ public class ProductService {
         do {
             isUnique = true;
             System.out.println ("Product name;");
-            productName = scanner.nextLine ();
+            productName = scanner.next ();
             for (Product product1 : productDAO.getAllProducts ()){
                 if (product1.getProductName ().contentEquals (productName)) {
                     System.out.println ("Product name already exists.");
@@ -59,16 +59,16 @@ public class ProductService {
             }
         } while (!isUnique);
         System.out.println ("Product line:");
-        String productLine = scanner.nextLine ();
+        String productLine = scanner.next ();
         product.setProductLine (productLine);
         System.out.println ("Product Scale:");
-        String productScale = scanner.nextLine ();
+        String productScale = scanner.next ();
         product.setProductScale (productScale);
         System.out.println ("Product Vendor:");
-        String productVendor = scanner.nextLine ();
+        String productVendor = scanner.next ();
         product.setProductVendor (productVendor);
         System.out.println ("Product Description");
-        String productDescription = scanner.nextLine ();
+        String productDescription = scanner.next ();
         product.setProductDescription (productDescription);
         System.out.println ("Quantity in Stock:");
         Integer quantityInStock = scanner.nextInt ();
@@ -90,12 +90,12 @@ public class ProductService {
         boolean done;
         productDAO.getAllProducts ();
         System.out.println ("Please enter the product code of the product you wish to update");
-        String id = scanner.nextLine ();
+        String id = scanner.next ();
         Product product = productDAO.getProductByProductCode (id);
 
         while (product == null){
             System.err.println ("Product doesn't exist. Please enter a valid id.");
-            id = scanner.nextLine ();
+            id = scanner.next ();
             product = productDAO.getProductByProductCode (id);
         }
         System.out.println(product);
@@ -103,8 +103,7 @@ public class ProductService {
 
         do {
             String updateMore;
-            System.out.println ("Please select an option: \n(1)Product name\n(2)Product line\n(3)Product scale\n(4)Product vendor\n(5)Product description\n" +
-                    "(6)Product buy price\n(7)Product MSRP\n(0)Cancel");
+            System.out.println ("Please select an option: \n(1)Product name\n(2)Product line\n(3)Product scale\n(4)Product vendor\n(5)Product description\n (6)Product buy price\n(7)Product MSRP\n(0)Cancel");
             int selection = scanner.nextInt ();
 
             while (selection > 7 || selection < 0) {
@@ -117,27 +116,27 @@ public class ProductService {
                     break;
                 case 1:
                     System.out.println ("Give the new name for the product name:");
-                    product.setProductName (scanner.nextLine ());
+                    product.setProductName (scanner.next ());
                     System.out.println ("Done.");
                     break;
                 case 2:
                     System.out.println ("What is the new Product line?");
-                    product.setProductLine (scanner.nextLine ());
+                    product.setProductLine (scanner.next ());
                     System.out.println ("Done.");
                     break;
                 case 3:
                     System.out.println ("What is the new Product scale?");
-                    product.setProductScale (scanner.nextLine ());
+                    product.setProductScale (scanner.next ());
                     System.out.println ("Done.");
                     break;
                 case 4:
                     System.out.println ("What is the new Product vendor?");
-                    product.setProductVendor (scanner.nextLine ());
+                    product.setProductVendor (scanner.next ());
                     System.out.println ("Done.");
                     break;
                 case 5:
                     System.out.println ("What is the new Product description?");
-                    product.setProductDescription (scanner.nextLine ());
+                    product.setProductDescription (scanner.next ());
                     System.out.println ("Done.");
                     break;
                 case 6:
@@ -173,7 +172,7 @@ public class ProductService {
     public void deleteAProduct() throws SQLException {
         showAllProducts ();
         System.out.println ("What product do you want delete? give the product code");
-        String id = scanner.nextLine ();
+        String id = scanner.next ();
         Product product = productDAO.getProductByProductCode (id);
         if (product == null) {
             System.err.println ("Product doesn't exist");
