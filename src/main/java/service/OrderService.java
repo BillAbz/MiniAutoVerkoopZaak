@@ -67,6 +67,7 @@ public class OrderService {
         order.setCustomerNumber(scanner.nextInt());
 
         order.setStatus(ShippingStatus.SHIPPED);
+        orderDAO.addOrder(order);
 
            return order;
       }
