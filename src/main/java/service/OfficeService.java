@@ -54,9 +54,9 @@ public class OfficeService {
             }
             System.out.println("thanks");
         }
-        System.out.println("What is the first addressline of the office?");
+        System.out.println("What is the first address line of the office?");
         String addressLine1 = scanner.nextLine();
-        System.out.println("What's the second addressline of the office?");
+        System.out.println("What's the second address line of the office?");
         String addressLine2 = scanner.nextLine();
         System.out.println("What is the state of the office?");
         String state = scanner.nextLine();
@@ -67,6 +67,7 @@ public class OfficeService {
         System.out.println("What is the territory of the office?");
         String territory = scanner.nextLine();
         Office office = new Office(city,phoneNumber,addressLine1,addressLine2,state,country,postalCode,territory);
+
         officeDAO.addOffices(office);
 
         return office;
@@ -217,6 +218,48 @@ public class OfficeService {
 
 
     public void deleteAnOffice() {
+        boolean delete;
+        String deleteMore;
+
+        do{
+
+            System.out.println("please enter the code of the office you wish to delete");
+            int id = scanner.nextInt();
+            Office office = officeDAO.getOfficeByOfficeCode(id);
+
+            while (office == null) {
+                System.err.println("Office doesn't exist. Please enter a valid code.");
+                id = scanner.nextInt();
+                office = officeDAO.getOfficeByOfficeCode(id);
+            }
+
+            System.out.println(office);
+            System.out.println("\nAre you sure you wish to delete this office? Y/N: ");
+            String answer = scanner.nextLine();
+            while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+                System.out.println("\nAre you sure you wish to delete this office? Y/N: ");
+                answer = scanner.nextLine();
+            }
+            if (answer.equalsIgnoreCase("y")) {
+                officeDAO.deleteOffices(office);
+            }if (answer.equalsIgnoreCase("n")){
+                System.out.println("No changes have been made.");
+            }
+
+
+
+            System.out.println("\nWould you like to delete anything else?: Y/N");
+            deleteMore = scanner.next();
+            while (!deleteMore.equalsIgnoreCase("y") && !deleteMore.equalsIgnoreCase("n") ) {
+                System.out.println("Would you like to update anything else?: ->Y/N<-");
+                deleteMore = scanner.next();
+            }
+            if (deleteMore.equalsIgnoreCase("n")){
+                delete = true;
+            }else delete = false;
+
+
+        }while (!delete);
 
     }
 
