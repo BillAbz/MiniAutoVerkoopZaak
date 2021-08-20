@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
+@Entity(name = "payments")
 @Table(name = "payments")
 public class Payment {
 
