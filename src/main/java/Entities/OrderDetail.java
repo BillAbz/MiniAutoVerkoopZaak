@@ -66,6 +66,11 @@ public class OrderDetail implements Serializable{
         this.orderLineNumber = orderLineNumber;
     }
 
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
     @Override
     public String toString() {
         return "OrderDetail{" +
