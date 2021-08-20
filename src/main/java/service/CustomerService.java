@@ -2,12 +2,15 @@ package service;
 
 import DAO.CustomerDAO;
 import DAO.EmployeeDAO;
+import DAO.PaymentDAO;
 import Entities.Customer;
 import Entities.Employee;
+import Entities.Payment;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -17,12 +20,16 @@ public class CustomerService {
     private Scanner scanner;
     private EmployeeService employeeService;
     private EmployeeDAO employeeDAO;
+    private PaymentDAO paymentDAO;
+    private List<Payment>payments;
 
     public CustomerService() {
         customerDAO = new CustomerDAO();
         scanner = new Scanner(System.in);
         employeeService = new EmployeeService();
         employeeDAO = new EmployeeDAO();
+        paymentDAO = new PaymentDAO();
+
     }
 
     public void showAllCustomers() throws SQLException {
@@ -124,7 +131,10 @@ public class CustomerService {
         double creditLimit = scanner.nextDouble();
 
 
-
+        System.out.println("what payment do you want to add , give the checknumber");
+        paymentDAO.getAllPayments();
+        payments.add(paymentDAO.getPaymentByCheckNumber(scanner.nextInt()));
+        customer.setPayments(payments);
 
 
 
@@ -147,7 +157,7 @@ public class CustomerService {
     }
 
 
-    public void updateACustomer() {
+    public void updateACustomer() throws SQLException {
         boolean done;
         System.out.println("please enter the id of the customer you wish to update");
         int id = scanner.nextInt();
@@ -169,7 +179,7 @@ public class CustomerService {
                 String updateMore;
 
 
-                System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country\n(11)Sales report Employee\n(12)Credit Limit");
+                System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country\n(11)Sales report Employee\n(12)Credit Limit\n(13)Payment");
                 int selection = scanner.nextInt();
 
                 while (selection > 12 || selection < 1) {
@@ -306,6 +316,13 @@ public class CustomerService {
                         double creditLimit = scanner.nextDouble();
                         customer.setCreditLimit(creditLimit);
                         System.out.println("Credit limit has been updated to: " + creditLimit);
+                        break;
+                    case 13:
+                        System.out.println("Payment: (give the checknumber)");
+                        paymentDAO.getAllPayments();
+                        payments.add(paymentDAO.getPaymentByCheckNumber(scanner.nextInt()));
+                        customer.setPayments(payments);
+                        System.out.println("payment has been updated");
 
 
 
