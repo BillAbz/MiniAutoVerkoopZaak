@@ -98,6 +98,7 @@ public class ProductService {
             id = scanner.nextLine ();
             product = productDAO.getProductByProductCode (id);
         }
+        System.out.println(product);
         System.out.println ("What would you like to update:\n");
 
         do {

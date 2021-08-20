@@ -86,6 +86,7 @@ public class OrderService {
             order = orderDAO.getOrderByOrderNumber(orderNumber);
         }
 
+        System.out.println(order);
         System.out.println("Please select an option: \n(1)comments\n(2)status");
         int selection = scanner.nextInt();
 

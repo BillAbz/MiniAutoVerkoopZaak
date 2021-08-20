@@ -149,6 +149,7 @@ public class EmployeeService {
             id = scanner.nextInt();
             employee = employeeDAO.getEmployeeByEmployeeNumber(id);
         }
+        System.out.println(employee);
             System.out.println("What would you like to update:\n");
 
 

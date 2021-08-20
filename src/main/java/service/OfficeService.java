@@ -85,6 +85,7 @@ public class OfficeService {
                 id = scanner.nextInt();
                 office = officeDAO.getOfficeByOfficeCode(id);
             }
+            System.out.println(office);
             System.out.println("What would you like to update:\n");
 
 

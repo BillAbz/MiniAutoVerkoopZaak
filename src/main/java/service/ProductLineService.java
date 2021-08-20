@@ -75,6 +75,7 @@ public class ProductLineService {
             System.out.println("What productline do you want to update? give the product line name:");
             productLine = productLineDAO.getProductLinesByLine(id);
         }
+        System.out.println(productLine);
         System.out.println("What would you like to update:\n");
 
 

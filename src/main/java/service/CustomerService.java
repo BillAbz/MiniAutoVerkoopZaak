@@ -158,6 +158,7 @@ public class CustomerService {
             id = scanner.nextInt();
             customer = customerDAO.getCustomerByCustomerNumber(id);
         }
+        System.out.println(customer);
         System.out.println("What would you like to update:\n");
 
 
