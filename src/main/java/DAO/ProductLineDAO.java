@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Customer;
 import Entities.Product;
 import Entities.ProductLine;
 
@@ -27,10 +28,8 @@ public class ProductLineDAO {
     }
 
     public List<ProductLine> getAllProducts() throws SQLException {
-        EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from productlines");
-        List<ProductLine> productLineList = query.getResultList();
-        return productLineList;
+        EntityManager em = emf.createEntityManager();
+        return em.createQuery("FROM productlines", ProductLine.class).getResultList();
     }
 
     public void addProductLines(ProductLine productLine){

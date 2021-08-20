@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.text.DecimalFormat;
 import java.util.List;
 
-@Entity
+@Entity(name = "customers")
 @Table(name = "customers")
 public class Customer {
 
@@ -12,7 +12,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerNumber;
     private String customerName;
+    @Column(name = "contactFirstName")
     private String firstName;
+    @Column(name = "contactLastName")
     private String lastName;
     private String phone;
     private String addressLine1;
@@ -23,8 +25,7 @@ public class Customer {
     private String country;
     @ManyToOne
     private Employee salesRepEmployeeNumber;
-    private String pattern = "#,###,###,###.00";
-    private DecimalFormat creditLimit = new DecimalFormat(pattern);
+    private double creditLimit;
     @OneToMany
     private List<Payment> payments;
 
@@ -135,20 +136,15 @@ public class Customer {
         this.payments = payments;
     }
 
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public DecimalFormat getCreditLimit() {
+    public double getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(DecimalFormat creditLimit) {
-        this.creditLimit = creditLimit;
+    public void setCreditLimit(double creditLimit) {
+        String pattern = "#,###,###,###.00";
+        DecimalFormat creditLimitFormat = new DecimalFormat(pattern);
+
+        this.creditLimit = Double.parseDouble(creditLimitFormat.format(creditLimit));
     }
 
     @Override

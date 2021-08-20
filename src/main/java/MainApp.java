@@ -2,6 +2,7 @@ import service.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class MainApp {
     private static int choiceTwo = 9;
     private static boolean continueThis = true;
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, ParseException {
 
 
         while (continueThis) {
@@ -24,7 +25,7 @@ public class MainApp {
 
         while (choiceOne == 9) {
             System.out.println("What do you want to look at? \n (1)Customer\n (2)Employee\n (3)Office\n (4)Order\n " +
-                    " (5)Order details\n (6)Payment\n (7)Product\n (8)Product line\n (0)Cancel");
+                    "(5)Order details\n (6)Payment\n (7)Product\n (8)Product line\n (0)Cancel");
             choiceOne = scanner.nextInt();
             if (choiceOne == 0) break;
             if (choiceOne < 1 || choiceOne > 8) {
@@ -46,7 +47,7 @@ public class MainApp {
     }
 
 
-    private static void choices() throws SQLException, IOException {
+    private static void choices() throws SQLException, IOException, ParseException {
         Scanner scanner = new Scanner(System.in);
         CustomerService customerService = new CustomerService();
         EmployeeService employeeService = new EmployeeService();
@@ -224,8 +225,6 @@ public class MainApp {
                 System.out.println(answer + " is not a good answer.");
             } else goodAnswer = true;
         } while (!goodAnswer);
-
-
     }
 }
 

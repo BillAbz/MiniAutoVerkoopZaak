@@ -1,9 +1,13 @@
 package service;
 
 import DAO.CustomerDAO;
+import DAO.EmployeeDAO;
 import Entities.Customer;
+import Entities.Employee;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -11,10 +15,14 @@ public class CustomerService {
 
     private CustomerDAO customerDAO;
     private Scanner scanner;
+    private EmployeeService employeeService;
+    private EmployeeDAO employeeDAO;
 
     public CustomerService() {
         customerDAO = new CustomerDAO();
         scanner = new Scanner(System.in);
+        employeeService = new EmployeeService();
+        employeeDAO = new EmployeeDAO();
     }
 
     public void showAllCustomers() throws SQLException {
@@ -35,7 +43,7 @@ public class CustomerService {
     }
 
 
-    public Customer createACustomer() {
+    public Customer createACustomer() throws SQLException, ParseException {
 
         Customer customer = new Customer();
         System.out.println("Enter Customer Details:");
@@ -103,6 +111,23 @@ public class CustomerService {
         String postalCode = scanner.nextLine();
         System.out.println("Country:");
         String country = scanner.nextLine();
+        System.out.println("Sales report  employee number:");
+        System.out.println("Enter employee id number for sales rep: ");
+        int employeeId = scanner.nextInt();
+        Employee employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+        while (employee == null) {
+            System.err.println("Employee doesn't exist, please enter a valid number.");
+            employeeId = scanner.nextInt();
+            employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+        }
+        System.out.println("Set credit limit");
+        double creditLimit = scanner.nextDouble();
+
+
+
+
+
+
         customer.setCustomerName(customerName);
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
@@ -113,6 +138,9 @@ public class CustomerService {
         customer.setState(state);
         customer.setPostalCode(postalCode);
         customer.setCountry(country);
+        customer.setSalesRepEmployeeNumber(employee);
+        customer.setCreditLimit(creditLimit);
+
         customerDAO.addCustomers(customer);
 
         return customer;
@@ -140,7 +168,7 @@ public class CustomerService {
                 String updateMore;
 
 
-                System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country");
+                System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country\n(11)Sales report Employee\n(12)Credit Limit");
                 int selection = scanner.nextInt();
 
                 while (selection > 10 || selection < 1) {
@@ -258,6 +286,26 @@ public class CustomerService {
                         System.out.println("Country has been updated to: " + country);
 
                         break;
+
+                    case 11:
+                        System.out.println("Sales report employee: ");
+                        int employeeId = scanner.nextInt();
+                        Employee employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+                        while (employee == null) {
+                            System.err.println("Employee doesn't exist, please enter a valid number.");
+                            employeeId = scanner.nextInt();
+                            employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+                        }
+                        customer.setSalesRepEmployeeNumber(employee);
+                        System.out.println("Sales report employee has been updated to: " + employee);
+
+                        break;
+                    case 12:
+                        System.out.println("Credit limit:");
+                        double creditLimit = scanner.nextDouble();
+                        customer.setCreditLimit(creditLimit);
+                        System.out.println("Credit limit has been updated to: " + creditLimit);
+
 
 
                 }
