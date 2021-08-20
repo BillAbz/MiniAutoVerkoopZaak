@@ -64,8 +64,27 @@ public class CustomerService {
         } while (!isUnique);
         System.out.println("First Name:");
         String firstName = scanner.nextLine();
+        boolean wrong = true;
+        while(wrong) {
+            if (firstName.length() <= 0) {
+                System.out.println("please enter your first name");
+            } else {
+                customer.setFirstName(firstName);
+                wrong = false;
+            }
+        }
+
         System.out.println("Last Name:");
         String lastName = scanner.nextLine();
+        boolean wrong2 = true;
+        while(wrong2) {
+            if (lastName.length() <= 0) {
+                System.out.println("please enter your first name");
+            } else {
+                customer.setLastName(lastName);
+                wrong2 = false;
+            }
+        }
         System.out.println("PhoneNumber:");
         String phone = scanner.nextLine();
         if (phone.length() < 9 || phone.length() > 10) {

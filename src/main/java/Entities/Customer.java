@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.text.DecimalFormat;
 import java.util.List;
 
-@Entity
+@Entity(name = "customers")
 @Table(name = "customers")
 public class Customer {
 
@@ -12,7 +12,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerNumber;
     private String customerName;
+    @Column(name = "contactFirstName")
     private String firstName;
+    @Column(name = "contactLastName")
     private String lastName;
     private String phone;
     private String addressLine1;
@@ -53,16 +55,6 @@ public class Customer {
     }
 
     public void setFirstName(String firstName) {
-        boolean wrong = true;
-        while(wrong){
-            if (firstName.length()<=0){
-                System.out.println("please enter your first name");
-            }else{
-                this.firstName = firstName;
-                wrong = false;
-            }
-        }
-
     }
 
     public String getLastName() {
@@ -70,15 +62,6 @@ public class Customer {
     }
 
     public void setLastName(String lastName) {
-        boolean wrong = true;
-        while (wrong) {
-            if (lastName.length() <= 0) {
-                System.out.println("please enter your first name");
-            } else {
-                this.lastName = lastName;
-                wrong = false;
-            }
-        }
     }
 
     public String getPhone() {

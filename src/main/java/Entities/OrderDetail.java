@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-@Entity
+@Entity(name = "orderdetails")
 @Table(name = "orderdetails")
 public class OrderDetail implements Serializable{
 
