@@ -60,5 +60,7 @@ public class Payment {
     public void setAmount(DecimalFormat amount) {
         this.amount = amount;
     }
+
+
 }
 
