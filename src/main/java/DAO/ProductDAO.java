@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Customer;
 import Entities.Product;
 
 import javax.persistence.EntityManager;
@@ -21,10 +22,8 @@ public class ProductDAO {
     }
 
     public List<Product> getAllProducts() throws SQLException {
-        EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from products");
-        List<Product> countList = query.getResultList();
-        return countList;
+        EntityManager em = emf.createEntityManager();
+        return em.createQuery("FROM products", Product.class).getResultList();
     }
 
 

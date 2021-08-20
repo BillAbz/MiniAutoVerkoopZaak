@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Customer;
 import Entities.Employee;
 import Entities.Office;
 
@@ -23,10 +24,9 @@ public class OfficeDAO {
         return entityManager.find(Office.class , officeCode);
     }
 
-    public Set<Office> getAllOffices()  {
+    public List<Office> getAllOffices()  {
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("FROM offices o");
-        return new HashSet<>(query.getResultList());
+        return em.createQuery("FROM offices", Office.class).getResultList();
     }
 
 
