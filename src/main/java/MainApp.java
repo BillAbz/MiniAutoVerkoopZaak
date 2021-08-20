@@ -1,18 +1,239 @@
-import Entities.Customer;
-import Entities.Employee;
-import Entities.Office;
-import Entities.Product;
 import service.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
+import java.sql.SQLException;
+import java.util.Locale;
 import java.util.Scanner;
-import java.util.Set;
 
 public class MainApp {
+    private static int choiceOne = 9;
+    private static int choiceTwo = 9;
+    private static boolean continueThis = true;
 
     public static void main(String[] args) {
-        CustomerService customerService = new CustomerService();
+
+
+        while (continueThis) {
+            getChoice();
+            choices();
+        }
+    }
+
+        public static void getChoice() {
+            Scanner scanner = new Scanner(System.in);
+
+            while (choiceOne == 9) {
+                System.out.println("What do you want to look at? \n (1)Customer\n (2)Employee\n (3)Office\n (4)Order\n " +
+                        " (5)Order details\n (6)Payment\n (7)Product\n (8)Product line\n (0)Cancel");
+                choiceOne = scanner.nextInt();
+                if (choiceOne == 0) break;
+                if (choiceOne < 1 || choiceOne > 8) {
+                    choiceOne = 9;
+                    System.out.println("Invalid choice.");
+                } else {
+                    while (choiceTwo == 9) {
+                        System.out.println("What do you want to look at? \n1: See All \n2: See One \n3: Add \n4: Edit \n5: Delete\n0: End");
+                        choiceTwo = scanner.nextInt();
+                        if (choiceTwo == 0) break;
+                        if (choiceTwo < 1 || choiceTwo > 5) {
+                            choiceTwo = 9;
+                            System.out.println("Invalid choice.");
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        private static void choices() throws SQLException {
+            Scanner scanner = new Scanner(System.in);
+            CustomerService customerService = new CustomerService();
+            EmployeeService employeeService = new EmployeeService();
+            OfficeService officeService = new OfficeService();
+            OrderService orderService = new OrderService();
+            OrderDetailService orderDetailService = new OrderDetailService();
+            PaymentService paymentService = new PaymentService();
+            ProductService productService = new ProductService();
+            ProductLineService productLineService = new ProductLineService();
+            if (choiceTwo != 0)
+                if (choiceOne == 1) {
+
+                    switch (choiceTwo) {
+                        case 1:
+                            customerService.showAllCustomers();
+                            break;
+                        case 2:
+                            customerService.showCustomerByCustomerNumber();
+                            break;
+                        case 3:
+                            customerService.createACustomer();
+                            break;
+                        case 4:
+                            customerService.updateACustomer();
+                            break;
+                        case 5:
+                            customerService.deleteACustomer();
+                            break;
+                    }
+                }
+            else if (choiceOne == 2) {
+
+                switch (choiceTwo) {
+                    case 1:
+                        employeeService.showAllEmployees();
+                        break;
+                    case 2:
+                        employeeService.showEmployeeByEmployeeNumber();
+                        break;
+                    case 3:
+                        employeeService.createAnEmployee();
+                        break;
+                    case 4:
+                        employeeService.updateAnEmployee();
+                        break;
+                    case 5:
+                        employeeService.deleteAnEmployee();
+                        break;
+                }
+            } else if (choiceOne == 3) {
+
+                switch (choiceTwo) {
+                    case 1:
+                        officeService.showAllOffices();
+                        break;
+                    case 2:
+                        officeService.showOfficeByOfficeCode();
+                        break;
+                    case 3:
+                        officeService.createAnOffice();
+                        break;
+                    case 4:
+                        officeService.updateAnOffice();
+                        break;
+                    case 5:
+                        officeService.deleteAnOffice();
+                        break;
+                }
+            }
+                else if (choiceOne == 4) {
+
+                    switch (choiceTwo) {
+                        case 1:
+                            orderService.showAllOrders();
+                            break;
+                        case 2:
+                            orderService.showOrderByOrderNumber();
+                            break;
+                        case 3:
+                            orderService.createAnOrder();
+                            break;
+                        case 4:
+                            orderService.updateAnOrder();
+                            break;
+                        case 5:
+                            orderService.deleteAnOrder();
+                            break;
+                    }
+                } else if (choiceOne == 5) {
+                    switch (choiceTwo) {
+                        case 1:
+                            orderDetailService.showAllOrderDetails();
+                            break;
+                        case 2:
+                            orderDetailService.showOrderDetailsByOrderNumber();
+                            break;
+                        case 3:
+                            orderDetailService.createAnOrderDetail();
+                            break;
+                        case 4:
+                            orderDetailService.updateAnOrderDetail();
+                            break;
+                        case 5:
+                            orderDetailService.deleteAnOrderDetail();
+                            break;
+                    }
+                }else if (choiceOne == 6) {
+
+                    switch (choiceTwo) {
+                        case 1:
+                            paymentService.showAllPayments();
+                            break;//see All Countries
+                        case 2:
+                            paymentService.showPaymentByOrderNumber();
+                            break;//see One Country By Id
+                        case 3:
+                            countryService.addCountryWithoutCheck();
+                            break;//add One new Country
+                        case 4:
+                            countryService.updateCountryWithoutCheck();
+                            break;//edit One Country
+                        case 5:
+                            countryService.deleteACountry();
+                            break;//delete One Country
+                    }
+                    System.out.println("We did a country thing!");
+
+
+                } else if (choiceOne == 7) {
+                    System.out.println("choise1value3");
+                    switch (choiceTwo) {
+                        case 1:
+                            continentService.showAllContinents();
+                            break;//see All Continents
+                        case 2:
+                            continentService.showContinentById();
+                            break;//see One Continent By Id
+                        case 3:
+                            System.out.println("incase3");
+                            continentService.insertAContinent();
+                            break;//add One new Continent
+                        case 4:
+                            continentService.updateAContinent();
+                            break;//edit One Continent
+                        case 5:
+                            continentService.deleteAContinent();
+                            break;//delete One Continent
+                    }
+                    System.out.println("We did a continent thing!");
+                }
+            choiceOne = 9;
+            choiceTwo = 9;
+
+            boolean goodAnswer;
+            do {
+                System.out.println("Do you want to Try again? Y/N");
+                String answer = scanner.next();
+                if (answer.toUpperCase(Locale.ROOT).equals("N")) {
+                    System.out.println("Bye!");
+                    continueThis = false;
+                    break;
+                }
+                if (!answer.toUpperCase(Locale.ROOT).equals("Y")) {
+                    goodAnswer = false;
+                    System.out.println(answer + " is not a good answer.");
+                } else goodAnswer = true;
+            } while (!goodAnswer);
+
+
+        }
+
+
+
+
+
+
+    boolean done;
+        do {
+            System.out.println("What do you want to do something with?\n (1)Customer\n (2)Employee\n (3)Office\n (4)Order\n " +
+                    "(5)Order details\n (6)Payment\n (7)Product\n (8)Product line\n (0)Cancel\n");
+            int choise = scanner.nextInt();
+                    switch (choise){
+                        case 0:
+                            break;
+                        case 1:
+
+                    }
+        }while (!done);
 
     }
 /*

@@ -24,7 +24,7 @@ public class PaymentService {
         scanner = new Scanner(System.in);
     }
 
-    public void showAllEmployees() throws SQLException {
+    public void showAllPayments() throws SQLException {
         if (paymentDAO.getAllPayments() != null)
             paymentDAO.getAllPayments().forEach(System.out::println);
         else
