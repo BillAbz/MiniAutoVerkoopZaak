@@ -5,10 +5,9 @@ import DAO.EmployeeDAO;
 import Entities.Customer;
 import Entities.Employee;
 
-import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -44,7 +43,7 @@ public class CustomerService {
     }
 
 
-    public Customer createACustomer() throws SQLException {
+    public Customer createACustomer() throws SQLException, ParseException {
 
         Customer customer = new Customer();
         System.out.println("Enter Customer Details:");
@@ -105,8 +104,8 @@ public class CustomerService {
         System.out.println("Set credit limit");
         String pattern = "#,###,###,###.00";
         DecimalFormat creditLimit = new DecimalFormat(pattern);
-        String creditLimitInput = creditLimit.format(scanner.next());
-        customer.setCreditLimit(creditLimitInput);
+        int input = creditLimit.format(scanner.nextint());
+        customer.setCreditLimit(input);
 
 
 
