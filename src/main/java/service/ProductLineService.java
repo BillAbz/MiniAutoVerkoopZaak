@@ -149,5 +149,8 @@ public class ProductLineService {
         }
         productLineDAO.deleteProductLines(productLine);
     }
+
+    public void showAllProductlines() {
+    }
 }
 
