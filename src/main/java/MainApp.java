@@ -2,6 +2,7 @@ import service.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class MainApp {
     private static int choiceTwo = 9;
     private static boolean continueThis = true;
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, ParseException {
 
 
         while (continueThis) {
@@ -46,7 +47,7 @@ public class MainApp {
     }
 
 
-    private static void choices() throws SQLException, IOException {
+    private static void choices() throws SQLException, IOException, ParseException {
         Scanner scanner = new Scanner(System.in);
         CustomerService customerService = new CustomerService();
         EmployeeService employeeService = new EmployeeService();
