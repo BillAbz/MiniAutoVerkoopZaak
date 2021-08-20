@@ -1,9 +1,14 @@
 package service;
 
 import DAO.CustomerDAO;
+import DAO.EmployeeDAO;
 import Entities.Customer;
+import Entities.Employee;
 
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -11,10 +16,14 @@ public class CustomerService {
 
     private CustomerDAO customerDAO;
     private Scanner scanner;
+    private EmployeeService employeeService;
+    private EmployeeDAO employeeDAO;
 
     public CustomerService() {
         customerDAO = new CustomerDAO();
         scanner = new Scanner(System.in);
+        employeeService = new EmployeeService();
+        employeeDAO = new EmployeeDAO();
     }
 
     public void showAllCustomers() throws SQLException {
@@ -35,7 +44,7 @@ public class CustomerService {
     }
 
 
-    public Customer createACustomer() {
+    public Customer createACustomer() throws SQLException {
 
         Customer customer = new Customer();
         System.out.println("Enter Customer Details:");
@@ -84,6 +93,25 @@ public class CustomerService {
         String postalCode = scanner.nextLine();
         System.out.println("Country:");
         String country = scanner.nextLine();
+        System.out.println("Sales report  employee number:");
+        System.out.println("Enter employee id number for sales rep: ");
+        int employeeId = scanner.nextInt();
+        Employee employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+        while (employee == null) {
+            System.err.println("Employee doesn't exist, please enter a valid number.");
+            employeeId = scanner.nextInt();
+            employee = employeeDAO.getEmployeeByEmployeeNumber(employeeId);
+        }
+        System.out.println("Set credit limit");
+        String pattern = "#,###,###,###.00";
+        DecimalFormat creditLimit = new DecimalFormat(pattern);
+        String creditLimitInput = creditLimit.format(scanner.next());
+        customer.setCreditLimit(creditLimitInput);
+
+
+
+
+
         customer.setCustomerName(customerName);
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
@@ -94,6 +122,8 @@ public class CustomerService {
         customer.setState(state);
         customer.setPostalCode(postalCode);
         customer.setCountry(country);
+        customer.setSalesRepEmployeeNumber(employee);
+
         customerDAO.addCustomers(customer);
 
         return customer;
