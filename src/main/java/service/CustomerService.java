@@ -60,7 +60,7 @@ public class CustomerService {
         do {
             isUnique = true;
             System.out.println("Customer name:");
-            customerName = scanner.nextLine();
+            customerName = scanner.next();
             for (Customer customer1 : customerDAO.getAllCustomers()) {
                 if (customer1.getCustomerName().contentEquals(customerName)) {
                     System.out.println("Customer name already exists.");
@@ -70,7 +70,7 @@ public class CustomerService {
             }
         } while (!isUnique);
         System.out.println("First Name:");
-        String firstName = scanner.nextLine();
+        String firstName = scanner.next();
         boolean wrong = true;
         while(wrong) {
             if (firstName.length() <= 0) {
@@ -82,7 +82,7 @@ public class CustomerService {
         }
 
         System.out.println("Last Name:");
-        String lastName = scanner.nextLine();
+        String lastName = scanner.next();
         boolean wrong2 = true;
         while(wrong2) {
             if (lastName.length() <= 0) {
@@ -93,7 +93,7 @@ public class CustomerService {
             }
         }
         System.out.println("PhoneNumber:");
-        String phone = scanner.nextLine();
+        String phone = scanner.next();
         if (phone.length() < 9 || phone.length() > 10) {
             System.out.println("doesn't seem right");
             phone = scanner.next();
@@ -107,17 +107,17 @@ public class CustomerService {
             System.out.println("thanks");
         }
         System.out.println("AddressLine1:");
-        String addressLine1 = scanner.nextLine();
+        String addressLine1 = scanner.next();
         System.out.println("AddressLine2:");
-        String addressLine2 = scanner.nextLine();
+        String addressLine2 = scanner.next();
         System.out.println("City:");
-        String city = scanner.nextLine();
+        String city = scanner.next();
         System.out.println("State:");
-        String state = scanner.nextLine();
+        String state = scanner.next();
         System.out.println("PostalCode:");
-        String postalCode = scanner.nextLine();
+        String postalCode = scanner.next();
         System.out.println("Country:");
-        String country = scanner.nextLine();
+        String country = scanner.next();
         System.out.println("Sales report  employee number:");
         System.out.println("Enter employee id number for sales rep: ");
         int employeeId = scanner.nextInt();
@@ -131,7 +131,7 @@ public class CustomerService {
         double creditLimit = scanner.nextDouble();
 
 
-        System.out.println("what payment do you want to add , give the checknumber");
+        System.out.println("what payment do you want to add , give the check number");
         paymentDAO.getAllPayments();
         payments.add(paymentDAO.getPaymentByCheckNumber(scanner.nextInt()));
         customer.setPayments(payments);
@@ -182,7 +182,7 @@ public class CustomerService {
                 System.out.println("Please select an option: \n(1)Customer name\n(2)First name\n(3)Last name\n(4)Phone number\n(5)AddressLine1\n(6)AddressLine2\n(7)City\n(8)State\n(9)Postal code\n(10)Country\n(11)Sales report Employee\n(12)Credit Limit\n(13)Payment");
                 int selection = scanner.nextInt();
 
-                while (selection > 12 || selection < 1) {
+                while (selection > 13 || selection < 1) {
                     System.out.println("Please make a valid selection");
                     selection = scanner.nextInt();
                 }
@@ -212,7 +212,7 @@ public class CustomerService {
                         break;
                     case 2:
                         System.out.println("First Name:");
-                        String firstName = scanner.nextLine();
+                        String firstName = scanner.next();
                         customer.setFirstName(firstName);
                         System.out.println("First name has been updated to: " + firstName);
 
@@ -221,7 +221,7 @@ public class CustomerService {
 
                     case 3:
                         System.out.println("Last Name:");
-                        String lastName = scanner.nextLine();
+                        String lastName = scanner.next();
                         customer.setLastName(lastName);
                         System.out.println("Last name has been updated to: " + lastName);
 
@@ -253,21 +253,21 @@ public class CustomerService {
 
                     case 5:
                         System.out.println("AddressLine1:");
-                        String addressLine1 = scanner.nextLine();
+                        String addressLine1 = scanner.next();
                         customer.setAddressLine1(addressLine1);
                         System.out.println("Address line 1 has been updated to: " + addressLine1);
 
                         break;
                     case 6:
                         System.out.println("AddressLine2:");
-                        String addressLine2 = scanner.nextLine();
+                        String addressLine2 = scanner.next();
                         customer.setAddressLine2(addressLine2);
                         System.out.println("Address line 2 has been updated to: " + addressLine2);
 
                         break;
                     case 7:
                         System.out.println("City:");
-                        String city = scanner.nextLine();
+                        String city = scanner.next();
                         customer.setCity(city);
                         System.out.println("City has been updated to: " + city);
 
@@ -275,7 +275,7 @@ public class CustomerService {
                         break;
                     case 8:
                         System.out.println("State:");
-                        String state = scanner.nextLine();
+                        String state = scanner.next();
                         customer.setState(state);
                         System.out.println("State has been updated to: " + state);
 
@@ -284,7 +284,7 @@ public class CustomerService {
                         break;
                     case 9:
                         System.out.println("PostalCode:");
-                        String postalCode = scanner.nextLine();
+                        String postalCode = scanner.next();
                         customer.setPostalCode(postalCode);
                         System.out.println("Postal code has been updated to: " + postalCode);
 
@@ -292,7 +292,7 @@ public class CustomerService {
                         break;
                     case 10:
                         System.out.println("Country:");
-                        String country = scanner.nextLine();
+                        String country = scanner.next();
                         customer.setCountry(country);
                         System.out.println("Country has been updated to: " + country);
 
@@ -368,10 +368,10 @@ do{
 
         System.out.println(customer);
         System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
-        String answer = scanner.nextLine();
+        String answer = scanner.next();
         while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
             System.out.println("\nAre you sure you wish to delete this customer? Y/N: ");
-            answer = scanner.nextLine();
+            answer = scanner.next();
         }
         if (answer.equalsIgnoreCase("y")) {
             customerDAO.deleteCustomers(customer);

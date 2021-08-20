@@ -107,19 +107,19 @@ public class EmployeeService {
         String customerName;
 
         System.out.println("First Name:");
-        String firstName = scanner.nextLine();
+        String firstName = scanner.next();
         System.out.println("Last Name:");
-        String lastName = scanner.nextLine();
+        String lastName = scanner.next();
         System.out.println("Extension:");
-        String extension = scanner.nextLine();
+        String extension = scanner.next();
         System.out.println("Email:");
-        String email = scanner.nextLine();
+        String email = scanner.next();
         System.out.println("Office code:");
-        String officeCode = scanner.nextLine();
+        String officeCode = scanner.next();
         System.out.println("Reports to:");
         int reportsTo = scanner.nextInt();
         System.out.println("Job title");
-        String jobTitle = scanner.nextLine();
+        String jobTitle = scanner.next();
 
 
 
@@ -172,7 +172,7 @@ public class EmployeeService {
 
                     case 1:
                         System.out.println("First Name:");
-                        String firstName = scanner.nextLine();
+                        String firstName = scanner.next();
                         employee.setFirstName(firstName);
                         System.out.println("First name has been updated to: " + firstName);
 
@@ -181,7 +181,7 @@ public class EmployeeService {
 
                     case 2:
                         System.out.println("Last Name:");
-                        String lastName = scanner.nextLine();
+                        String lastName = scanner.next();
                         employee.setLastName(lastName);
                         System.out.println("Last name has been updated to: " + lastName);
 
@@ -191,7 +191,7 @@ public class EmployeeService {
 
                     case 3:
                         System.out.println("Email:");
-                        String email = scanner.nextLine();
+                        String email = scanner.next();
                         employee.setEmail(email);
                         System.out.println("Phone number has been updated to: " + email);
 
@@ -201,7 +201,7 @@ public class EmployeeService {
 
                     case 4:
                         System.out.println("Office code:");
-                        String officeCode = scanner.nextLine();
+                        String officeCode = scanner.next();
                         employee.setOfficeCode(officeCode);
                         System.out.println("Address line 1 has been updated to: " + officeCode);
 
@@ -215,7 +215,7 @@ public class EmployeeService {
                         break;
                     case 6:
                         System.out.println("Job title:");
-                        String jobTitle = scanner.nextLine();
+                        String jobTitle = scanner.next();
                         employee.setJobTitle(jobTitle);
                         System.out.println("City has been updated to: " + jobTitle);
 
@@ -264,10 +264,10 @@ public class EmployeeService {
 
             System.out.println(employee);
             System.out.println("\nAre you sure you wish to delete this employee? Y/N: ");
-            String answer = scanner.nextLine();
+            String answer = scanner.next();
             while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
                 System.out.println("\nAre you sure you wish to delete this employee? Y/N: ");
-                answer = scanner.nextLine();
+                answer = scanner.next();
             }
             if (answer.equalsIgnoreCase("y")) {
                 employeeDAO.deleteEmployees(employee);
