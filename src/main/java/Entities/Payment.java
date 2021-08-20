@@ -15,8 +15,8 @@ public class Payment {
     private int checkNumber;
     private LocalDate paymentDate;
     @Transient
-    private String pattern = "#,###,###,###.00";
-    private DecimalFormat amount = new DecimalFormat(pattern);
+    private double amount;
+
 
     public Payment() {
     }
@@ -45,22 +45,16 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public DecimalFormat getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(DecimalFormat amount) {
-        this.amount = amount;
+    public void setAmount(double amount) {
+        String pattern = "#,###,###,###.00";
+        DecimalFormat creditLimitFormat = new DecimalFormat(pattern);
+
+        this.amount = Double.parseDouble(creditLimitFormat.format(amount));
+
     }
-
-
 }
 

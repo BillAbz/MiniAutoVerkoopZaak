@@ -15,8 +15,7 @@ public class OrderDetail implements Serializable{
     private String productCode;
     private int quantityOrdered;
     @Transient
-    private String pattern = "#,###,###,###.00";
-    private DecimalFormat priceEach = new DecimalFormat(pattern);
+    private double priceEach;
     private int orderLineNumber;
 
     public OrderDetail() {
@@ -42,20 +41,17 @@ public class OrderDetail implements Serializable{
         this.quantityOrdered = quantityOrdered;
     }
 
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public DecimalFormat getPriceEach() {
+    public double getPriceEach() {
         return priceEach;
     }
 
-    public void setPriceEach(DecimalFormat priceEach) {
-        this.priceEach = priceEach;
+    public void setPriceEach(double priceEach) {
+        String pattern = "#,###,###,###.00";
+        DecimalFormat creditLimitFormat = new DecimalFormat(pattern);
+
+        this.priceEach = Double.parseDouble(creditLimitFormat.format(priceEach));
+
+
     }
 
     public int getOrderLineNumber() {

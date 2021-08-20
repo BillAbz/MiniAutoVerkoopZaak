@@ -44,19 +44,19 @@ public class OrderDetailService {
     public OrderDetail createAnOrderDetail() {
         OrderDetail orderDetail = new OrderDetail();
 
-        System.out.println("Enter the OrderLineNumber pls:");
+        System.out.println("Enter the OrderLineNumber pls: ");
         int orderLineNumber = scanner.nextInt();
-        System.out.println("Enter the Pattern for example:  '#,###,###,###.00'");
-        String pattern = scanner.next();
-        System.out.println("Enter Quantity Ordered:");
+        System.out.println("Enter a price for each: ");
+        double priceEach = scanner.nextDouble();
+        System.out.println("Enter Quantity Ordered: ");
         int quantityOrdered = scanner.nextInt();
-        System.out.println("And enter the ProductCode:");
+        System.out.println("And enter the ProductCode: ");
         String productCode = scanner.next();
 
 
-        DecimalFormat priceEach = new DecimalFormat(pattern);
+
         orderDetail.setOrderLineNumber(orderLineNumber);
-        orderDetail.setPattern(pattern);
+        orderDetail.setPriceEach(priceEach);
         orderDetail.setQuantityOrdered(quantityOrdered);
         orderDetail.setProductCode(productCode);
         orderDetail.setPriceEach(priceEach);
@@ -75,7 +75,7 @@ public class OrderDetailService {
             orderDetail.setOrderNumber(order.getOrderNumber());
             if (orderDetail != null) {
                 System.out.println(orderDetail);
-                System.out.println("Please select an option: \n(1)New OrderLineNumber\n(2)Set QuantityOrdered\n(3)New Pattern\n(4)Product Code\n(5)Price Each");
+                System.out.println("Please select an option: \n(1)New OrderLineNumber\n(2)Set QuantityOrdered\n(3)Product Code\n(4)Price Each");
 
                 int selection = scanner.nextInt();
 
@@ -96,21 +96,16 @@ public class OrderDetailService {
                         int quantityOrdered = scanner.nextInt();
                         orderDetail.setQuantityOrdered(quantityOrdered);
                         break;
+
                     case 3:
-                        System.out.println("Enter the new Pattern for example:  '#,###,###,###.00'");
-                        String pattern = scanner.next();
-                        orderDetail.setPattern(pattern);
-                        break;
-                    case 4:
                         System.out.println("Enter the New ProductCode:");
                         String productCode = scanner.next();
                         orderDetail.setProductCode(productCode);
                         break;
-                    case 5:
+                    case 4:
                         System.out.println("Enter the new Price Each:");
-                        String priceEach = scanner.next();
-                        DecimalFormat decimalFormat = new DecimalFormat(priceEach);
-                        orderDetail.setPriceEach(decimalFormat);
+                        double priceEach = scanner.nextDouble();
+                        orderDetail.setPriceEach(priceEach);
                         break;
                 }
             } else
