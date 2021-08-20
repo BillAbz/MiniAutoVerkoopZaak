@@ -1,9 +1,6 @@
 package Entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.List;
 
 @Entity(name = "products")
 @Table(name = "products")
@@ -17,10 +14,8 @@ public class Product {
     private String productVendor;
     private String productDescription;
     private int quantityInStock;
-    @Transient
-    private BigDecimal buyPrice;
-    @Transient
-    private BigDecimal MSRP;
+    private double buyPrice;
+    private double MSRP;
 
     public Product() {
     }
@@ -83,19 +78,19 @@ public class Product {
     }
 
 
-    public BigDecimal getBuyPrice() {
+    public double getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(BigDecimal buyPrice) {
+    public void setBuyPrice(double buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public BigDecimal getMSRP() {
+    public double getMSRP() {
         return MSRP;
     }
 
-    public void setMSRP(BigDecimal MSRP) {
+    public void setMSRP(double MSRP) {
         this.MSRP = MSRP;
     }
 

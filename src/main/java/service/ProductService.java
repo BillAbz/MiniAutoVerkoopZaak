@@ -44,20 +44,24 @@ public class ProductService {
     public Product createAProduct() throws SQLException {
         Product product = new Product ();
         System.out.println ("Enter Product Details:");
-        String productName;
+        String productCode;
         boolean isUnique;
         do {
             isUnique = true;
-            System.out.println ("Product name;");
-            productName = scanner.nextLine ();
+            System.out.println ("Product cod;");
+            productCode = scanner.nextLine ();
             for (Product product1 : productDAO.getAllProducts ()){
-                if (product1.getProductName ().contentEquals (productName)) {
-                    System.out.println ("Product name already exists.");
+                if (product1.getProductCode ().contentEquals (productCode)) {
+                    System.out.println ("Product code already exists.");
                     isUnique = false;
                     break;
                 }
             }
         } while (!isUnique);
+        product.setProductCode (productCode);
+        System.out.println ("Product name:");
+        String productName = scanner.nextLine ();
+        product.setProductName (productName);
         System.out.println ("Product line:");
         String productLine = scanner.nextLine ();
         product.setProductLine (productLine);
@@ -74,10 +78,10 @@ public class ProductService {
         Integer quantityInStock = scanner.nextInt ();
         product.setQuantityInStock (quantityInStock);
         System.out.println ("Buy Price(###.##):");
-        BigDecimal buyPrice = scanner.nextBigDecimal ();
+        double buyPrice = scanner.nextInt ();
         product.setBuyPrice (buyPrice);
         System.out.println ("MSRP(###.##)");
-        BigDecimal msrp = scanner.nextBigDecimal ();
+        double msrp = scanner.nextInt ();
         product.setMSRP (msrp);
 
         productDAO.addProduct (product);
@@ -142,12 +146,12 @@ public class ProductService {
                     break;
                 case 6:
                     System.out.println ("What is the new Product buy price?(###.##)");
-                    product.setBuyPrice (scanner.nextBigDecimal ());
+                    product.setBuyPrice (scanner.nextInt ());
                     System.out.println ("Done.");
                     break;
                 case 7:
                     System.out.println ("What is the new Product MSRP?(###.##)");
-                    product.setMSRP (scanner.nextBigDecimal ());
+                    product.setMSRP (scanner.nextInt ());
                     System.out.println ("Done.");
                     break;
             }
