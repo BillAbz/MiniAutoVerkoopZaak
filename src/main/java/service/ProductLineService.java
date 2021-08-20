@@ -19,7 +19,7 @@ public class ProductLineService {
         scanner = new Scanner(System.in);
     }
 
-    public void showAllProductlines() throws SQLException {
+    public void showAllProductLines() throws SQLException {
         if (productLineDAO.getAllProducts() != null)
             productLineDAO.getAllProducts().forEach(System.out::println);
         else
@@ -29,7 +29,7 @@ public class ProductLineService {
 
     public void showProductByProductCode() throws SQLException {
         System.out.println("What is the id of the product you want to lookup?");
-        String input = scanner.nextLine();
+        String input = scanner.next();
         ProductLine productLine = productLineDAO.getProductByProductCode(input);
         if (productLine != null)
             System.out.println(productLine);
@@ -41,17 +41,17 @@ public class ProductLineService {
     public ProductLine createAProductLine() throws IOException {
         ProductLine productLine = new ProductLine();
         String input;
-        System.out.println("What is the productline called? ");
-        input = scanner.nextLine();
+        System.out.println("What is the product line called? ");
+        input = scanner.next();
         productLine.setProductLine(input);
         System.out.println("What is the HTML Description?");
-        input = scanner.nextLine();
+        input = scanner.next();
         productLine.setHtmlDescription(input);
         System.out.println("What is the Text Description?");
-        input = scanner.nextLine();
+        input = scanner.next();
         productLine.setTextDescription(input);
         System.out.println("What is the path of the image? Leave blank if you want to skip this.");
-        String path = scanner.nextLine();
+        String path = scanner.next();
         if (path.length() > 3) {
             File file = new File(path);
             byte[] picInBytes = new byte[(int) file.length()];
@@ -66,13 +66,13 @@ public class ProductLineService {
 
     public void updateAProductLine() throws IOException, SQLException {
         boolean done;
-        showAllProductlines();
-        System.out.println("What productline do you want to update? give the product line name:");
+        showAllProductLines();
+        System.out.println("What product line do you want to update? give the product line name:");
         String id = scanner.nextLine();
         ProductLine productLine = productLineDAO.getProductLinesByLine(id);
         while (productLine == null) {
-            System.err.println("Productline doesn't exist.");
-            System.out.println("What productline do you want to update? give the product line name:");
+            System.err.println("Product line doesn't exist.");
+            System.out.println("What product line do you want to update? give the product line name:");
             productLine = productLineDAO.getProductLinesByLine(id);
         }
         System.out.println(productLine);
@@ -94,22 +94,22 @@ public class ProductLineService {
                     break;
                 case 1:
                     System.out.println("Give the new name for the product line:");
-                    productLine.setProductLine(scanner.nextLine());
+                    productLine.setProductLine(scanner.next());
                     System.out.println("Done.");
                     break;
                 case 2:
                     System.out.println("What is the new text description?");
-                    productLine.setTextDescription(scanner.nextLine());
+                    productLine.setTextDescription(scanner.next());
                     System.out.println("Done.");
                     break;
                 case 3:
                     System.out.println("What is the new HTML description?");
-                    productLine.setHtmlDescription(scanner.nextLine());
+                    productLine.setHtmlDescription(scanner.next());
                     System.out.println("Done.");
                     break;
                 case 4:
                     System.out.println("What is the path of the image? Leave blank if you want to skip this.");
-                    String path = scanner.nextLine();
+                    String path = scanner.next();
                     if (path.length() > 3) {
                         File file = new File(path);
                         byte[] picInBytes = new byte[(int) file.length()];
@@ -138,9 +138,9 @@ public class ProductLineService {
     }
 
     public void deleteAProductLine() throws SQLException {
-        showAllProductlines();
+        showAllProductLines();
         System.out.println("What product line do you want to delete? give the product line name:");
-        String id = scanner.nextLine();
+        String id = scanner.next();
         ProductLine productLine = productLineDAO.getProductLinesByLine(id);
         while (productLine == null) {
             System.err.println("Product line doesn't exist.");
