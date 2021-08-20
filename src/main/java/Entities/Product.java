@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
-@Entity
+@Entity(name = "products")
 @Table(name = "products")
 public class Product {
     @Id

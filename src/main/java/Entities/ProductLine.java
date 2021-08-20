@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Arrays;
 
-@Entity
-@Table(name = "product_lines")
+@Entity(name = "productlines")
+@Table(name = "productlines")
 public class ProductLine {
     @Id
     private String productLine;
