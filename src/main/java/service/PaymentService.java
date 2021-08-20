@@ -57,16 +57,15 @@ public class PaymentService {
         System.out.println("Week:");
         int week = scanner.nextInt();
 
-        System.out.println("Enter the Pattern");
-        String pattern = scanner.nextLine();
+        System.out.println("Enter the amount");
+        double amount = scanner.nextDouble();
 
 
         LocalDate date = LocalDate.of(year,month,week);
 
-        DecimalFormat priceEach = new DecimalFormat(pattern);
+        payment.setAmount(amount);
         payment.setPaymentDate(date);
-        payment.setPattern(pattern);
-        payment.setAmount(priceEach);
+
         payment.setCustomerNumber(customerNumber); //todo is het setCheckNumber of setCustomerId
         paymentDAO.addPayment(payment);
         return new Payment();
@@ -84,11 +83,11 @@ public class PaymentService {
             if (payment != null){
                 System.out.println(payment);
 
-                System.out.println("Please select an option: \n(1)New Date\n(2)Set Amount\n(3)New Pattern\n(4)Phone number");
+                System.out.println("Please select an option: \n(1)New Date\n(2)Set Amount\n(3)Customer number");
 
                 int selection = scanner.nextInt();
 
-                while (selection > 4 || selection < 0) {
+                while (selection > 3 || selection < 0) {
                     System.out.println("Please make a valid selection");
                     selection = scanner.nextInt();
                 }
@@ -111,18 +110,13 @@ public class PaymentService {
                         break;
                     case 2:
                         System.out.println("What is the new Amount?");
-                        String priceEach = scanner.next();
-                        DecimalFormat decimalFormat = new DecimalFormat(priceEach);
-                        payment.setAmount(decimalFormat);
+                        double priceEach = scanner.nextDouble();
+                        payment.setAmount(priceEach);
                         System.out.println("Done.");
 
                         break;
+
                     case 3:
-                        System.out.println("What is the new Pattern?");
-                        String pattern = scanner.nextLine();
-                        payment.setPattern(pattern);
-                        break;
-                    case 4:
                         System.out.println("What is the new CustomerNumber?");
                         int customerNumber = scanner.nextInt();
                         payment.setCustomerNumber(customerNumber);
