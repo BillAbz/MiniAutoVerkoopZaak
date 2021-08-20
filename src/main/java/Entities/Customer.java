@@ -23,7 +23,8 @@ public class Customer {
     private String country;
     @ManyToOne
     private Employee salesRepEmployeeNumber;
-    private double creditLimit;
+    private String pattern = "#,###,###,###.00";
+    private DecimalFormat creditLimit = new DecimalFormat(pattern);
     @OneToMany
     private List<Payment> payments;
 
@@ -153,17 +154,20 @@ public class Customer {
         this.payments = payments;
     }
 
+    public String getPattern() {
+        return pattern;
+    }
 
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
 
-    public double getCreditLimit() {
+    public DecimalFormat getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(double creditLimit) {
-        String pattern = "#,###,###,###.00";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        double format = decimalFormat.format(creditLimit);
-        this.creditLimit =
+    public void setCreditLimit(DecimalFormat creditLimit) {
+        this.creditLimit = creditLimit;
     }
 
     @Override
