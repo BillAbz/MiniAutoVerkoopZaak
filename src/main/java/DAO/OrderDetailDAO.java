@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Customer;
 import Entities.Order;
 import Entities.OrderDetail;
 import Entities.Product;
@@ -23,10 +24,8 @@ public class OrderDetailDAO {
     }
 
     public List<OrderDetail> getAllOrderDetails() throws SQLException {
-        EntityManager entityManager = emf.createEntityManager();
-        Query query = entityManager.createQuery("Select * from orderdetails");
-        List<OrderDetail> orderDetailList = query.getResultList();
-        return orderDetailList;
+        EntityManager em = emf.createEntityManager();
+        return em.createQuery("FROM orderdetails", OrderDetail.class).getResultList();
     }
 
     public void addOrderDetail(OrderDetail orderDetail){

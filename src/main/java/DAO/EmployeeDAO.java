@@ -1,5 +1,6 @@
 package DAO;
 
+import Entities.Customer;
 import Entities.Employee;
 import Entities.Order;
 
@@ -23,10 +24,9 @@ public class EmployeeDAO {
                 return entityManager.find(Employee.class , employeeNumber);
         }
 
-        public Set<Employee> getAllEmployees() {
+        public List<Employee> getAllEmployees() {
                 EntityManager em = emf.createEntityManager();
-                Query query = em.createQuery("FROM employees e");
-                return new HashSet<>(query.getResultList());
+                return em.createQuery("FROM employees", Employee.class).getResultList();
         }
 
 

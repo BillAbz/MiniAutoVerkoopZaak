@@ -72,7 +72,7 @@ public class OrderDetailService {
 
 
             OrderDetail orderDetail = orderDetailDAO.getProductByOrderNumber(order);
-
+            orderDetail.setOrderNumber(order.getOrderNumber());
             if (orderDetail != null) {
                 System.out.println(orderDetail);
                 System.out.println("Please select an option: \n(1)New OrderLineNumber\n(2)Set QuantityOrdered\n(3)New Pattern\n(4)Product Code\n(5)Price Each");
