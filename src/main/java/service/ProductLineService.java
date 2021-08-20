@@ -138,12 +138,12 @@ public class ProductLineService {
 
     public void deleteAProductLine() throws SQLException {
         showAllProductlines();
-        System.out.println("What productline do you want to delete? give the product line name:");
+        System.out.println("What product line do you want to delete? give the product line name:");
         String id = scanner.nextLine();
         ProductLine productLine = productLineDAO.getProductLinesByLine(id);
         while (productLine == null) {
-            System.err.println("Productline doesn't exist.");
-            System.out.println("What productline do you want to update? give the product line name:");
+            System.err.println("Product line doesn't exist.");
+            System.out.println("What product line do you want to update? give the product line name:");
             productLine = productLineDAO.getProductLinesByLine(id);
         }
         productLineDAO.deleteProductLines(productLine);
